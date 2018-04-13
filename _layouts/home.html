@@ -4,16 +4,147 @@ layout: default
 
 {% include components/home-search-banner.html %}
 
-{% if page.tagline and page.intro %}
-<section class="usa-grid usa-section">
-  <div class="usa-width-one-third">
-    <h2>{{ page.tagline }}</h2>
+<main class="home-page" accesskey="3" id="home-page">
+    <div class="intro">
+      <div class="content-wrap">
+    <form action="/labs/pubmed/" method="get" autocomplete="off" class="usa-search usa-search-big search-form " id="search-form">
+      <div class="inner-wrap">
+        
+    
+        <a class="pubmed-logo" href="/labs/pubmed/" title="PubMed Labs Home">
+          <span>PubMed Labs</span>
+        </a>
+    
+        <a href="#" class="search-input-trigger" aria-hidden="true" data-alt-title="Hide search bar" title="Show search bar">
+        </a>
+    
+        <div role="search" class="search-input">
+          
+    
+    <div class="form-field autocomplete-parent">
+      
+      <label class="usa-sr-only" for="id_term">
+        Search:
+      </label>
+    
+    
+      
+      <span class="twitter-typeahead"><input type="search" name="term" class="term-input tt-input" required="" id="id_term" spellcheck="false" dir="auto" aria-owns="id_term_listbox" aria-autocomplete="list" style="position: relative; vertical-align: top;"><span role="status" aria-live="polite" style="position: absolute; padding: 0px; border: 0px; height: 1px; width: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap;"></span><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Source Sans Pro&quot;, &quot;Helvetica Neue&quot;, Helvetica, Roboto, Arial, sans-serif; font-size: 17px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><div role="listbox" class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;" id="id_term_listbox" aria-expanded="false"><div role="presentation" class="tt-dataset tt-dataset-0"></div></div></span><a href="#" class="clear-btn" title="Clear search input" role="button"></a><button type="submit" class="search-btn" ref="linksrc=search_btn" aria-label="Search"><span class="usa-search-submit-text">Search</span></button>
+
+    </div>
+
+        </div>
+      </div>
+    </form>
+
+
+        <div class="suggested-searches">
+          <span class="title">Try</span><ul class="items-list"><li><a class="suggested-search" href="/labs/pubmed/?term=otitis+media+treatment">otitis media treatment</a></li><li><a class="suggested-search" href="/labs/pubmed/?term=koonin+e+crispr">koonin e crispr</a></li><li><a class="suggested-search" href="/labs/pubmed/?term=influenza+vaccine+effectiveness">influenza vaccine effectiveness</a></li></ul>
+        </div>
+      </div>
+    
+      <div class="icon experiment-icon variant-0"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 130 130">
+     <def>
+      <style>
+        .circle {
+          fill: #0d498b;
+          stroke: #4473a8;
+          stroke-width: 2;
+        }
+    
+        .flask {
+          fill: #92d5ed;
+        }
+      </style>
+     </def>
+     <circle class="circle" cx="65" cy="65" r="63"></circle>
+     <g class="flask">
+      <circle cx="57.36" cy="37.85" r="3.3"></circle>
+      <circle cx="71.37" cy="41.44" r="2.8"></circle>
+      <circle cx="68.23" cy="28.79" r="3.81"></circle>
+      <path d="m51.46 50.66l-0.334 0.668c-0.1061 0.2123-0.6345 1.322-0.832 2.646-0.1973 1.324-0.0727 2.821 1.055 3.951 0.001101 0.0011 8.3e-4 0.002806 0.001954 0.003906 1.278 1.194 2.675 2.257 4.166 3.17 0.103 0.0626 0.1659 0.1744 0.166 0.2949v4.83c5.2e-5 0.07214-0.02248 0.1425-0.06445 0.2012l-18.88 26.25 0.3262 0.6543c2e-3 0.0039 0.00396 0.007799 0.00586 0.01172 0.01802 0.03983 0.3447 0.6869 1.113 1.564 0.7686 0.8776 1.992 2.018 3.854 3.15 3.724 2.265 10 4.502 20.3 4.502h4.52c10.29 0 16.58-2.251 20.29-4.523 1.857-1.136 3.073-2.279 3.828-3.152 0.3774-0.4369 0.6403-0.8071 0.8086-1.074 0.08415-0.1335 0.1444-0.2425 0.1836-0.3184 0.03916-0.07581 0.06161-0.1566 0.04492-0.08984 0.0065-0.02437 0.01569-0.04794 0.02734-0.07031l0.3262-0.6543-18.88-26.25c-0.04197-0.05868-0.0645-0.129-0.06445-0.2012v-4.83c8.6e-5 -0.1205 0.06301-0.2323 0.166-0.2949 1.491-0.9133 2.888-1.976 4.166-3.17l0.001953-0.003906c1.127-1.13 1.252-2.628 1.055-3.951-0.1975-1.325-0.7259-2.434-0.832-2.646l-0.334-0.668h-26.18zm1.867 2.408h22.51c0.1466-1.91e-4 0.2774 0.0922 0.3262 0.2305 0.1637 0.4593 0.296 0.988 0.3223 1.496 0.02631 0.5081-0.04525 1.024-0.4043 1.383-0.8046 1.089-2.475 2.177-4.441 3.266l-0.6074 0.3496v7.299l9.008 12.5h-24.06l-11.81 16.84c-2.351-1.286-3.697-2.603-4.357-3.402-0.1005-0.1207-0.107-0.2941-0.01562-0.4219l18.34-25.52v-7.299l-0.6074-0.3496c-2.116-1.016-3.37-2.139-4.459-3.283-0.3193-0.369-0.3808-0.8673-0.3574-1.367 0.02335-0.4999 0.1424-1.023 0.2891-1.484 0.04587-0.1435 0.1794-0.2407 0.3301-0.2402zm3.352 28.43h24.73l8.008 11.12c0.09144 0.1265 0.08664 0.2987-0.01172 0.4199-1.648 2.023-7.392 7.127-22.54 7.127h-4.52c-7.881 0-13.2-1.389-16.73-3l11.06-15.66z"></path>
+     </g>
+    </svg></div>
   </div>
-  <div class="usa-width-two-thirds">
-    {{ page.intro | markdownify }}
+    
+    <div class="description">
+      <div class="description-content">
+        <h2 class="title">What is PubMed Labs?</h2>
+        <p class="text">
+          PubMed Labs is a test site where we are <em>experimenting</em> with new features and tools that eventually may be incorporated in PubMed, in their current or a revised form based on the input we receive. Please try the site and <a class="feedback-link" href="https://www.research.net/r/PYB8PM3?a=labs_pubmed&amp;from=https%3A%2F%2Fwww.ncbi.nlm.nih.gov%2Flabs%2Fpubmed%2F&amp;p=home&amp;s=CE8A761DAAAD87B1_0130SID">let us know</a> what you think.
+        </p>
+        <div class="icon experiment-icon variant-0"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 600 600">
+     <def>
+      <style>
+        .liquid {
+          fill: #0d71ba;
+        }
+      </style>
+     </def>
+     <circle fill-opacity=".2" cy="301.27" cx="299.27" r="242.6" fill="#33b9ff"></circle>
+     <g stroke="#4094d3" stroke-width="3" stroke-dasharray="9.13" fill="none">
+      <path d="m43 384.72a271.25 271.25 0 0 1 23.31 -221.1"></path>
+      <path d="m300 29.5a270.56 270.56 0 0 1 233.4 133.68"></path>
+      <path d="m463.59 515.45a269.36 269.36 0 0 1 -102.76 48.19"></path>
+     </g>
+     <path d="m393.6 462.76h-67.657a3.5579 3.5579 0 0 1 -3.5579 -3.5579v-106.81a3.5579 3.5579 0 0 1 3.5579 -3.5579h75.825a3.5579 3.5579 0 0 1 2.6971 5.8915l-6.5228 7.4601a3.5579 3.5579 0 0 0 -0.87991 2.3337v94.685a3.5579 3.5579 0 0 1 -3.4622 3.5579z" stroke="#4094d3" stroke-width="3" fill="#fff"></path>
+     <rect height="56.964" width="67.657" y="402.24" x="325.94" stroke-width="1.9128" class="liquid"></rect>
+     <g stroke-width="1.9128" fill="rgba(255,255,255,.6)">
+      <rect height="3.5579" width="14.251" y="448.53" x="375.79"></rect>
+      <rect height="3.5579" width="14.251" y="437.83" x="375.79"></rect>
+      <rect height="3.5579" width="14.251" y="427.16" x="375.79"></rect>
+      <rect height="3.5579" width="14.251" y="416.47" x="375.79"></rect>
+      <rect height="3.5579" width="14.251" y="405.79" x="375.79"></rect>
+     </g>
+     <g stroke-width="1.9128" fill="#81beea">
+      <rect height="3.5579" width="14.251" y="395.1" x="375.79"></rect>
+      <rect height="3.5579" width="14.251" y="384.43" x="375.79"></rect>
+      <rect height="3.5579" width="14.251" y="373.73" x="375.79"></rect>
+     </g>
+     <path d="m280.23 403.36-3.9404-7.8809a7.1157 7.1157 0 0 0 -6.3697 -3.9404h-19.683a7.1157 7.1157 0 0 0 -6.3698 3.9404l-3.9404 7.8809a7.1157 7.1157 0 0 1 -3.73 3.424l-26.78 10.75a7.1157 7.1157 0 0 0 -4.1126 8.8564l10.501 31.485a7.1157 7.1157 0 0 0 6.7523 4.8777h75.194a7.1157 7.1157 0 0 0 6.7523 -4.8777l10.501-31.485a7.1157 7.1157 0 0 0 -4.1126 -8.8564l-26.78-10.75a7.1157 7.1157 0 0 1 -3.8831 -3.424z" stroke="#4094d3" stroke-width="3" fill="#fff"></path>
+     <path fill="#a8d8fb" d="m210.48 430.72 8.6843 26.053a3.5579 3.5579 0 0 0 3.3857 2.4293h75.194a3.5579 3.5579 0 0 0 3.3857 -2.4293l8.6843-26.053z"></path>
+     <g stroke-width="1.9128">
+      <path fill="#ff6c00" d="m273.02 363.54c-0.91816 8.5312-5.7385 15.532-12.95 15.532-7.2114 0-12.338-6.9818-12.95-15.532-0.746-10.406 9.8894-25.862 12.95-27.181 3.4814 1.8554 14.002 17.369 12.95 27.181z"></path>
+      <path fill="#ffa200" d="m260.07 379.09c-4.9351 0-8.8947-5.1455-9.392-12.242-0.49734-7.0966 5.8915-18.038 9.3729-22.17 3.5579 4.2082 10.176 15.073 9.4303 22.036-0.65036 5.968-3.8639 12.376-9.4112 12.376z"></path>
+      <path fill="#ffca10" d="m260.07 379.09c-2.9649 0-5.4707-3.8257-5.8533-8.9329-0.30605-4.323 2.7162-10.999 5.7385-15.857 3.0797 4.763 6.3315 11.477 5.8915 15.609-0.4017 4.4378-2.6206 9.1816-5.7768 9.1816z"></path>
+      <path fill="#0d71ba" d="m260.14 371.96a1.7789 1.7789 0 0 0 -1.83 1.77v30.07a12.472 12.472 0 0 1 -1.65 6.18l-11.84 20.74h4.1l10.84-18.98a16.049 16.049 0 0 0 2.1 -7.95v-30.06a1.7789 1.7789 0 0 0 -1.72 -1.77z"></path>
+      <rect height="1.7789" width="3.5579" y="373.73" x="258.31" fill="#094875"></rect>
+      <path fill="#ea5150" d="m258.31 373.73a1.7789 1.7789 0 0 1 3.5579 0z"></path>
+      <path fill="#4094d3" d="m256.53 391.54v3.5579a1.7789 1.7789 0 0 0 1.7789 1.7789h3.5579a1.7789 1.7789 0 0 0 1.7789 -1.7789v-3.5579z"></path>
+      <path fill="#1467a1" d="m270.76 391.54h-21.366a1.7789 1.7789 0 0 1 -1.7789 -1.7789 1.7789 1.7789 0 0 1 1.7789 -1.7789h21.366a1.7789 1.7789 0 0 1 1.7789 1.7789 1.7789 1.7789 0 0 1 -1.7789 1.7789z"></path>
+      <path fill="#1467a1" d="m263.64 390.87v-7.0584a1.7789 1.7789 0 0 0 -1.7789 -1.7789h-3.5579a1.7789 1.7789 0 0 0 -1.7789 1.7789v7.1157z"></path>
+      <path class="liquid" d="m366.9 332.84a7.1253 7.1253 0 0 1 -14.251 0c0-3.9404 7.1158-21.366 7.1158-21.366s7.1349 17.388 7.1349 21.366z"></path>
+      <path opacity=".4" d="m366.9 332.84c0-3.9404-7.1158-21.366-7.1158-21.366v28.444a7.1157 7.1157 0 0 0 7.1158 -7.0775z" fill="#fff"></path>
+     </g>
+     <path d="m238.72 179.66v39.832c-21.504 8.701-35.583 29.572-35.598 52.77 0.00075 31.459 25.503 56.962 56.963 56.963 31.46 0.00033 56.964-25.503 56.965-56.963-0.0153-23.196-14.095-44.067-35.598-52.768v-39.834z" stroke="#4094d3" stroke-width="3" fill="#fff"></path>
+     <g stroke-width="1.9128">
+      <path fill="#4094d3" d="m361.6 302.54h-3.5579v-167.39a16.01 16.01 0 0 0 -23.757 -14.021 19.53 19.53 0 0 1 5.9489 14.04 8.9042 8.9042 0 1 1 -17.808 0 19.53 19.53 0 0 1 5.9298 -14.04 16.01 16.01 0 0 0 -15.437 0 19.53 19.53 0 0 1 5.9489 14.04 8.9042 8.9042 0 1 1 -17.808 0 19.53 19.53 0 0 1 5.9489 -14.04 16.01 16.01 0 0 0 -15.437 0 19.53 19.53 0 0 1 5.9489 14.04 8.9042 8.9042 0 0 1 -17.808 0 19.53 19.53 0 0 1 5.9489 -14.04 16.01 16.01 0 0 0 -23.738 14.04v74.773h-3.6153v-74.754a19.568 19.568 0 0 1 30.261 -16.412 19.549 19.549 0 0 1 21.366 0 19.549 19.549 0 0 1 21.347 0 19.568 19.568 0 0 1 30.318 16.374zm-51.65-179.29a15.991 15.991 0 0 0 -5.3368 11.936 5.3368 5.3368 0 1 0 10.674 0 15.991 15.991 0 0 0 -5.3368 -11.936zm-21.366 0a15.991 15.991 0 0 0 -5.3368 11.936 5.3368 5.3368 0 1 0 10.674 0 15.991 15.991 0 0 0 -5.3559 -11.936zm42.714 0a15.991 15.991 0 0 0 -5.3368 11.936 5.3368 5.3368 0 1 0 10.674 0 15.991 15.991 0 0 0 -5.3559 -11.955z"></path>
+      <path fill="#0d71ba" d="m274.32 193.93h-28.482a3.5579 3.5579 0 0 1 -3.5579 -3.5579v-14.251h35.598v14.251a3.5579 3.5579 0 0 1 -3.5579 3.5579z"></path>
+      <path fill="#0d71ba" d="m277.87 176.12h-35.598l-2.7162-13.524a3.5579 3.5579 0 0 1 3.5005 -4.2656h34.048a3.5579 3.5579 0 0 1 3.5005 4.2656z"></path>
+      <path class="liquid" d="m217.35 275.45a28.406 28.406 0 0 1 -10.23 3.56 53.406 53.406 0 0 0 105.91 0 28.406 28.406 0 0 1 -10.23 -3.56 28.31 28.31 0 0 1 -28.48 0 28.31 28.31 0 0 1 -28.49 0 28.31 28.31 0 0 1 -28.48 0zm35.6 8.38a2.678 2.678 0 0 1 2.68 2.68 2.678 2.678 0 0 1 -2.68 2.68 2.678 2.678 0 0 1 -2.68 -2.68 2.678 2.678 0 0 1 2.68 -2.68zm24.93 6.24a5.3368 5.3368 0 0 1 5.33 5.33 5.3368 5.3368 0 0 1 -5.33 5.34 5.3368 5.3368 0 0 1 -5.34 -5.34 5.3368 5.3368 0 0 1 5.34 -5.33zm-14.24 21.36a3.5579 3.5579 0 0 1 3.56 3.56 3.5579 3.5579 0 0 1 -3.56 3.56 3.5579 3.5579 0 0 1 -3.56 -3.56 3.5579 3.5579 0 0 1 3.56 -3.56z"></path>
+     </g>
+     <g stroke-width="1.9128" class="liquid">
+      <circle r="2.678" cy="272.26" cx="260.08"></circle>
+      <circle r="3.5579" cy="256.25" cx="265.42"></circle>
+      <circle r="5.3368" cy="229.55" cx="256.53"></circle>
+     </g>
+     <path stroke-width="1.9128" fill="#74bbe6" d="m244.9 430.56l-2.66 4.67a16.03 16.03 0 0 0 13.9 23.97h12.84a8.9138 8.9138 0 0 0 8.91 -8.89 1.7789 1.7789 0 1 0 -3.55 0 5.3559 5.3559 0 0 1 -5.34 5.33h-12.84a12.453 12.453 0 0 1 -10.82 -18.65l3.67-6.43h-4.11z"></path>
+     <path stroke-width="1.9128" fill="#4094d3" d="m281.45 183.25h-42.733a3.5579 3.5579 0 0 1 0 -7.1158h42.733a3.5579 3.5579 0 1 1 0 7.1158z"></path>
+     <path fill="#0d71ba" d="m172.98 508.05a242.6 242.6 0 0 0 126.29 35.82 242.6 242.6 0 0 0 126.47 -35.82h-252.76z"></path>
+     <path fill="#4094d3" d="m124.12 469.01a242.6 242.6 0 0 0 48.86 39.04h252.76a242.6 242.6 0 0 0 48.41 -39.04h-350.03z"></path>
+    </svg></div>
+      </div>
+    </div>
   </div>
-</section>
-{% endif %}
+    
+    
+        
+    
+    
+      
+    
+    
+      </main>
 
 {% capture _graphics %}
   {% include graphic-list.html graphics=page.graphics %}
