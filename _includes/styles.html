@@ -1,0 +1,24 @@
+
+<!-- PUBMED CSS snapshots from 4/13 -->
+<link rel="stylesheet" href="https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/8edf46ee308d.css" type="text/css" />
+<link rel="stylesheet" href="https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/7e337fa7d3bd.css" type="text/css" />
+<!-- Mobile browser address bar color -->
+<meta name="theme-color" content="#205493">
+<!-- Project base styles -->
+<link rel="stylesheet" href="https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/7ee8b05ba59b.css" type="text/css" />
+<!-- Home page styles
+<link rel="stylesheet" href="/labs/pubmed/static/CACHE/css/a711b637973c.css" type="text/css" />
+ -->
+{% assign _styles = '' | split: '' %}
+{% assign _default_styles = '' | split: ''
+  | push: '/assets/css/main.css' %}
+{% assign _styles = _styles
+  | push: _default_styles
+  | push: site.styles
+  | push: layout.styles
+  | push: page.styles %}
+{% for _list in _styles %}{% for _style in _list %}
+<link rel="stylesheet"
+  href="{{ _style.href | default: _style | relative_url }}"
+  media="{{ _style.media | default: 'screen' }}">
+{% endfor %}{% endfor %}
