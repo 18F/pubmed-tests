@@ -22,6 +22,7 @@
     {% assign _sizes = 'whole half third fourth sixth' | split: ' ' %}
     {% assign _size = footer_links.size | minus: 1 %}
     {% assign _size = _sizes[_size] | default: 'whole' %}
+    <!--
   <div class="usa-footer-primary-section">
     <div class="usa-grid">
       <nav class="usa-footer-nav">
@@ -37,6 +38,7 @@
       </nav>
     </div>
   </div>
+-->
   {% endif %}
 
   {% if footer.logos or footer.heading or footer.contact %}
