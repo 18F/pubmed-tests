@@ -67,15 +67,8 @@ layout: default
   </div>
       </main>
 
-{% capture _graphics %}
-  {% include graphic-list.html graphics=page.graphics %}
-{% endcapture %}
-{% if page.graphics_position != 'after' %}{{ _graphics }}{% endif %}
-
 <section class="usa-section">
   <div class="usa-grid">
     {{ content }}
   </div>
 </section>
-
-{% if page.graphics_position == 'after' %}{{ _graphics }}{% endif %}
