@@ -21,14 +21,23 @@
     {% include footer.html %}
     {% include scripts.html %}
     <script>
-      // Super quick and simple vanilla JS dialog triggering script
-      var triggers = document.querySelectorAll('[data-trigger]'), i;;
-      for (i = 0; i < triggers.length; ++i) {
-        triggers[i].onclick = function() {
-          console.log('clicked!');
+        // Super quick and simple vanilla JS dialog triggering script
+        var triggers = document.querySelectorAll('[data-trigger]');
+  
+        for (i = 0; i < triggers.length; ++i) {
+          var target = document.querySelector(this.href);
+          target.style.display = 'none';
+          triggers[i].addEventListener("click", function(){
+            if (target.style.display == 'none') {
+              target.style.display = 'block';
+            } else {
+              target.style.display = 'none';
+            }
+          }, false);
+            //
+            //console.log('clicked ', target);
+            //return false;
         }
-        return false
-      }
     </script>
   </body>
 </html>
