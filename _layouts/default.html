@@ -20,5 +20,15 @@
 
     {% include footer.html %}
     {% include scripts.html %}
+    <script>
+      // Super quick and simple vanilla JS dialog triggering script
+      var triggers = document.querySelectorAll('[data-trigger]'), i;;
+      for (i = 0; i < triggers.length; ++i) {
+        triggers[i].onclick = function() {
+          console.log('clicked!');
+        }
+        return false
+      }
+    </script>
   </body>
 </html>
