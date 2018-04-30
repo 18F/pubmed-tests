@@ -25,7 +25,7 @@
         var triggers = document.querySelectorAll('[data-trigger]');
   
         for (i = 0; i < triggers.length; ++i) {
-          var target = document.querySelector(this.href);
+          var target = document.querySelector(triggers[i].href);
           target.style.display = 'none';
           triggers[i].addEventListener("click", function(){
             if (target.style.display == 'none') {
