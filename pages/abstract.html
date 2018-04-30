@@ -8,6 +8,17 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/e6ba0848a178.
 ---
 
 {% include components/inner-search-form.html %}
+
+<!-- overriding a few styles -->
+<style>
+    .article-page .article-details>.heading {
+      margin-bottom: 1rem;
+    }
+    .article-page .article-details>.abstract {
+      margin-top: 1rem;
+    }
+</style>
+
 <div class="return-to-search">
   <div class="inner-wrap">
       <a href="/labs/pubmed/?term=cancer&amp;pos=2" ref="linksrc=back_to_search_link&amp;query=cancer">
