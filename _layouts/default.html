@@ -47,6 +47,7 @@
         }
         for (i = 0; i < closers.length; ++i) {
           closers[i].addEventListener("click", function(e){
+              e.preventDefault();
               var dialog = closers[i].closest('.js-target-dialog'); 
               dialog.style.display = 'none';
               overlay.classList.remove('active');
