@@ -27,11 +27,11 @@
         // Not for prod.
         var triggers = document.querySelectorAll('[data-trigger]');
         var closers = document.querySelectorAll('.close-overlay')
+        var overlay = document.getElementById('overlay');
   
         for (i = 0; i < triggers.length; ++i) {
           var id = triggers[i].getAttribute('data-trigger');
           var target = document.getElementById(id);
-          var overlay = document.getElementById('overlay');
           target.classList.add('js-target-dialog');
           target.style.display = 'none';
           triggers[i].addEventListener("click", function(e){
@@ -53,7 +53,7 @@
               overlay.classList.remove('active');
           }, false);
         }
-        if (typeof overlay === "undefined") {
+        if (typeof overlay !== "undefined") {
           overlay.addEventListener("click", function(e){
             overlay.classList.remove('active');
             overlay.querySelector('.js-target-dialog').style.display.none;
