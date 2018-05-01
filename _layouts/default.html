@@ -23,6 +23,8 @@
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         // Super quick and simple vanilla JS dialog triggering script
+        // This really should be working on aria roles, but eh, prototyping.
+        // Not for prod.
         var triggers = document.querySelectorAll('[data-trigger]');
         var closers = document.querySelectorAll('.close-overlay')
   
@@ -48,9 +50,12 @@
               var dialog = closers[i].closest('.js-target-dialog'); 
               dialog.style.display = 'none';
               overlay.classList.remove('active');
-            }
           }, false);
         }
+        overlay.addEventListener("click", function(e){
+          overlay.classList.remove('active');
+          overlay.querySelector('.js-target-dialog').style.display.none;
+        }, false);
       });
     </script>
   </body>
