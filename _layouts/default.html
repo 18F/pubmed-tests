@@ -28,14 +28,17 @@
         for (i = 0; i < triggers.length; ++i) {
           var id = triggers[i].getAttribute('data-trigger');
           var target = document.getElementById(id);
+          var overlay = document.getElementById('overlay');
           target.classList.add('js-target-dialog');
           target.style.display = 'none';
           triggers[i].addEventListener("click", function(e){
             e.preventDefault();
             if (target.style.display == 'none') {
               target.style.display = 'block';
+              overlay.classList.add('active');
             } else {
               target.style.display = 'none';
+              overlay.classList.remove('active');
             }
           }, false);
         }
