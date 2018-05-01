@@ -53,10 +53,12 @@
               overlay.classList.remove('active');
           }, false);
         }
-        overlay.addEventListener("click", function(e){
-          overlay.classList.remove('active');
-          overlay.querySelector('.js-target-dialog').style.display.none;
-        }, false);
+        if (typeof overlay === "undefined") {
+          overlay.addEventListener("click", function(e){
+            overlay.classList.remove('active');
+            overlay.querySelector('.js-target-dialog').style.display.none;
+          }, false);
+        }
       });
     </script>
   </body>
