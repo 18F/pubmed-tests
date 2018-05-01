@@ -26,8 +26,9 @@
         var triggers = document.querySelectorAll('[data-trigger]');
   
         for (i = 0; i < triggers.length; ++i) {
-          var id = triggers[i].hash.replace('#','');
+          var id = triggers[i].getAttribute('[data-trigger]');
           var target = document.getElementById(id);
+          target.classList.add('js-target-dialog');
           target.style.display = 'none';
           triggers[i].addEventListener("click", function(){
             if (target.style.display == 'none') {
@@ -36,9 +37,6 @@
               target.style.display = 'none';
             }
           }, false);
-            //
-            //console.log('clicked ', target);
-            //return false;
         }
       });
     </script>
