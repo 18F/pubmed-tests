@@ -31,6 +31,7 @@
           target.classList.add('js-target-dialog');
           target.style.display = 'none';
           triggers[i].addEventListener("click", function(){
+            alert('clicked')
             if (target.style.display == 'none') {
               target.style.display = 'block';
             } else {
