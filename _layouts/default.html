@@ -24,6 +24,7 @@
       document.addEventListener("DOMContentLoaded", function() {
         // Super quick and simple vanilla JS dialog triggering script
         var triggers = document.querySelectorAll('[data-trigger]');
+        var closers = document.querySelectorAll('.close-overlay')
   
         for (i = 0; i < triggers.length; ++i) {
           var id = triggers[i].getAttribute('data-trigger');
@@ -38,6 +39,14 @@
               overlay.classList.add('active');
             } else {
               target.style.display = 'none';
+              overlay.classList.remove('active');
+            }
+          }, false);
+        }
+        for (i = 0; i < closers.length; ++i) {
+          closers[i].addEventListener("click", function(e){
+              var dialog = closers[i].closest('.js-target-dialog'); 
+              dialog.style.display = 'none';
               overlay.classList.remove('active');
             }
           }, false);
