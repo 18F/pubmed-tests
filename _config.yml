@@ -25,3 +25,6 @@ google_analytics_ua: UA-48605964-32
 # Your search_site_handle value is from the search.gov settings page.
 
 # search_site_handle: searchgov-site-handle
+styles:
+  - /assets/uswds/css/uswds.min.css
+  - /assets/css/query-builder.css
