@@ -26,7 +26,7 @@
         var triggers = document.querySelectorAll('[data-trigger]');
   
         for (i = 0; i < triggers.length; ++i) {
-          var id = triggers[i].getAttribute('[data-trigger]');
+          var id = triggers[i].getAttribute('data-trigger');
           var target = document.getElementById(id);
           target.classList.add('js-target-dialog');
           target.style.display = 'none';
