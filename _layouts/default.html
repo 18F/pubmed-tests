@@ -8,6 +8,10 @@
     {% if site.google_analytics_ua or site.dap_agency %}
       {% include analytics.html %}
     {% endif %}
+    <style>
+        /* quick and dirty overrides */
+        .search-form>.inner-wrap {width: auto}
+    </style>
   </head>
   <body class="{{ layout.class }} {{ page.class }} {% if site.site_width %}site-{{ site.site_width }}{% endif %}">
 
@@ -48,7 +52,7 @@
         for (i = 0; i < closers.length; ++i) {
           closers[i].addEventListener("click", function(e){
               e.preventDefault();
-              var dialog = closers[i].closest('.js-target-dialog'); 
+              var dialog = this.closest('.js-target-dialog'); 
               dialog.style.display = 'none';
               overlay.classList.remove('active');
           }, false);
