@@ -26,7 +26,8 @@
         var triggers = document.querySelectorAll('[data-trigger]');
   
         for (i = 0; i < triggers.length; ++i) {
-          var target = document.getElementById(triggers[i].hash);
+          var id = triggers[i].hash.replace('#','');
+          var target = document.getElementById(id);
           target.style.display = 'none';
           triggers[i].addEventListener("click", function(){
             if (target.style.display == 'none') {
