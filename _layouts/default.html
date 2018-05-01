@@ -21,6 +21,7 @@
     {% include footer.html %}
     {% include scripts.html %}
     <script>
+      document.addEventListener("DOMContentLoaded", function() {
         // Super quick and simple vanilla JS dialog triggering script
         var triggers = document.querySelectorAll('[data-trigger]');
   
@@ -38,6 +39,7 @@
             //console.log('clicked ', target);
             //return false;
         }
+      });
     </script>
   </body>
 </html>
