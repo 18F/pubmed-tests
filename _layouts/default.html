@@ -30,8 +30,8 @@
           var target = document.getElementById(id);
           target.classList.add('js-target-dialog');
           target.style.display = 'none';
-          triggers[i].addEventListener("click", function(){
-            alert('clicked')
+          triggers[i].addEventListener("click", function(e){
+            e.preventDefault();
             if (target.style.display == 'none') {
               target.style.display = 'block';
             } else {
