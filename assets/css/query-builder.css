@@ -1,6 +1,7 @@
 #query-builder h1 {
 	font-weight: 600;
 	margin-bottom: 0.67em; 
+	font-size: 1em;
 }
 
 #query-builder .field-any-all {
