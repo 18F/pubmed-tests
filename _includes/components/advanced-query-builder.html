@@ -1,34 +1,28 @@
  <section id="query-builder">
   <h1>Query builder</h1>
   <form class="" action="index.html" method="post">
-    <span class="show-articles-that-match">Show articles that match</span>
-    <div class="field field-select field-any-all">
-        <label for="">
-        <span class="label-text">Additive or subtractive</span>
-        <select class="" name="">
-            <option value="">Any</option>
-            <option value="">All</option>
-        </select>
-        </label>
-    </div>
-    <span class="of-the-following-selectors">of the following selectors.</span>
-    <fieldset class="selectors">
-        <legend>Selectors</legend>
+    <fieldset class="selector-group">
         <fieldset class="selector">
-          <div class="field field-select field-selector-field">
-            <label for="id-search-opts">Search in</label>
-            {% include components/search-opts-snippet.html %}
-            <label for="id-search-term">Search for</label>
-            {% include components/search-opts-snippet.html %}
-          </div>
-        <div class="field field-select  field-selector-contains">
-            <label for="">
-            <span class="label-text">Additive or subtractive</span>
-            <select class="" name="">
-                <option value="">Contains</option>
-                <option value="">Does not contain</option>
-            </select>
-            </label>
+        <label for="id-search-opts">Search in</label>
+        {% include components/search-opts-snippet.html %}
+        <label for="id-search-term">Search for</label>
+        <input name="search-term" id="id-search-term">
+        </fieldset>
+        or
+        <fieldset class="selector">
+        <label for="id-search-opts">Search in</label>
+        {% include components/search-opts-snippet.html %}
+        <label for="id-search-term2">Search for</label>
+        <input name="search-term2" id="id-search-term2">
+        </fieldset>
+    </fieldset>
+    <div class="switch-field">
+      <input type="radio" id="switch_left" name="switch_2" value="yes" checked/>
+      <label for="switch_left">And</label>
+      <input type="radio" id="switch_right" name="switch_2" value="no" />
+      <label for="switch_right">Not</label>
+    </div>
+
         </div>
         <div class="field field-selector-value">
             <label for="">
