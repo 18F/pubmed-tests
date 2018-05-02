@@ -659,9 +659,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
       var searchInput = document.querySelector('input.term-input.tt-input');
       for (i = 0; i < historyItems.length; ++i) {
         historyItems[i].addEventListener("click", function(e){
-          console.log('this', this)
-          console.log('hi', historyItems[i])
-          searchInput.value = historyItems[i].textContent;
+          searchInput.value = this.textContent;
         });
       }
     });
