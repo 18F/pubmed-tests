@@ -234,6 +234,9 @@ border-radius: 0 4px 4px 0;
 }
 
 /* History */
+#search-history button {
+	font-size: 14px; margin: 0;
+}
 td.q {
 	cursor: pointer;
 }
