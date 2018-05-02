@@ -3,11 +3,11 @@
   <form class="" action="index.html" method="post">
     <fieldset class="selector-group">
         <fieldset class="selector">
-          {% include components/search-opts-snippet.html %}
+          {% include components/search-opts-snippet.html num=1 %}
         </fieldset>
         <span class="boolean-label">or</span>
         <fieldset class="selector">
-          {% include components/search-opts-snippet.html %}
+          {% include components/search-opts-snippet.html num=2 %}
         </fieldset>
         <button class="boolean-label">
           <span class="boolean-label-add" title="add another">+</span>
@@ -24,7 +24,7 @@
     
     <fieldset class="selector-group">
         <fieldset class="selector">
-            {% include components/search-opts-snippet.html %}
+            {% include components/search-opts-snippet.html num=3 %}
         </fieldset>
         <button class="boolean-label">
           <span class="boolean-label-add" title="add another">+</span>
@@ -40,3 +40,7 @@
     </button>
   </form>
 </section>
+
+<script>
+    
+</script>
