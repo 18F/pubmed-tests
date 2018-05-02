@@ -164,7 +164,6 @@ display: block;
 
 /* https://codepen.io/JiveDig/pen/jbdJXR */
 .switch-field {
-  padding: 20px;
 	overflow: hidden;
 }
 
@@ -182,7 +181,8 @@ display: block;
 }
 
 .switch-field label {
-float: left;
+	float: left;
+ 	margin-top: 1em;
 }
 
 .switch-field label {
