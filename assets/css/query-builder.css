@@ -234,6 +234,14 @@ border-radius: 0 4px 4px 0;
 }
 
 /* History */
+#search-history th,
+#search-history td {
+	padding: 0.75rem;
+}
+
+.history-controls {
+	width:4em;
+}
 #search-history button {
 	font-size: 14px; 
 	margin: 0 0.25em;
