@@ -235,7 +235,10 @@ border-radius: 0 4px 4px 0;
 
 /* History */
 #search-history button {
-	font-size: 14px; margin: 0;
+	font-size: 14px; 
+	margin: 0 0.25em;
+	padding: 0.5em 1em;
+
 }
 td.q {
 	cursor: pointer;
