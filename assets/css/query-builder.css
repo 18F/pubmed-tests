@@ -150,20 +150,20 @@ display: block;
 	display: inline-block;
 }
 .boolean-label {
-	background: #ddd;
 	border-radius: 1em;
 	padding: 0.25em 0.5em;
 }
+span.boolean-label {
+	background: #ddd;
+}
+
 .boolean-label-add {
-	background: #369;
-	color: white;
 	border-radius: 1em;
 	padding: 0 0.25em;
 	cursor: pointer;
 }
 
 .selector-add {
-	background: #A5DC86;
 	margin: 0.5em 0;
 	display: inline-block;
 }
