@@ -21,41 +21,6 @@
 
     <a href="#query-builder" data-trigger="query-builder">show builder</a>
     <a href="#search-history" data-trigger="search-history">show history</a>
-
   </div>
-  <div class="search-options">
-    <div class="inner-wrap">
-      <button class="filters-trigger" title="Filters">
-    Filters
-      <span class="amount">0</span>
-    </button>
-    <button class="timeline-trigger" title="Publications timeline">
-      Timeline
-    </button>
-    <div class="selected-filters">
-      <!-- Dynamic JS content -->
-    </div>
-      <!-- Hidden form inputs -->
-    <div class="spell-check">
-      <input type="hidden" name="ac" data-on-value="yes" data-off-value="no" value="yes" data-initial-value="yes" id="id_ac">
-    </div>
-    <div class="field-sensor">
-      <input type="hidden" name="fs" data-on-value="yes" data-off-value="no" value="yes" data-initial-value="yes" id="id_fs">
-    </div>
-    <div class="items-per-page">
-      <input type="hidden" name="size" value="10" data-initial-value="10" id="id_size">
-    </div>
-    <div class="sorting" data-field-sensor-value="date">
-    <div class="short-view">
-      <div class="form-field inline-dropdown-field">
-        <label for="id_sort">Sort by:</label>
-        <select name="sort" data-skipped-value="none" data-initial-value="relevance" id="id_sort">
-          <option value="relevance">Best match</option>
-          <option value="date">Most recent</option>
-        </select>
-      </div>
-    </div>
-  </div>
-</div>
 </form>
 {% include components/search-history.html %}
