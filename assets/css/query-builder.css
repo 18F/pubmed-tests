@@ -139,9 +139,17 @@ display: block;
 .top-query-builder fieldset .actions{
 	width: 49%;
 }
+.top-query-builder .selector {
+	width: 49%;
+}
 
 
 /* https://codepen.io/JiveDig/pen/jbdJXR */
+.switch-field {
+  padding: 20px;
+	overflow: hidden;
+}
+
 .switch-field input {
 	position: absolute !important;
 	clip: rect(0, 0, 0, 0);
@@ -149,6 +157,10 @@ display: block;
 	width: 1px;
 	border: 0;
 	overflow: hidden;
+}
+
+.switch-field input:before {
+	display:none !important;
 }
 
 .switch-field label {
