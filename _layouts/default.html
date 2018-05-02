@@ -40,17 +40,19 @@
   
         for (i = 0; i < triggers.length; ++i) {
           var id = triggers[i].getAttribute('data-trigger');
-          triggers[i].target = document.getElementById(id);
-          triggers[i].target.classList.add('js-target-dialog');
-          triggers[i].target.setAttribute('hidden', 'hidden');
+          let target = document.getElementById(id);
+          target.classList.add('js-target-dialog');
+          target.setAttribute('hidden', 'hidden');
+          triggers[i].target = target;
 
           triggers[i].addEventListener("click", function(e){
             e.preventDefault();
-            if (triggers[i].target.hasAttribute('hidden')) {
-              triggers[i].target.removeAttribute('hidden');
+            console.log("this", this);
+            if (this.target.hasAttribute('hidden')) {
+              this.target.removeAttribute('hidden');
               overlay.classList.add('active');
             } else {
-              triggers[i].target.setAttribute('hidden', 'hidden');
+              this.target.setAttribute('hidden', 'hidden');
               overlay.classList.remove('active');
             }
           }, false);
