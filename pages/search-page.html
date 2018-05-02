@@ -668,9 +668,8 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
       });
       // Make history clear "work"
       document.getElementById('history-clear').addEventListener("click", function(e){
-        document.getElementById('history-body').innerHTML(
+        document.getElementById('history-body').innerHTML =
           '<tr><td>1</td><td class="q"></td><td></td></tr>'
-        )
       });
       
     });
