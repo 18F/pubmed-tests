@@ -43,16 +43,16 @@
           let target = document.getElementById(id);
           target.classList.add('js-target-dialog');
           target.setAttribute('hidden', 'hidden');
-          triggers[i].target = target;
 
           triggers[i].addEventListener("click", function(e){
             e.preventDefault();
             console.log("this", this);
-            if (this.target.hasAttribute('hidden')) {
-              this.target.removeAttribute('hidden');
+            let currentTarget = document.getElementById(this.getAttribute('data-trigger'));
+            if (currentTarget.hasAttribute('hidden')) {
+              currentTarget.removeAttribute('hidden');
               overlay.classList.add('active');
             } else {
-              this.target.setAttribute('hidden', 'hidden');
+              currentTarget.setAttribute('hidden', 'hidden');
               overlay.classList.remove('active');
             }
           }, false);
