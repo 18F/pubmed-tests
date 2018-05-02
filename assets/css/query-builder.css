@@ -240,11 +240,11 @@ border-radius: 0 4px 4px 0;
 }
 
 .history-controls {
-	width:4em;
+	width: 6em;
 }
 #search-history button {
 	font-size: 14px; 
-	margin: 0 0.25em;
+	margin: 0 0.125em;
 	padding: 0.5em 1em;
 
 }
