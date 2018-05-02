@@ -140,7 +140,18 @@ display: block;
 	width: 49%;
 }
 .top-query-builder .selector {
+	width: 40%;
+	display: inline-block;
+}
+.top-query-builder .selector select, 
+.top-query-builder .selector input {
 	width: 49%;
+	display: inline-block;
+}
+.boolean-label {
+	background: #ddd;
+	border-radius: 1em;
+	padding: 0.25em 0.5em;
 }
 
 
@@ -159,7 +170,7 @@ display: block;
 	overflow: hidden;
 }
 
-.switch-field input:before {
+.switch-field label :before {
 	display:none !important;
 }
 
