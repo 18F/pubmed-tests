@@ -159,6 +159,7 @@ display: block;
 	color: white;
 	border-radius: 1em;
 	padding: 0 0.25em;
+	cursor: pointer;
 }
 
 .selector-add {

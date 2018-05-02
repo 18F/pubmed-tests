@@ -9,10 +9,10 @@
         <fieldset class="selector">
           {% include components/search-opts-snippet.html %}
         </fieldset>
-        <span class="boolean-label">
+        <button class="boolean-label">
           <span class="boolean-label-add" title="add another">+</span>
           or
-        </span>
+        </button>
     </fieldset>
 
     <div class="switch-field">
@@ -26,14 +26,17 @@
         <fieldset class="selector">
             {% include components/search-opts-snippet.html %}
         </fieldset>
-        <span class="boolean-label">
+        <button class="boolean-label">
           <span class="boolean-label-add" title="add another">+</span>
           or
-        </span>
+        </button>
     </fieldset>
-    <span class="boolean-label selector-add">
+    <button class="boolean-label selector-add">
         <span class="boolean-label-add" title="add another">+</span>
         and
-    </span>
+    </button>
+    <button style="float:right">
+        Go!
+    </button>
   </form>
 </section>
