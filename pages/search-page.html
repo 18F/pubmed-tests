@@ -667,13 +667,13 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
       // .use-q: replace current query
       for (i = 0; i < historyItems.length; ++i) {
         historyItems[i].addEventListener("click", function(e){
-          console.log('val... ', this.parentElement.nextSibling.innerHTML)
-          searchInput.value = this.parentElement.nextSibling.innerHTML;
+          console.log('val... ', this.parentElement)
+          searchInput.value = this.parentElement.nextElementSibling.innerHTML;
         });
       }
       for (i = 0; i < historyAddItems.length; ++i) {
         historyAddItems[i].addEventListener("click", function(e){
-          searchInput.value += this.parentNode.nextSibling.innerHTML;
+          searchInput.value += this.parentNode.nextElementSibling.innerHTML;
         });
       }
       // make history download "work"
