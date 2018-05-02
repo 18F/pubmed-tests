@@ -662,5 +662,9 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
           searchInput.value = this.textContent;
         });
       }
+      // make history download "work"
+      document.getElementById('history-download').addEventListener("click", function(e){
+        alert("Your download would be happening now if this weren't a prototype.");
+      });
     });
 </script>
