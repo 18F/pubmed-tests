@@ -40,16 +40,17 @@
   
         for (i = 0; i < triggers.length; ++i) {
           var id = triggers[i].getAttribute('data-trigger');
-          var target = document.getElementById(id);
-          target.classList.add('js-target-dialog');
-          target.style.display = 'none';
+          triggers[i].target = document.getElementById(id);
+          triggers[i].target.classList.add('js-target-dialog');
+          triggers[i].target.setAttribute('hidden', 'hidden');
+
           triggers[i].addEventListener("click", function(e){
             e.preventDefault();
-            if (target.style.display == 'none') {
-              target.style.display = 'block';
+            if (triggers[i].target.hasAttribute('hidden')) {
+              triggers[i].target.removeAttribute('hidden');
               overlay.classList.add('active');
             } else {
-              target.style.display = 'none';
+              triggers[i].target.setAttribute('hidden', 'hidden');
               overlay.classList.remove('active');
             }
           }, false);
@@ -58,14 +59,14 @@
           closers[i].addEventListener("click", function(e){
               e.preventDefault();
               var dialog = this.closest('.js-target-dialog'); 
-              dialog.style.display = 'none';
+              dialog.setAttribute('hidden', 'hidden');
               overlay.classList.remove('active');
           }, false);
         }
         if (typeof overlay !== "undefined") {
           overlay.addEventListener("click", function(e){
             overlay.classList.remove('active');
-            overlay.querySelector('.js-target-dialog').style.display.none;
+            overlay.querySelector('.js-target-dialog').setAttribute('hidden', 'hidden');
           }, false);
         }
       });
