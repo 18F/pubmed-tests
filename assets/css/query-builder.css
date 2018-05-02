@@ -25,8 +25,9 @@
 
 
 #query-builder fieldset legend,
-#query-builder label {
- position: absolute; left: -9999em;  
+#query-builder .selector label {
+ position: absolute;
+ left: -9999em;
 }
 
 #query-builder fieldset.selectors { 
