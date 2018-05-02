@@ -25,7 +25,7 @@
 
 
 #query-builder fieldset legend,
-#query-builder .field label .label-text {
+#query-builder label {
  position: absolute; left: -9999em;  
 }
 
@@ -170,7 +170,7 @@ display: block;
 	overflow: hidden;
 }
 
-.switch-field label :before {
+.switch-field label:before {
 	display:none !important;
 }
 
