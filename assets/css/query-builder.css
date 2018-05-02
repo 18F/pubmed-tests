@@ -167,7 +167,9 @@ span.boolean-label {
 	margin: 0.5em 0;
 	display: inline-block;
 }
-.selector-add .boolean-label-add {
+
+.build-query {
+	float:right;
 }
 
 /* https://codepen.io/JiveDig/pen/jbdJXR */
@@ -229,4 +231,9 @@ border-radius: 4px 0 0 4px;
 
 .switch-field label:last-of-type {
 border-radius: 0 4px 4px 0;
+}
+
+/* History */
+td.q {
+	cursor: pointer;
 }

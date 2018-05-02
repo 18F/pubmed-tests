@@ -651,3 +651,15 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
   
       </div>
 
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Make history items pop into query box.
+      var historyItems = document.querySelectorAll('td.q');
+      var searchInput = document.querySelector('input.term-input.tt-input');
+      for (i = 0; i < historyItems.length; ++i) {
+        historyItems[i].addEventListener("click", function(e){
+          searchInput.value = historyItems[i].textContent;
+        });
+    });
+</script>
