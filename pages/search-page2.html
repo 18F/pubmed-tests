@@ -7,12 +7,13 @@ layout: default
 styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.css"
 ---
 
-
-{% include components/search-history.html %}
+<div id="query-history">
+  {% include components/search-history.html %}
+</div>
 
 {% include components/inner-search-form.html %}
 
-<div class="query-builderx usa-grid">
+<div class="query-builder usa-grid">
   {% include components/query-builder.html %}
 </div>
 
