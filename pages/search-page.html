@@ -655,7 +655,32 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
 <script>
     function buildQuery(e) {
       e.preventDefault();
-      console.log('building query')
+      console.log('building query');
+      var output = '';
+      var qbSelectGroups = document.querySelectorAll('.selector-group');
+      // Go through selector groups
+      for (i = 0; i < qbSelectGroups.length; ++i) {
+        // now find all the selectors within this selector groups
+        var selectors = qbSelectGroups[i].querySelectorAll('.selector');
+        for (j = 0; j < selectors.length; ++j) {
+          // first get the term value
+          var termInput = selectors[j].querySelector('input')
+          if (termInput.value.length > 0) {
+            output += '"' +  termInput.value + '"';
+            output += '[' + selectors[j].querySelector('select').value + ']';
+          }
+          if (selectors.length > 1 && j != selectors.length) {
+            output += " OR "
+          }
+        }
+        output = 'put the out put here';
+        // if there are multiple selectors in the selector group,
+        // then we have to wrap in parens
+        if (selectors.length > 1) {
+          output = "(" + output + ")";
+        }
+        
+      }
     }
 
 
@@ -691,5 +716,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
       var qbSubmit = document.querySelector('.build-query');
       
       qbSubmit.addEventListener("click", buildQuery(e));
+      
+      
     });
 </script>
