@@ -708,6 +708,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
         buildQuery();
       });
       document.querySelectorAll('.selector select').addEventListener("change", function() {
+        console.log('triggered change')
         buildQuery();
       });
       document.querySelectorAll('.selector input').addEventListener("blur", function() {
