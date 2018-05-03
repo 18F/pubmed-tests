@@ -637,7 +637,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
 
 <script>
     var searchInput = document.querySelector('input.term-input.tt-input');
-    var andOr = document.getElementById('id-and-or');
+    var andOr = document.getElementById('id-and-or').value;
 
     function buildQuery() {
       console.log('building query');
@@ -646,25 +646,14 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
       // Go through selector groups
       for (i = 0; i < qbSelectGroups.length; ++i) {
         if (i > 0) {
-          output += " AND "
+          output += andOr
         }
         // now find all the selectors within this selector groups
-        var selectors = qbSelectGroups[i].querySelectorAll('.selector');
-        for (j = 0; j < selectors.length; ++j) {
           // first get the term value
-          var termInput = selectors[j].querySelector('input')
-          if (termInput.value.length > 0) {
-            if (j > 0) {
-              output += " OR "
-            }
-            output += '"' +  termInput.value + '"';
-            output += '[' + selectors[j].querySelector('select').value + ']';
-          }
-        }
-        // if there are multiple selectors in the selector group,
-        // then we have to wrap in parens
-        if (selectors.length > 1) {
-          output = "(" + output + ")";
+        var termInput = qbSelectGroups[i].querySelector('input')
+        if (termInput.value.length > 0) {
+          output += '"' +  termInput.value + '"';
+          output += '[' + qbSelectGroups[i].querySelector('select').value + ']';
         }
       }
       searchInput.value = output;
