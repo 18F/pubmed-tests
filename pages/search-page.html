@@ -660,11 +660,11 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
           // first get the term value
           var termInput = selectors[j].querySelector('input')
           if (termInput.value.length > 0) {
+            if (j > 0) {
+              output += " OR "
+            }
             output += '"' +  termInput.value + '"';
             output += '[' + selectors[j].querySelector('select').value + ']';
-          }
-          if (selectors.length > 1 && j != selectors.length) {
-            output += " OR "
           }
         }
         // if there are multiple selectors in the selector group,
