@@ -716,7 +716,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
       for (i = 0; i < fieldAdder.length; ++i) {
         fieldAdder[i].addEventListener("click", function(e) {
           e.preventDefault();
-          this.parentNode.parentNode.insertAdjacentHTML('beforebegin', newRow);
+          this.parentNode.parentNode.insertAdjacentHTML('afterend', newRow);
           buildQuery();
         });
       }
