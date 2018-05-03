@@ -4,13 +4,11 @@
     <button type="submit" name="button" class="button-toggle-recursive-search-mode">Search within a prior search</button>
     <span class="show-articles-that-match">Show articles that match</span>
     <div class="field field-select field-any-all">
-        <label for="">
-        <span class="label-text">Additive or subtractive</span>
+        <label for="">Additive or subtractive</label>
         <select class="" name="">
             <option value="">Any</option>
             <option value="">All</option>
         </select>
-        </label>
     </div>
     <span class="of-the-following-selectors">of the following selectors.</span>
     <fieldset class="selectors">
@@ -18,8 +16,7 @@
         <fieldset class="selector">
         <legend>Selector 1</legend>
         <div class="field field-select field-selector-field">
-            <label for="">
-            <span class="label-text">Field</span>
+            <label for="">Field</label>
             <select class="" name="">
                 <option value="">Field</option>
                 <option>Affiliation</option>
@@ -66,22 +63,17 @@
                 <option>Transliterated Title</option>
                 <option>Volume</option>
             </select>
-            </label>
         </div>
         <div class="field field-select  field-selector-contains">
-            <label for="">
-            <span class="label-text">Additive or subtractive</span>
-            <select class="" name="">
+            <label for="id-add-subtract">Additive or subtractive</label>
+            <select class="" name="add-subtract" id="id-add-subtract">
                 <option value="">Contains</option>
                 <option value="">Does not contain</option>
             </select>
-            </label>
         </div>
         <div class="field field-selector-value">
-            <label for="">
-            <span class="label-text">Value</span>
-            <input type="text" name="" value="">
-            </label>
+            <label for="id-value">Value</label>
+            <input type="text" name="value" id="id-value" value="">
         </div>
         <div class="actions">
             <a href="#" class="action action-add"><span class="icon"></span><span class="label-text">Add new selector</span></a>
@@ -90,8 +82,7 @@
         <fieldset class="selector">
         <legend>Selector 2</legend>
         <div class="field field-select  field-selector-field">
-            <label for="">
-            <span class="label-text">Field</span>
+            <label for="id-field">Field</label>
             <select class="" name="">
                 <option value="">Field</option>
                 <option>Affiliation</option>
@@ -141,19 +132,15 @@
             </label>
         </div>
         <div class="field field-select field-selector-contains">
-            <label for="">
-            <span class="label-text">Additive or subtractive</span>
+            <label for="">Additive or subtractive</label>
             <select class="" name="">
                 <option value="">Contains</option>
                 <option value="">Does not contain</option>
             </select>
-            </label>
         </div>
         <div class="field field-selector-value">
-            <label for="">
-            <span class="label-text">Value</span>
+            <label for="">Value</label>
             <input type="text" name="" value="">
-            </label>
         </div>
         <div class="actions">
             <a href="#" class="action action-remove"><span class="icon"></span><span class="label-text">Remove this selector</span></a>
