@@ -45,8 +45,7 @@
 }
 
 
-#query-builder fieldset legend,
-#query-builder label {
+#query-builder fieldset legend {
  position: absolute;
  left: -9999em;
 }
@@ -107,7 +106,7 @@
 	clear: both;
 }
 
-#query-builder fieldset .actions .label-text{
+.query-builder label{
   display: none;
 }
 
