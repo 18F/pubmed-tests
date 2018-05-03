@@ -2,7 +2,6 @@
 
 /* @group Search history */
 
-#search-history { background: #eee; }
 
 #search-history table td {
 	background: none;
@@ -13,7 +12,11 @@
 
 /* @group Query builder */
 
-#query-builder { background: #eee; }
+#query-builder,
+#query-history { 
+	background: #eee; 
+	padding: 0.25em 0;
+}
 
 #search-history caption,
 #query-builder h1,
@@ -115,6 +118,9 @@
 /* @end */
 
 /* specific to big advanced query builder */
+.top-query-builder {
+	padding-top: 0.5em;
+}
 .top-query-builder fieldset .field,
 .top-query-builder fieldset .actions{
 	width: 49%;

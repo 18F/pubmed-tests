@@ -41,30 +41,18 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
           </strong>
   
           <ul class="items">
-            
-              
-                
                   <li>
                     <input type="checkbox" name="filter" id="id_filter_simsearch.fha" value="simsearch.fha" autocomplete="off">
                     <label for="id_filter_simsearch.fha">
                       Abstract
                     </label>
                   </li>
-                
-              
-            
-              
-                
                   <li>
                     <input type="checkbox" name="filter" id="id_filter_simsearch.ffrft" value="simsearch.ffrft" autocomplete="off">
                     <label for="id_filter_simsearch.ffrft">
                       Free full text
                     </label>
                   </li>
-                
-              
-            
-              
                 
                   <li>
                     <input type="checkbox" name="filter" id="id_filter_simsearch.fft" value="simsearch.fft" autocomplete="off">
@@ -649,6 +637,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
 
 <script>
     var searchInput = document.querySelector('input.term-input.tt-input');
+    var andOr = document.getElementById('id-and-or');
 
     function buildQuery() {
       console.log('building query');
