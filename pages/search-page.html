@@ -679,7 +679,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
     }
 
     var newField = `
-      <span class="boolean-label">or</span><fieldset class="selector">' +
+      <span class="boolean-label">or</span><fieldset class="selector">
           {% include components/search-opts-snippet.html num="2" %}
         </fieldset>
       `;
@@ -731,6 +731,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
         fieldAdder[i].addEventListener("click", function(e) {
           e.preventDefault();
           this.insertAdjacentHTML('beforebegin', newField);
+          buildQuery();
         });
       }
     });
