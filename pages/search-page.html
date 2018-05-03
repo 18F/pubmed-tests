@@ -653,13 +653,13 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
 
 
 <script>
-    function buildQuery(e) {
-      e.preventDefault();
+    function buildQuery() {
       console.log('building query');
       var output = '';
       var qbSelectGroups = document.querySelectorAll('.selector-group');
       // Go through selector groups
       for (i = 0; i < qbSelectGroups.length; ++i) {
+        console.log('selector group!')
         // now find all the selectors within this selector groups
         var selectors = qbSelectGroups[i].querySelectorAll('.selector');
         for (j = 0; j < selectors.length; ++j) {
@@ -673,7 +673,6 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
             output += " OR "
           }
         }
-        output = 'put the out put here';
         // if there are multiple selectors in the selector group,
         // then we have to wrap in parens
         if (selectors.length > 1) {
@@ -682,7 +681,6 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
         
       }
     }
-
 
     document.addEventListener("DOMContentLoaded", function() {
       // Make history items pop into query box.
@@ -713,10 +711,10 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
       // Make query builder "work"
       var qbSelects = document.querySelectorAll('.selector select');
       var qbInputs = document.querySelectorAll('.selector input');
-      var qbSubmit = document.querySelector('.build-query');
       
-      qbSubmit.addEventListener("click", buildQuery(e));
-      
-      
+      document.querySelector('.build-query').addEventListener("click", function(e) {
+        e.preventDefault();
+        buildQuery();
+      });
     });
 </script>
