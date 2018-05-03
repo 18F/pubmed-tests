@@ -637,7 +637,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
 
 <script>
     var searchInput = document.querySelector('input.term-input.tt-input');
-    var andOr = document.getElementById('id-and-or').value;
+    var andOr = document.getElementById('id-and-or');
 
     function buildQuery() {
       console.log('building query');
@@ -645,13 +645,14 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
       var qbSelectGroups = document.querySelectorAll('.selector-group');
       // Go through selector groups
       for (i = 0; i < qbSelectGroups.length; ++i) {
-        if (i > 0) {
-          output += andOr
-        }
+        
         // now find all the selectors within this selector groups
           // first get the term value
         var termInput = qbSelectGroups[i].querySelector('input')
         if (termInput.value.length > 0) {
+          if (i > 0) {
+            output += ' ' + andOr.value + ' '
+          }
           output += '"' +  termInput.value + '"';
           output += '[' + qbSelectGroups[i].querySelector('select').value + ']';
         }
