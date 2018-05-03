@@ -2,9 +2,9 @@
 
 /* @group Search history */
 
-#search-history{ background: #eee; }
+#search-history { background: #eee; }
 
-#search-history table td{
+#search-history table td {
 	background: none;
 	border-color: #888;
 }
@@ -13,10 +13,11 @@
 
 /* @group Query builder */
 
-#query-builder{ background: #eee; }
+#query-builder { background: #eee; }
 
 #search-history caption,
-#query-builder h1 {
+#query-builder h1,
+.top-query-builder h1 {
 	font-weight: 600;
 	margin-bottom: 0.67em; 
 	font-size: 0.85em;
@@ -54,7 +55,7 @@
     margin: 0;
     padding-top: 1em; 
 }
-#query-builder fieldset fieldset{
+#query-builder fieldset fieldset {
   padding: 0;
   margin: 0;
 }
