@@ -702,17 +702,23 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
         document.getElementById('history-body').innerHTML =
           '<tr><td>1</td><td class="q"></td><td></td><td></td></tr>'
       });
-      // Make query builder "work"      
+      // Make query builder "work"
+      var qbSelects = document.querySelectorAll('.selector select');
+      var qbInputs = document.querySelectorAll('.selector input');
+      
       document.querySelector('.build-query').addEventListener("click", function(e) {
         e.preventDefault();
         buildQuery();
       });
-      document.querySelectorAll('.selector select').addEventListener("change", function() {
-        console.log('triggered change')
-        buildQuery();
-      });
-      document.querySelectorAll('.selector input').addEventListener("blur", function() {
-        buildQuery();
-      });
+      for (i = 0; i < qbSelects.length; ++i) {
+        qbSelects[i].addEventListener("change", function() {
+          buildQuery();
+        });
+      }
+      for (i = 0; i < qbInputs.length; ++i) {
+        qbInputs[i].addEventListener("blur", function() {
+          buildQuery();
+        });
+      }
     });
 </script>
