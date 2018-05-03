@@ -1,7 +1,27 @@
+/* @override http://localhost:4000/assets/css/query-builder.css */
+
+/* @group Search history */
+
+#search-history{ background: #eee; }
+
+#search-history table td{
+	background: none;
+	border-color: #888;
+}
+
+/* @end */
+
+/* @group Query builder */
+
+#query-builder{ background: #eee; }
+
+#search-history caption,
 #query-builder h1 {
 	font-weight: 600;
 	margin-bottom: 0.67em; 
-	font-size: 1em;
+	font-size: 0.85em;
+	text-transform: uppercase;
+	font-family: Source Sans Pro;
 }
 
 #query-builder .field-any-all {
@@ -25,7 +45,7 @@
 
 
 #query-builder fieldset legend,
-#query-builder .selector label {
+#query-builder label {
  position: absolute;
  left: -9999em;
 }
@@ -41,15 +61,8 @@
 
 #query-builder form .button-toggle-recursive-search-mode{
   display: inline;
-  border: none;
   font-size: 14px;
-  color: inherit;
-  padding: 0;
   margin: 0;
-  text-decoration: underline;
-  position: absolute;
-  top: 1.2em;
-  right: 1em;
 }
 
 #query-builder fieldset.selector{
@@ -60,8 +73,8 @@
 	margin: 0;
 }
 
-.query-builder fieldset .field,
-.query-builder fieldset .actions{
+#query-builder fieldset .field,
+#query-builder fieldset .actions{
 	float: left;
 	margin: 0;
 	margin-right: 1%;
@@ -70,8 +83,12 @@
 #query-builder fieldset .field select,
 #query-builder fieldset .field input{
 	border-radius: 0;
-	min-height: 1.8em;
 	font-size: 0.85em;
+  height: auto;
+  border-color: #aaa;
+}
+
+#query-builder fieldset .field select{
 }
 
 #query-builder fieldset .field-select::after {
@@ -94,46 +111,8 @@
 }
 
 
-/* Inline version only: */
-.query-builder { 
-	width: 640px; 
-	background: white;
-	padding: 1em;
-	border-radius: 4px;
-	border: 1px solid #ccc;
-	border-bottom-color: #b3b3b3;
-	border-right-color: #bbb;
-	box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
-	position: absolute;
-	top: 80px;
-	right: 100px;
-	z-index: 1;
-	display: none;
-}
 
-.query-builder.is-active { 
-display: block;
-}
-
-.query-builder::before,
-.query-builder::after{
-  content: "";
-  border: 12px solid transparent;
-  border-bottom-color: #aaa;
-  position: absolute;
-  bottom: 100%;
-  left: 125px; 
-}
-
-.query-builder::after {
-	border-bottom-color: white;
-	margin-bottom: -1px;
-}
-
-.query-builder fieldset .field,
-.query-builder fieldset .actions{
-	width: 29%;
-}
+/* @end */
 
 /* specific to big advanced query builder */
 .top-query-builder fieldset .field,
