@@ -245,3 +245,7 @@ td.q {
 	white-space: nowrap;
 	font-size: 14px
 }
+#search-manager .query-stack div {
+	width:33%;
+	display: inline-block;
+}
