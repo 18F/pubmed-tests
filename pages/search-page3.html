@@ -711,7 +711,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
       // https://jcubic.wordpress.com/2017/05/12/execute-callback-in-javascript-when-a-div-change-visibility-with-html5/
       var mgr = document.getElementById('search-manager');
       document.querySelector('[data-trigger="search-manager"]').addEventListener("click", function(e) {
-        if (mgr.hasAttribute('hidden')) {
+        if (mgr.hasAttribute('hidden') == true) {
           console.log('hidden')
         } else {
           console.log('not hidden')

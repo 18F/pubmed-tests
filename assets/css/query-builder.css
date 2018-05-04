@@ -91,9 +91,6 @@
   border-color: #aaa;
 }
 
-#query-builder fieldset .field select{
-}
-
 #query-builder fieldset .field-select::after {
 	margin-bottom: 0.3em;
 }
