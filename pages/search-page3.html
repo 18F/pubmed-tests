@@ -7,8 +7,6 @@ layout: default
 styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.css"
 ---
 
-
-
 {% include components/inner-search-form-2.html %}
 
 <div id="query-history">
@@ -16,7 +14,6 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
 </div>
 
 <div id="maincontent" class="usa-grid-full ncbi-base-page-container">
-      
     <main class="search-page" id="search-page">
   
       <div class="inner-wrap">
@@ -626,6 +623,8 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
     var searchInput = document.querySelector('input.term-input.tt-input');
     var andOr = document.getElementById('id-and-or');
 
+    
+
     function buildQuery() {
       console.log('building query');
       var output = '';
@@ -707,5 +706,10 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
           buildQuery();
         });
       }
+      // Toggle readonly state
+
+      document.getElementByID('search-manager').addEventListener("visibilitychange", function() {
+        console.log("visibility: ", document.visibilityState );
+      });
     });
 </script>
