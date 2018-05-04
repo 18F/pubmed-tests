@@ -709,19 +709,12 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
       // Toggle readonly state. 
       // I have no idea what this is doing, but found it here:
       // https://jcubic.wordpress.com/2017/05/12/execute-callback-in-javascript-when-a-div-change-visibility-with-html5/
-
-      var element = document.getElementById('search-manager');
-      if (window.IntersectionObserver) {
-        var observer = new IntersectionObserver(function(entries) {
-          if (entries[0].intersectionRatio) {
-            console.log('visible');
-          } else {
-            console.log('hidden');
-          }
-        }, {
-          root: document.body
-        });
-        observer.observe(element);
-      }
-    });
+      var mgr = document.getElementById('search-manager');
+      document.querySelector('[data-trigger="search-manager"]').addEventListener("click", function(e) {
+        if (mgr.hasAttribute('hidden')) {
+          console.log('hidden')
+        } else {
+          console.log('not hidden')
+        }
+      });
 </script>
