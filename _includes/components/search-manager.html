@@ -3,30 +3,10 @@
     <caption>
       Search Manager
       <span class="actions">
-        <button id="history-download" type="button">Download</button>
+        <button id="history" type="button">Save</button>
         <button id="history-clear" type="button">Clear</button>
       </span>
     </caption>
-    <thead>
-      <tr>
-        <th colspan="4">Add new terms</th>
-      </tr>
-    </thead>
-    <tbody id="history-body">
-        <tr>
-            <td colspan="2">
-              <input class="free-q" placeholder="Insert your new search terms here..."/>
-            </td>
-            <td class="history-controls">
-                <span class="use-q" title="Search with this query">&#128269; Search</span>
-                <span class="append-q" title="Append this query">&#10133; Append</span>
-            </td>
-            <td class="history-controls">
-                <span class="delete-query" title="Delete this query">&#128465; Delete row</span>
-                <span class="add-query-row" title="Add a row">&#9166; Add a row</span>
-            </td>
-          </tr>
-    </tbody>
     <thead>
         <tr>
           <th colspan="4">Build new terms</th>
@@ -101,15 +81,117 @@
               <span class="append-q" title="Append this query">&#10133; Append</span>
           </td>
           <td class="history-controls">
-              <span class="delete-query" title="Delete this query">&#128465; Delete row</span>
               <span class="add-query-row" title="Add a row">&#9166; Add a row</span>
           </td>
         </tr>
-        
+        <tr>
+            <td colspan="2">
+              <div>
+                <label for="">Field</label>
+                <select class="" name="">
+                    <option value="">Field</option>
+                    <option>Affiliation</option>
+                    <option>All Fields</option>
+                    <option>Author</option>
+                    <option>Author - Corporate</option>
+                    <option>Author - First</option>
+                    <option>Author - Full</option>
+                    <option>Author - Identifier</option>
+                    <option>Author - Last</option>
+                    <option>Book</option>
+                    <option>Conflict of Interest Statements</option>
+                    <option>Date - Completion</option>
+                    <option>Date - Create</option>
+                    <option>Date - Entrez</option>
+                    <option>Date - MeSH</option>
+                    <option>Date - Modification</option>
+                    <option>Date - Publication</option>
+                    <option>EC/RN Number</option>
+                    <option>Editor</option>
+                    <option>Filter</option>
+                    <option>Grant Number</option>
+                    <option>ISBN</option>
+                    <option>Investigator</option>
+                    <option>Investigator - Full</option>
+                    <option>Issue</option>
+                    <option>Journal</option>
+                    <option>Language</option>
+                    <option>Location ID</option>
+                    <option>MeSH Major Topic</option>
+                    <option>MeSH Subheading</option>
+                    <option>MeSH Terms</option>
+                    <option>Other Term</option>
+                    <option>Pagination</option>
+                    <option>Pharmacological Action</option>
+                    <option>Publication Type</option>
+                    <option>Publisher</option>
+                    <option>Secondary Source ID</option>
+                    <option>Subject - Personal Name</option>
+                    <option>Supplementary Concept</option>
+                    <option>Text Word</option>
+                    <option>Title</option>
+                    <option>Title/Abstract</option>
+                    <option>Transliterated Title</option>
+                    <option>Volume</option>
+                </select>
+            </div>
+            <div class="field field-select  field-selector-contains">
+                <label for="id-add-subtract">Additive or subtractive</label>
+                <select class="" name="add-subtract" id="id-add-subtract">
+                    <option value="">Contains</option>
+                    <option value="">Does not contain</option>
+                </select>
+            </div>
+            <div class="field field-selector-value">
+                <label for="id-value">Value</label>
+                <input type="text" name="value" id="id-value" value="">
+            </div>
+            </td>
+            <td class="history-controls">
+                <span class="use-q" title="Search with this query">&#128269; Search</span>
+                <span class="append-q" title="Append this query">&#10133; Append</span>
+            </td>
+            <td class="history-controls">
+                <span class="delete-query" title="Delete this query">&#128465; Delete row</span>
+                <span class="add-query-row" title="Add a row">&#9166; Add a row</span>
+            </td>
+          </tr>
       </tbody>
       <thead>
           <tr>
-            <th colspan="4">Or use existing searches</th>
+            <th colspan="4">or write new search terms</th>
+          </tr>
+        </thead>
+        <tbody id="history-body">
+            <tr>
+                <td colspan="2">
+                  <input class="free-q" placeholder="Insert your new search terms here..."/>
+                </td>
+                <td class="history-controls">
+                    <span class="use-q" title="Search with this query">&#128269; Search</span>
+                    <span class="append-q" title="Append this query">&#10133; Append</span>
+                </td>
+                <td class="history-controls">
+                    <span class="add-query-row" title="Add a row">&#9166; Add a row</span>
+                </td>
+              </tr>
+              <tr>
+                  <td colspan="2">
+                    <input class="free-q" placeholder="Insert your new search terms here..."/>
+                  </td>
+                  <td class="history-controls">
+                      <span class="use-q" title="Search with this query">&#128269; Search</span>
+                      <span class="append-q" title="Append this query">&#10133; Append</span>
+                  </td>
+                  <td class="history-controls">
+                      <span class="delete-query" title="Delete this query">&#128465; Delete row</span>
+                      <span class="add-query-row" title="Add a row">&#9166; Add a row</span>
+                  </td>
+                </tr>
+        </tbody>
+      <thead>
+          <tr>
+            <th colspan="4">or use existing search terms</th>
           </tr>
         </thead>
         <tr>
@@ -121,7 +203,6 @@
         </td>
         <td class="history-controls">
             <span class="delete-query" title="Delete this query">&#128465; Delete row</span>
-            <span class="add-query-row" title="Add a row">&#9166; Add a row</span>
         </td>
       </tr>
       <tr>
