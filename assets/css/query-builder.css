@@ -239,3 +239,9 @@ border-radius: 0 4px 4px 0;
 td.q {
 	cursor: pointer;
 }
+
+/* Search manager */
+#search-manager .history-controls span {
+	white-space: nowrap;
+	font-size: 18px
+}
