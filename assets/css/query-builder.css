@@ -246,3 +246,7 @@ td.q {
 	width:33%;
 	display: inline-block;
 }
+
+input.term-input.tt-input[readonly] {
+	opacity: 50%
+}
