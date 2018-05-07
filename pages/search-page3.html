@@ -717,8 +717,11 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
         if (mgr.hasAttribute('hidden') == true) {
           console.log('hidden')
           searchInput.removeAttribute('readonly');
+          searchInput.style.border = "4px solid green";
+
         } else {
           console.log('not hidden')
+          searchInput.style.border = "4px solid red";
           searchInput.setAttribute('readonly', 'readonly');
 
         }
