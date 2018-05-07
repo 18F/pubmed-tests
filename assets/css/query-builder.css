@@ -253,9 +253,12 @@ input.term-input.tt-input[readonly] {
 
 
 .search1-input-form [data-trigger] {
-	display:none
+	display: none;
 }
-#search-input-textarea {width: 100%}
-#search-input-textarea + button {
-	float:right;
+#search-input-textarea {
+	width: 100%;
+	max-width: 100%;
+}
+#search-input-textarea + button[type="submit"] {
+	float: right;
 }
