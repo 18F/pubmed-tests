@@ -255,3 +255,7 @@ input.term-input.tt-input[readonly] {
 .search1-input-form [data-trigger] {
 	display:none
 }
+#search-input-textarea {width: 100%}
+#search-input-textarea + button {
+	float:right;
+}
