@@ -6,9 +6,15 @@ layout: default
 
 styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.css"
 ---
-<div class="search1-input-form">
-  {% include components/inner-search-form.html %}
-</div>
+
+<form action="/labs/pubmed/" method="get" autocomplete="off" class="usa-search usa-search-big search-form " id="search-form">
+  <div class="inner-wrap usa-grid">
+    <a class="pubmed-logo" href="/labs/pubmed/" title="PubMed Labs Home">
+      <span>PubMed Labs</span>
+    </a>
+  </div>
+</form>
+
 
 <div class="top-query-builder">
   {% include components/advanced-query-builder.html %}
