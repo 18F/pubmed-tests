@@ -107,4 +107,20 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
         });
       }
     });
+    // Toggle readonly state. 
+      // I have no idea what this is doing, but found it here:
+      // https://jcubic.wordpress.com/2017/05/12/execute-callback-in-javascript-when-a-div-change-visibility-with-html5/
+      var mgr = document.getElementById('query-builder');
+
+      document.querySelector('[data-trigger="query-builder"]').addEventListener("click", function(e) {
+        console.log('clicked trigger')
+        if (mgr.hasAttribute('hidden') == true) {
+          searchInput.setAttribute('readonly', 'readonly');
+          document.querySelector('.search-btn').setAttribute('disabled', 'disabled');
+        } else {
+          searchInput.removeAttribute('readonly');
+          document.querySelector('.search-btn').removeAttribute('disabled');
+
+        }
+      });
 </script>
