@@ -224,15 +224,15 @@ border-radius: 0 4px 4px 0;
 
 .history-controls,
 #query-builder .actions {
-	width: 6em;
+	width: 5em;
 }
 #search-history button,
 #query-builder .actions button  {
-	font-size: 14px; 
 	margin: 0 0.125em;
-	padding: 0.5em 1em;
-
+	padding: 0;
+	background: transparent;
 }
+
 td.q {
 	cursor: pointer;
 }
