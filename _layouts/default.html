@@ -38,6 +38,8 @@
         var triggers = document.querySelectorAll('[data-trigger]');
         var closers = document.querySelectorAll('.close-overlay')
         var overlay = document.getElementById('overlay');
+        var event = new CustomEvent('toggled');
+
   
         for (i = 0; i < triggers.length; ++i) {
           var id = triggers[i].getAttribute('data-trigger');
@@ -56,6 +58,7 @@
               currentTarget.setAttribute('hidden', 'hidden');
               overlay.classList.remove('active');
             }
+            currentTarget.dispatchEvent(event);
           }, false);
         }
         for (i = 0; i < closers.length; ++i) {

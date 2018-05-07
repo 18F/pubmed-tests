@@ -710,8 +710,8 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
       // I have no idea what this is doing, but found it here:
       // https://jcubic.wordpress.com/2017/05/12/execute-callback-in-javascript-when-a-div-change-visibility-with-html5/
       var mgr = document.getElementById('search-manager');
-      document.querySelector('[data-trigger="search-manager"]').addEventListener("click", function(e) {
-        console.log('clicked trigger')
+      mgr.addEventListener("toggled", function(e) {
+        console.log('captured trigger click')
         if (mgr.hasAttribute('hidden') == true) {
           console.log('hidden')
         } else {
