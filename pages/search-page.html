@@ -6,19 +6,30 @@ layout: default
 
 styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.css"
 ---
+<div class="search1-input-form">
+  {% include components/inner-search-form.html %}
+</div>
 
 <div class="usa-grid top-query-builder">
   {% include components/advanced-query-builder.html %}
 </div>
 
-<div class="search1-input-form">
-  {% include components/inner-search-form.html %}
-</div>
+<div role="search" class="search-input">
+    <div class="form-field autocomplete-parent">
+      <label class="usa-sr-only" for="search-input-textarea">
+        Search:
+      </label>
+      <textarea id="search-input-textarea"></textarea>
+      <input type="search" name="term" value="" class="term-input tt-input" required="" id="id_term" spellcheck="false" dir="auto" aria-owns="id_term_listbox" aria-autocomplete="list" style="position: relative; vertical-align: top;">
+    </div>
+  </div>
+
 {% include components/search-history.html %}
 
 
 <script>
-    var searchInput = document.querySelector('input.term-input.tt-input');
+    //var searchInput = document.querySelector('input.term-input.tt-input');
+    var searchInput = document.getElementById('search-input-textarea');
 
     function buildQuery() {
       console.log('building query');
