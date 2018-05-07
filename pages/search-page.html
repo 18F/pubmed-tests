@@ -11,8 +11,9 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
   {% include components/advanced-query-builder.html %}
 </div>
 
-{% include components/inner-search-form.html %}
-
+<div class="search1-input-form">
+  {% include components/inner-search-form.html %}
+</div>
 {% include components/search-history.html %}
 
 
@@ -120,7 +121,6 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
         } else {
           searchInput.removeAttribute('readonly');
           document.querySelector('.search-btn').removeAttribute('disabled');
-
         }
       });
 </script>

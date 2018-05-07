@@ -250,3 +250,8 @@ td.q {
 input.term-input.tt-input[readonly] {
 	opacity: 50%
 }
+
+
+.search1-input-form [data-trigger] {
+	display:none
+}
