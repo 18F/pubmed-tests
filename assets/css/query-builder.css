@@ -241,6 +241,9 @@ td.q {
 /* Search manager */
 #search-manager .history-controls button {
 	white-space: nowrap;
+	color: #222;
+	font-weight: normal;
+    font-size: 14px;
 }
 #search-manager .query-stack div {
 	width:33%;
