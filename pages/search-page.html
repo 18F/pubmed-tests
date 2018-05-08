@@ -38,13 +38,12 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
     var searchInput = document.getElementById('search-input-textarea');
 
     function buildQuery() {
-      console.log('building query');
       var output = '';
       var qbSelectGroups = document.querySelectorAll('.selector-group');
       // Go through selector groups
       for (i = 0; i < qbSelectGroups.length; ++i) {
         if (i > 0) {
-          output += " AND "
+          output += document.querySelector('[name="switch_2"]').value;
         }
         // now find all the selectors within this selector groups
         var selectors = qbSelectGroups[i].querySelectorAll('.selector');
