@@ -43,7 +43,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
       // Go through selector groups
       for (i = 0; i < qbSelectGroups.length; ++i) {
         if (i > 0) {
-          output += document.querySelector('[name="switch_2"]').value;
+          output += document.querySelector('[name="switch_2"]:checked').value;
         }
         // now find all the selectors within this selector groups
         var selectors = qbSelectGroups[i].querySelectorAll('.selector');
