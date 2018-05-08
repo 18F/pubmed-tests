@@ -227,7 +227,8 @@ border-radius: 0 4px 4px 0;
 	width: 5em;
 }
 #search-history button,
-#query-builder .actions button  {
+#query-builder .actions button,
+#search-manager .history-controls button {
 	margin: 0 0.125em;
 	padding: 0;
 	background: transparent;
@@ -238,9 +239,8 @@ td.q {
 }
 
 /* Search manager */
-#search-manager .history-controls span {
+#search-manager .history-controls button {
 	white-space: nowrap;
-	font-size: 14px
 }
 #search-manager .query-stack div {
 	width:33%;
