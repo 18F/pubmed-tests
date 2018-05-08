@@ -628,19 +628,24 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
     function buildQuery() {
       console.log('building query');
       var output = '';
-      var qbSelectGroups = document.querySelectorAll('.selector-group');
+      var qbSelectGroups = document.querySelectorAll('.query-stack');
       // Go through selector groups
       for (i = 0; i < qbSelectGroups.length; ++i) {
-        
         // now find all the selectors within this selector groups
-          // first get the term value
-        var termInput = qbSelectGroups[i].querySelector('input')
+        // first get the term value
+        var termInput = qbSelectGroups[i].querySelector('input');
+        var containsInput = qbSelectGroups[i].querySelector('select[name="add-subtract"]');
         if (termInput.value.length > 0) {
           if (i > 0) {
             output += ' ' + andOr.value + ' '
           }
+          if (containsInput.value.length > 0) {
+            output += containsInput.value;
+
+          }
           output += '"' +  termInput.value + '"';
-          output += '[' + qbSelectGroups[i].querySelector('select').value + ']';
+          output += '[' + qbSelectGroups[i].querySelector('select[name="field-filters"]').value + ']';
+
         }
       }
       searchInput.value = output;
