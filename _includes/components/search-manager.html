@@ -2,17 +2,17 @@
   <table>
     <caption>
       Search Manager
-      <span class="actions">
+      <span class="actions" hidden>
         <button id="history" type="button">Save</button>
         <button id="history-clear" type="button">Clear</button>
       </span>
     </caption>
     <thead>
-        <tr>
-          <th colspan="4">Build new terms</th>
-        </tr>
-      </thead>
-      <tbody class="query-builder">
+      <tr>
+        <th colspan="4">Build search terms</th>
+      </tr>
+    </thead>
+    <tbody class="query-builder">
         <tr>
           <td colspan="2" class="query-stack">
             <div>
@@ -77,9 +77,10 @@
           </div>
           </td>
           <td class="history-controls">
-              <span class="append-q" title="Append this query">&#10133; Add terms</span>
+              <span class="append-q" title="Add this search term">&#128269; Add terms</span>
           </td>
           <td class="history-controls">
+              <span class="delete-query" title="Delete this query">&#128465; Delete row</span>
               <span class="add-query-row" title="Add a row">&#9166; Add a row</span>
           </td>
         </tr>
@@ -147,7 +148,7 @@
             </div>
             </td>
             <td class="history-controls">
-                <span class="append-q" title="Append this query">&#10133; Add terms</span>
+                <span class="append-q" title="Add terms">&#128269; Add terms</span>
             </td>
             <td class="history-controls">
                 <span class="delete-query" title="Delete this query">&#128465; Delete row</span>
@@ -212,7 +213,6 @@
         </td>
       </tr>
       <tr>
-        
         <td class="q">(((breast cancer treatment) NOT Contu[Author]) AND Hunter[Author]) NOT Journal of the American Medical Association[journal]</td>
         <td>2537</td>
         <td class="history-controls">
