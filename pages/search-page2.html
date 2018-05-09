@@ -702,7 +702,6 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
       });
       // Make query builder "work"
 
-      var fieldAdder = document.querySelectorAll('button.field-add');
       
       /*
       var qbInputs = document.querySelectorAll('.selector-group input');
@@ -724,6 +723,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
         });
       }
       */
+      var fieldAdder = document.querySelectorAll('button.field-add');
       for (i = 0; i < fieldAdder.length; ++i) {
         fieldAdder[i].addEventListener("click", function(e) {
           e.preventDefault();
@@ -731,16 +731,18 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
           buildQuery();
         });
       }
+      
+      $(document).on( "change",  '.field-select select', buildQuery);
+      $(document).on( "keyup",  '.field-select input', buildQuery);
+      
+      $(document).on( "click",  'button.field-remove', function() {
+        elem = this.parentElement;
+        elem.parentNode.parentNode.removeChild(elem);
+        buildQuery();
+      });
     });
     
-    $(document).on( "change",  '.field-select select', buildQuery);
-    $(document).on( "keyup",  '.field-select input', buildQuery);
     
-    $(document).on( "click",  'button.field-remove', function() {
-      elem = this.parentElement;
-      elem.parentNode.parentNode.removeChild(elem);
-      buildQuery();
-    });
     
     // Toggle readonly state. 
     // I have no idea what this is doing, but found it here:
