@@ -66,12 +66,6 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
       }
       searchInput.value = output;
     }
-
-    var newField = `
-      <span class="boolean-label">or</span><fieldset class="selector">
-          {% include components/search-opts-snippet.html num="2" %}
-        </fieldset>
-      `;
     
     document.addEventListener("DOMContentLoaded", function() {
       // Make history items pop into query box.
@@ -97,9 +91,6 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
         document.getElementById('history-body').innerHTML =
           '<tr><td>1</td><td class="q"></td><td></td><td></td></tr>'
       });
-      // Make query builder "work"
-       var fieldAdder = document.querySelectorAll('button.add-field');
-
       /*
       document.querySelector('.build-query').addEventListener("click", function(e) {
         e.preventDefault();
@@ -133,14 +124,16 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
         this.insertAdjacentHTML('beforebegin', newRow);
         buildQuery();
       });
-      
-      for (i = 0; i < fieldAdder.length; ++i) {
-        fieldAdder[i].addEventListener("click", function(e) {
-          e.preventDefault();
-          this.insertAdjacentHTML('beforebegin', newField);
-          buildQuery();
-        });
-      }
+
+      $(document).on( "click",  'button.add-field', function() {
+        var newField = `
+          <span class="boolean-label">or</span><fieldset class="selector">
+              {% include components/search-opts-snippet.html num="2" %}
+            </fieldset>
+          `;
+        this.insertAdjacentHTML('beforebegin', newField);
+        buildQuery();
+      });
 
     });
 </script>
