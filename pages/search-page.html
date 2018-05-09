@@ -114,12 +114,8 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
       }
       */
       // Yeah, we're totally cheating and dropping down to jquery for the event delegation.
-      $( '.selector select').on( "change", function() {
-        buildQuery();
-      });
-      $( '.selector input').on( "blur", function() {
-        buildQuery();
-      });
+      $( '.selector select').on( "change",  buildQuery);
+      $( '.selector input').on( "focusout", buildQuery);
       
       for (i = 0; i < fieldAdder.length; ++i) {
         fieldAdder[i].addEventListener("click", function(e) {
