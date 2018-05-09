@@ -26,6 +26,10 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
         Search:
       </label>
       <textarea id="search-input-textarea" readonly="readonly"></textarea>
+      <button type="button" class="add-query-history">
+        <span>Add to history</span>
+      </button>
+      
       <button type="submit" class="search-btn" ref="linksrc=search_btn" aria-label="Search"><span class="usa-search-submit-text">Search</span></button>
     </div>
   </div>
@@ -135,5 +139,17 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
         buildQuery();
       });
 
+      $(document).on( "click",  'button.add-query-history', function() {
+        var historyRow = `<tr>
+          <td class="history-controls">
+            <button type="button" class="use-q" title="Use this query">&#128269;</button>
+            <button type="button" class="add-q" title="Add this query">&#10133;</button>
+          </td>
+          <td class="q">`;
+        historyRow += searchInput.value;
+        historyRow += '</td><td></td></tr>'
+        
+        $('#history-body').prepend(historyRow);
+      });
     });
 </script>
