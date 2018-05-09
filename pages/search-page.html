@@ -25,7 +25,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
       <label class="usa-sr-only" for="search-input-textarea">
         Search:
       </label>
-      <textarea id="search-input-textarea"></textarea>
+      <textarea id="search-input-textarea" readonly="readonly"></textarea>
       <button type="submit" class="search-btn" ref="linksrc=search_btn" aria-label="Search"><span class="usa-search-submit-text">Search</span></button>
     </div>
   </div>
@@ -106,16 +106,21 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
         e.preventDefault();
         buildQuery();
       });
+      /*
       for (i = 0; i < qbSelects.length; ++i) {
         qbSelects[i].addEventListener("change", function() {
           buildQuery();
         });
       }
-      for (i = 0; i < qbInputs.length; ++i) {
-        qbInputs[i].addEventListener("blur", function() {
-          buildQuery();
-        });
-      }
+      */
+      // Yeah, we're totally cheating and dropping down to jquery for the event delegation.
+      $( '.selector select').on( "change", function() {
+        buildQuery();
+      });
+      $( '.selector input').on( "blur", function() {
+        buildQuery();
+      });
+      
       for (i = 0; i < fieldAdder.length; ++i) {
         fieldAdder[i].addEventListener("click", function(e) {
           e.preventDefault();
@@ -124,19 +129,4 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
         });
       }
     });
-    // Toggle readonly state. 
-      // I have no idea what this is doing, but found it here:
-      // https://jcubic.wordpress.com/2017/05/12/execute-callback-in-javascript-when-a-div-change-visibility-with-html5/
-      var mgr = document.getElementById('query-builder');
-
-      document.querySelector('[data-trigger="query-builder"]').addEventListener("click", function(e) {
-        console.log('clicked trigger')
-        if (mgr.hasAttribute('hidden') == true) {
-          searchInput.setAttribute('readonly', 'readonly');
-          document.querySelector('.search-btn').setAttribute('disabled', 'disabled');
-        } else {
-          searchInput.removeAttribute('readonly');
-          document.querySelector('.search-btn').removeAttribute('disabled');
-        }
-      });
 </script>
