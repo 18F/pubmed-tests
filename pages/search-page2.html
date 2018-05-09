@@ -1,5 +1,5 @@
 ---
-title: Search-popup
+title: Query Builder Search
 permalink: /search2/
 
 layout: default
@@ -634,7 +634,8 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
     </main>
       </div>
 
-
+      <!-- to-do: Figure out why double-loading jquery is necesary. Why does it work on search-page.html? -->
+<script src="https://www.ncbi.nlm.nih.gov/labs/pubmed/static/jquery/dist/jquery.min.js"></script>
 <script>
     var searchInput = document.querySelector('input.term-input.tt-input');
     var andOr = document.getElementById('id-and-or');
