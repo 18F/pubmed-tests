@@ -72,7 +72,17 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
           {% include components/search-opts-snippet.html num="2" %}
         </fieldset>
       `;
-
+    var nowRow = `
+      <fieldset class="selector-group">
+          <fieldset class="selector">
+              {% include components/search-opts-snippet.html num="3" %}
+          </fieldset>
+          <button class="boolean-label add-field">
+            <span class="boolean-label-add" title="add another">+</span>
+            or
+          </button>
+      </fieldset>
+    `;
     document.addEventListener("DOMContentLoaded", function() {
       // Make history items pop into query box.
       var historyItems = document.querySelectorAll('.use-q');
@@ -102,20 +112,20 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
       var qbInputs = document.querySelectorAll('.selector input');
       var fieldAdder = document.querySelectorAll('button.add-field');
       
+      var rowAdders = document.querySelectorAll('button.add-field');
+
       document.querySelector('.build-query').addEventListener("click", function(e) {
         e.preventDefault();
         buildQuery();
       });
-      /*
-      for (i = 0; i < qbSelects.length; ++i) {
-        qbSelects[i].addEventListener("change", function() {
-          buildQuery();
-        });
-      }
-      */
+
       // Yeah, we're totally cheating and dropping down to jquery for the event delegation.
       $(document).on( "change", '.selector select', buildQuery);
       $(document).on( "keyup",  '.selector input', buildQuery);
+      $(document).on( "click",  '.selector-row-add', function() {
+        this.insertAdjacentHTML('beforebegin', newRow);
+        buildQuery();
+      });
       
       for (i = 0; i < fieldAdder.length; ++i) {
         fieldAdder[i].addEventListener("click", function(e) {
@@ -124,5 +134,6 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
           buildQuery();
         });
       }
+
     });
 </script>
