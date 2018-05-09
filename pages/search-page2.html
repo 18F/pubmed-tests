@@ -700,24 +700,29 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
           '<tr><td>1</td><td class="q"></td><td></td><td></td></tr>'
       });
       // Make query builder "work"
-      var qbSelects = document.querySelectorAll('.field-select select');
-      var qbInputs = document.querySelectorAll('.selector-group input');
+
       var fieldAdder = document.querySelectorAll('button.field-add');
       
+      /*
+      var qbInputs = document.querySelectorAll('.selector-group input');
+
       document.querySelector('.build-query').addEventListener("click", function(e) {
         e.preventDefault();
         buildQuery();
       });
+      
       for (i = 0; i < qbSelects.length; ++i) {
         qbSelects[i].addEventListener("change", function() {
           buildQuery();
         });
       }
+      
       for (i = 0; i < qbInputs.length; ++i) {
         qbInputs[i].addEventListener("blur", function() {
           buildQuery();
         });
       }
+      */
       for (i = 0; i < fieldAdder.length; ++i) {
         fieldAdder[i].addEventListener("click", function(e) {
           e.preventDefault();
@@ -726,7 +731,10 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
         });
       }
     });
-
+    
+    $(document).on( "change",  '.field-select select', buildQuery);
+    $(document).on( "keyup",  '.field-select input', buildQuery);
+    
     $(document).on( "click",  'button.field-remove', function() {
       elem = this.parentElement;
       elem.parentNode.parentNode.removeChild(elem);
@@ -734,19 +742,16 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
     });
     
     // Toggle readonly state. 
-      // I have no idea what this is doing, but found it here:
-      // https://jcubic.wordpress.com/2017/05/12/execute-callback-in-javascript-when-a-div-change-visibility-with-html5/
-      var mgr = document.getElementById('query-builder');
-
-      document.querySelector('[data-trigger="query-builder"]').addEventListener("click", function(e) {
-        console.log('clicked trigger')
-        if (mgr.hasAttribute('hidden') == true) {
-          searchInput.setAttribute('readonly', 'readonly');
-          document.querySelector('.search-btn').setAttribute('disabled', 'disabled');
-        } else {
-          searchInput.removeAttribute('readonly');
-          document.querySelector('.search-btn').removeAttribute('disabled');
-
-        }
-      });
+    // I have no idea what this is doing, but found it here:
+    // https://jcubic.wordpress.com/2017/05/12/execute-callback-in-javascript-when-a-div-change-visibility-with-html5/
+    var mgr = document.getElementById('query-builder');
+    document.querySelector('[data-trigger="query-builder"]').addEventListener("click", function(e) {
+      if (mgr.hasAttribute('hidden') == true) {
+        searchInput.setAttribute('readonly', 'readonly');
+        document.querySelector('.search-btn').setAttribute('disabled', 'disabled');
+      } else {
+        searchInput.removeAttribute('readonly');
+        document.querySelector('.search-btn').removeAttribute('disabled');
+      }
+    });
 </script>
