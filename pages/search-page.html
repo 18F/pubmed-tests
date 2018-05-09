@@ -72,17 +72,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
           {% include components/search-opts-snippet.html num="2" %}
         </fieldset>
       `;
-    var newRow = `
-      <fieldset class="selector-group">
-          <fieldset class="selector">
-              {% include components/search-opts-snippet.html num="3" %}
-          </fieldset>
-          <button class="boolean-label add-field">
-            <span class="boolean-label-add" title="add another">+</span>
-            or
-          </button>
-      </fieldset>
-    `;
+    
     document.addEventListener("DOMContentLoaded", function() {
       // Make history items pop into query box.
       var historyItems = document.querySelectorAll('.use-q');
@@ -121,6 +111,17 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
       $(document).on( "change", '.selector select', buildQuery);
       $(document).on( "keyup",  '.selector input', buildQuery);
       $(document).on( "click",  '.selector-row-add', function() {
+        var newRow = `
+          <fieldset class="selector-group">
+              <fieldset class="selector">
+                  {% include components/search-opts-snippet.html num="3" %}
+              </fieldset>
+              <button class="boolean-label add-field">
+                <span class="boolean-label-add" title="add another">+</span>
+                or
+              </button>
+          </fieldset>
+        `;
         this.insertAdjacentHTML('beforebegin', newRow);
         buildQuery();
       });
