@@ -129,7 +129,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
         buildQuery();
       });
       $(document).on( "click",  'button.remove-row', function() {
-        elem = this.parentElement.parentElement;
+        elem = this.parentElement.previousElementSibling;
         elem.parentNode.removeChild(elem);
         buildQuery();
       });
