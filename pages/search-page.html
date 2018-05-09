@@ -125,7 +125,12 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
               </button>
           </fieldset>
         `;
-        this.insertAdjacentHTML('beforebegin', newRow);
+        this.parentElement.insertAdjacentHTML('beforebegin', newRow);
+        buildQuery();
+      });
+      $(document).on( "click",  'button.remove-row', function() {
+        elem = this.parentElement.parentElement;
+        elem.parentNode.removeChild(elem);
         buildQuery();
       });
 

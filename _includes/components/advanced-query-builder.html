@@ -9,11 +9,11 @@
         <fieldset class="selector">
           {% include components/search-opts-snippet.html num="2" %}
         </fieldset>
-        <button class="boolean-label add-field">
+        <button class="boolean-label add-field" type="button">
           <span class="boolean-label-add" title="add another">+</span>
           or
         </button>
-        <button class="boolean-label remove-field">
+        <button class="boolean-label remove-field" type="button">
             <span class="boolean-label-remove" title="Remove field">-</span>
           </button>
     </fieldset>
@@ -31,22 +31,23 @@
         <fieldset class="selector">
             {% include components/search-opts-snippet.html num="3" %}
         </fieldset>
-        <button class="boolean-label add-field">
+        <button class="boolean-label add-field" type="button">
           <span class="boolean-label-add" title="add another">+</span>
           or
         </button>
-        <button class="boolean-label remove-field">
+        <button class="boolean-label remove-field" type="button">
           <span class="boolean-label-remove" title="Remove field">-</span>
         </button>
-    
-      <button class="boolean-label selector-add selector-row-add" type="button">
-          <span class="boolean-label-add" title="add another">+</span>
-          add row
-      </button>
-      <button class="boolean-label remove-field">
-          <span class="boolean-label-remove" title="Remove row">-</span>
-          remove row
+      <p>
+        <button class="boolean-label selector-add selector-row-add" type="button">
+            <span class="boolean-label-add" title="add another">+</span>
+            add row
         </button>
+        <button class="boolean-label remove-row">
+            <span class="boolean-label-remove" title="Remove row">-</span>
+            remove row
+          </button>
+        </p>
     </fieldset>
     <!--
     <button class="build-query" type="button">
