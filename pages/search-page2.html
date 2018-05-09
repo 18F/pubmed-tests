@@ -730,12 +730,12 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
         });
       }
       
-      $(document).on( "change",  '.field-select select', buildQuery);
-      $(document).on( "keyup",  '.field-select input', buildQuery);
-      
+      $(document).on( "change",  '.selector-group select', buildQuery);
+      $(document).on( "keyup",  '.field-selector-value input', buildQuery);
+
       $(document).on( "click",  'button.field-remove', function() {
         elem = this.parentElement;
-        elem.parentElement.parentElement.removeChild(elem);
+        elem.parentElement.removeChild(elem);
         buildQuery();
       });
     });
