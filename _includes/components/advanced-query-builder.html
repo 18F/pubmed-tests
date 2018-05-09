@@ -5,17 +5,12 @@
         <fieldset class="selector">
           {% include components/search-opts-snippet.html num="1" %}
         </fieldset>
-        <span class="boolean-label">or</span>
-        <fieldset class="selector">
-          {% include components/search-opts-snippet.html num="2" %}
-        </fieldset>
+       
         <button class="boolean-label add-field" type="button">
           <span class="boolean-label-add" title="add another">+</span>
           or
         </button>
-        <button class="boolean-label remove-field" type="button">
-            <span class="boolean-label-remove" title="Remove field">-</span>
-          </button>
+        
     </fieldset>
 
     <div class="switch-field">
@@ -27,27 +22,17 @@
       <label for="switch_third">Or</label>
     </div>
     
-    <fieldset class="selector-group">
-        <fieldset class="selector">
-            {% include components/search-opts-snippet.html num="3" %}
-        </fieldset>
-        <button class="boolean-label add-field" type="button">
-          <span class="boolean-label-add" title="add another">+</span>
-          or
-        </button>
-        <button class="boolean-label remove-field" type="button">
-          <span class="boolean-label-remove" title="Remove field">-</span>
-        </button>
-    </fieldset>
     <p>
         <button class="boolean-label selector-add selector-row-add" type="button">
             <span class="boolean-label-add" title="add another">+</span>
             add row
         </button>
+        <!--
         <button class="boolean-label remove-row">
             <span class="boolean-label-remove" title="Remove row">-</span>
             remove row
           </button>
+        -->
         </p>
     <!--
     <button class="build-query" type="button">
