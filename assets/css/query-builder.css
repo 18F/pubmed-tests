@@ -224,6 +224,14 @@ border-radius: 0 4px 4px 0;
 #query-builder .actions {
 	width: 5em;
 }
+
+.top-history-actions button {
+	font-size: 14px;
+	background: #333;
+	margin: 0 1em;
+}
+
+
 #search-history tbody button,
 #query-builder .actions button,
 #search-manager .history-controls button {
