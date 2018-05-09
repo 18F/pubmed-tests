@@ -138,6 +138,12 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
         this.insertAdjacentHTML('beforebegin', newField);
         buildQuery();
       });
+      $(document).on( "click",  'button.remove-field', function() {
+        elem = this.parentElement;
+        elem.parentNode.removeChild(elem);
+        buildQuery();
+      });
+      
 
       $(document).on( "click",  'button.add-query-history', function() {
         var historyRow = `<tr>
@@ -148,8 +154,9 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b9368b918d17.
           <td class="q">`;
         historyRow += searchInput.value;
         historyRow += '</td><td></td></tr>'
-        
-        $('#history-body').prepend(historyRow);
+        if (searchInput.value.length > 0) {
+          $('#history-body').prepend(historyRow);
+        }
       });
     });
 </script>

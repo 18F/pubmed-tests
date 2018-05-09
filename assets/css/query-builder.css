@@ -261,6 +261,6 @@ input.term-input.tt-input[readonly] {
 	width: 100%;
 	max-width: 100%;
 }
-#search-input-textarea + button[type="submit"] {
+.search-btn[type="submit"] {
 	float: right;
 }
