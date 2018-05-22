@@ -5,19 +5,6 @@
   <head prefix="og: http://ogp.me/ns#">
     {% include meta.html %}
     {% include styles.html %}
-    {% if site.google_analytics_ua or site.dap_agency %}
-      {% include analytics.html %}
-    {% endif %}
-    <style>
-        /* quick and dirty overrides */
-        .search-form>.inner-wrap {width: auto}
-        #search-history { padding-bottom: 1em }
-        #search-history .actions > * { 
-          font-size: 0.8em; 
-          margin: 0 1em;
-          display: inline-block;
-        }
-    </style>
   </head>
   <body class="{{ layout.class }} {{ page.class }} {% if site.site_width %}site-{{ site.site_width }}{% endif %}">
 
