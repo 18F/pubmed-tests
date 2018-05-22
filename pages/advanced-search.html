@@ -11,11 +11,12 @@ layout: default
       <section class="query-preview">
         <form action="#">
           <label for="query">Query</label>
-          <textarea name="query" id="" cols="30" rows="1" placeholder="Type a search, or use the tools above to get started."></textarea>
+          <textarea name="query" id="" cols="30" rows="4" placeholder="Type a search, or use the builder below to get started." disabled></textarea>
           <div class="actions query-preview--actions">
             <button class="action action--search">Search</button>
             <button class="action action--show-details">Show details</button>
             <button class="action action--add-to-history">Add to history</button>
+            <button class="action action--edit-query">Edit</button>
           </div>
         </form>
       </section>
@@ -84,7 +85,8 @@ layout: default
               </div>
               <div class="actions">
                 <button type="submit" class="action action-show-index">
-                  Show index
+                  <span class="icon icon-action-show-index"></span>
+                  <span class="label-text">Show index</span>
                 </button>
                 <button type="submit" class="action action-remove">
                   <span class="icon icon-action-remove"></span>
@@ -162,7 +164,8 @@ layout: default
               </div>
               <div class="actions">
                 <button type="submit" class="action action-show-index">
-                  Show index
+                  <span class="icon icon-action-show-index"></span>
+                  <span class="label-text">Show index</span>
                 </button>
                 <button type="submit" class="action action-add">
                   <span class="icon icon-action-add"></span>
@@ -175,7 +178,186 @@ layout: default
               </div>
             </fieldset>
           </fieldset>
-          <button class="action-add-another-group">Add another group</button>
+          <fieldset class="query-builder--selector-group">
+            <legend>Selector group 2</legend>
+            <button class="action-remove">
+              <span class="icon icon-action-remove"></span>
+              <span class="label-text">Remove</span>
+            </button>
+            <fieldset class="query-builder--selector-group--boolean-operator fieldset--boolean-operator">
+              <div class="field field--radio field--and">
+                <label for="boolean-and">
+                  <span class="field--text">And</span>
+                  <input type="radio" value="and" name="boolean" id="boolean-and" />
+                </label>
+              </div>
+              <div class="field field--radio field--or">
+                <label for="boolean-or">
+                  <span class="field--text">Or</span>
+                  <input type="radio" value="or" name="boolean" id="boolean-or" />
+                </label>
+              </div>
+              <div class="field field--radio field--not">
+                <label for="boolean-not">
+                  <span class="field--text">Not</span>
+                  <input type="radio" value="not" name="boolean" id="boolean-not" />
+                </label>
+              </div>
+            </fieldset>
+            <fieldset class="query-builder--selector-group--selector">
+              <legend>Selector 1</legend>
+              <div class="field field--select field--field-type">
+                <label for="">
+                  <span class="label-text">Field</span>
+                  <select class="" name="">
+                    <option>Affiliation</option>
+                    <option selected>All Fields</option>
+                    <option>Author</option>
+                    <option>Author - Corporate</option>
+                    <option>Author - First</option>
+                    <option>Author - Full</option>
+                    <option>Author - Identifier</option>
+                    <option>Author - Last</option>
+                    <option>Book</option>
+                    <option>Conflict of Interest Statements</option>
+                    <option>Date - Completion</option>
+                    <option>Date - Create</option>
+                    <option>Date - Entrez</option>
+                    <option>Date - MeSH</option>
+                    <option>Date - Modification</option>
+                    <option>Date - Publication</option>
+                    <option>EC/RN Number</option>
+                    <option>Editor</option>
+                    <option>Filter</option>
+                    <option>Grant Number</option>
+                    <option>ISBN</option>
+                    <option>Investigator</option>
+                    <option>Investigator - Full</option>
+                    <option>Issue</option>
+                    <option>Journal</option>
+                    <option>Language</option>
+                    <option>Location ID</option>
+                    <option>MeSH Major Topic</option>
+                    <option>MeSH Subheading</option>
+                    <option>MeSH Terms</option>
+                    <option>Other Term</option>
+                    <option>Pagination</option>
+                    <option>Pharmacological Action</option>
+                    <option>Publication Type</option>
+                    <option>Publisher</option>
+                    <option>Secondary Source ID</option>
+                    <option>Subject - Personal Name</option>
+                    <option>Supplementary Concept</option>
+                    <option>Text Word</option>
+                    <option>Title</option>
+                    <option>Title/Abstract</option>
+                    <option>Transliterated Title</option>
+                    <option>Volume</option>
+                  </select>
+                </label>
+              </div>
+              <div class="field field--value">
+                <label for="">
+                  <span class="label-text">Value</span>
+                  <input type="text" name="" value="">
+                </label>
+              </div>
+              <div class="actions">
+                <button type="submit" class="action action-show-index">
+                  <span class="icon icon-action-show-index"></span>
+                  <span class="label-text">Show index</span>
+                </button>
+                <button type="submit" class="action action-remove">
+                  <span class="icon icon-action-remove"></span>
+                  <span class="label-text">Remove this selector</span>
+                </button>
+              </div>
+            </fieldset>
+            <fieldset class="query-builder--selector-group--selector">
+              <legend>Selector 2</legend>
+              <div class="field field--select field--boolean-operator">
+                <label for="">
+                  <span class="label-text">Boolean operator</span>
+                  <select class="" name="">
+                    <option>AND</option>
+                    <option>OR</option>
+                    <option>NOT</option>
+                  </select>
+                </label>
+              </div>
+              <div class="field field--select field--field-type">
+                <label for="">
+                  <span class="label-text">Field</span>
+                  <select class="" name="">
+                    <option>Affiliation</option>
+                    <option selected>All Fields</option>
+                    <option>Author</option>
+                    <option>Author - Corporate</option>
+                    <option>Author - First</option>
+                    <option>Author - Full</option>
+                    <option>Author - Identifier</option>
+                    <option>Author - Last</option>
+                    <option>Book</option>
+                    <option>Conflict of Interest Statements</option>
+                    <option>Date - Completion</option>
+                    <option>Date - Create</option>
+                    <option>Date - Entrez</option>
+                    <option>Date - MeSH</option>
+                    <option>Date - Modification</option>
+                    <option>Date - Publication</option>
+                    <option>EC/RN Number</option>
+                    <option>Editor</option>
+                    <option>Filter</option>
+                    <option>Grant Number</option>
+                    <option>ISBN</option>
+                    <option>Investigator</option>
+                    <option>Investigator - Full</option>
+                    <option>Issue</option>
+                    <option>Journal</option>
+                    <option>Language</option>
+                    <option>Location ID</option>
+                    <option>MeSH Major Topic</option>
+                    <option>MeSH Subheading</option>
+                    <option>MeSH Terms</option>
+                    <option>Other Term</option>
+                    <option>Pagination</option>
+                    <option>Pharmacological Action</option>
+                    <option>Publication Type</option>
+                    <option>Publisher</option>
+                    <option>Secondary Source ID</option>
+                    <option>Subject - Personal Name</option>
+                    <option>Supplementary Concept</option>
+                    <option>Text Word</option>
+                    <option>Title</option>
+                    <option>Title/Abstract</option>
+                    <option>Transliterated Title</option>
+                    <option>Volume</option>
+                  </select>
+                </label>
+              </div>
+              <div class="field field--value">
+                <label for="">
+                  <span class="label-text">Value</span>
+                  <input type="text" name="" value="">
+                </label>
+              </div>
+              <div class="actions">
+                <button type="submit" class="action action-show-index">
+                  <span class="icon icon-action-show-index"></span>
+                  <span class="label-text">Show index</span>
+                </button>
+                <button type="submit" class="action action-add">
+                  <span class="icon icon-action-add"></span>
+                  <span class="label-text">Add new selector</span>
+                </button>
+                <button type="submit" class="action action-remove">
+                  <span class="icon icon-action-remove"></span>
+                  <span class="label-text">Remove this selector</span>
+                </button>
+              </div>
+            </fieldset>
+          </fieldset>
+          <button class="action action--add-another-group">Add another group</button>
         </form>
       </section>
       <section class="search-details">
