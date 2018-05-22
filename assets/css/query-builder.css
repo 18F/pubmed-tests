@@ -5,6 +5,8 @@
 /* @group reset */
 
 
+/**************** 
+* Remove in favor of existing pubmed styles 
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -26,13 +28,15 @@ time, mark, audio, video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-
 }
-/* HTML5 display-role reset for older browsers */
+*/
+
+/* HTML5 display-role reset for older browsers 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
+
 body { line-height: 1; }
 ol, ul { list-style: none; }
 blockquote, q { quotes: none; }
@@ -43,12 +47,13 @@ table {
   border-spacing: 0;
 }
 
+
 html {
   box-sizing: border-box;
   font-size: 16px;
-  font-family: sans-serif; /* 1 */
+  font-family: sans-serif; 
   -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape while allowing user zoom */
+  -webkit-text-size-adjust: 100%;
 }
 
 *, *:before, *:after { box-sizing: inherit; }
@@ -65,11 +70,13 @@ sup {
 
 sup { top: -0.5em; }
 sub { bottom: -0.25em; }
-
+*/
 /* @end */
 
 
 /* @group bootstrap */
+/**************** 
+* Remove in favor of existing pubmed styles 
 
 body {
   font-family: BlinkMacSystemFont,-apple-system,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue", sans-serif;
@@ -115,37 +122,47 @@ a:visited {
 .a-back:hover {
     color: #333;
 }
+
 ::selection {
     background: #ffe4c5;
-    /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
     background: #ffe4c5;
-    /* Gecko Browsers */
 }
+*/
 
+/* Remove (unused)
 .average-claim-time{
   background: lemonchiffon;
   padding: 0 2px;
   color: #333;
 }
+*/
 
+/**************** 
+* Remove in favor of existing pubmed styles 
 .wrapper {
     width: 95%;
     max-width: 960px;
     margin: 0 auto;
     position: relative;
 }
+*/
 @media screen and (min-width: 568.88) {
     .wrapper {
         width: 90%;
     }
 }
+
+/************* NEED TO DETERMINE IF THIS IS STILL NEEDED *********/
 .wrapper::after {
     content: "";
     display: table;
     clear: both;
 }
+
+/**************** 
+* Remove in favor of existing pubmed styles 
 main {
     background: white;
     color: #333;
@@ -156,6 +173,9 @@ img {
 table {
     color: inherit;
 }
+*********************/
+
+/*
 .preposition {
     font-family: Merriweather;
     font-style: italic;
@@ -167,7 +187,7 @@ p.note{
 	font-size: 16px;
 	line-height: 1.33em !important;
 }  
-
+*/
 
 /* @group icomoon */
 
@@ -235,12 +255,13 @@ p.note{
 	.icon-minus::before {
 	  content: "bin";
 	}
-	
+
+/*********
 .usa-skipnav{
   position: absolute;
   top: -9999em;
 }
-
+**************/
 /* @end */
 /* @end */
 /* @group tables */
