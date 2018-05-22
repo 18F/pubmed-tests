@@ -249,6 +249,10 @@ p.note{
 	  content: "\ea0f";
 	}
 	
+.usa-skipnav{
+  position: absolute;
+  top: -9999em;
+}
 
 /* @end */
 /* @end */
