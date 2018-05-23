@@ -673,6 +673,9 @@ fieldset.fieldset-radio.is-error .error-text {
 
 /* @group .site-header */
 
+/**************** 
+* Remove in favor of existing pubmed styles 
+
 .ncbi-page-header{
 	height: ;
 }
@@ -733,7 +736,8 @@ h1.logo a span{
 	color: #555;
 }
 
-/* @end */
+ @end */
+
 .boolean-label {
 	border-radius: 1em;
 	padding: 0.25em 0.5em;
@@ -741,7 +745,6 @@ h1.logo a span{
 span.boolean-label {
 	background: #ddd;
 }
-
 .boolean-label-add {
 	border-radius: 1em;
 	padding: 0 0.25em;
