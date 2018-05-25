@@ -9,15 +9,15 @@ layout: default
     <h1>Advanced search</h1>
     <div class="advanced-search--primary-controls">
       <form action="/search/results" class="query-preview">
-        <div>
+        <div class="query-preview-textarea">
           <label for="search-input-textarea">Query</label>
           <textarea name="query" id="search-input-textarea" cols="30" rows="4" placeholder="Type a search, or use the builder below to get started."></textarea>
+          <button class="action action-edit-query">Edit</button>
         </div>
         <div class="actions query-preview--actions">
           <button class="action add-to-history" type="submit">Search</button>
           <button class="action action--show-details">Show details</button>
           <button class="action add-to-history" type="button">Add to history</button>
-          <button class="action action--edit-query">Edit</button>
         </div>
       </form>
       <section class="query-builder">
