@@ -362,8 +362,9 @@ fieldset.fieldset-radio.is-error .error-text {
 
 
 .query-builder fieldset legend,
-.query-builder .field label .label-text, {
- position: absolute; left: -9999em;  
+.query-builder .field label .label-text {
+	position: absolute; 
+	left: -9999em;  
 }
 
 /* @end */
@@ -390,28 +391,6 @@ fieldset.fieldset-radio.is-error .error-text {
     }
 }
 /* @end */
-
-.boolean-label {
-	border-radius: 1em;
-	padding: 0.25em 0.5em;
-}
-span.boolean-label {
-	background: #ddd;
-}
-.boolean-label-add {
-	border-radius: 1em;
-	padding: 0 0.25em;
-	cursor: pointer;
-}
-
-.selector-add {
-	margin: 0.5em 0;
-	display: inline-block;
-}
-
-.build-query {
-	float:right;
-}
 
 /* History */
 #search-history th,
@@ -467,9 +446,11 @@ input.term-input.tt-input[readonly] {
 .search1-input-form [data-trigger] {
 	display: none;
 }
+/* Not confirmed, but this should be removable
 .search-btn[type="submit"] {
 	float: right;
 }
+*/
 
 /* Override normal pubmed textarea handling */
 #search-input-textarea {
