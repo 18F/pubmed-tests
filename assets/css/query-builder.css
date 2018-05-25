@@ -399,7 +399,6 @@ fieldset.fieldset-radio.is-error .error-text {
 #search-history { 
 	padding-bottom: 1em;
 	font-size: 0.85em;
-
 }
 
 #search-history th,
@@ -419,8 +418,6 @@ fieldset.fieldset-radio.is-error .error-text {
 	background: transparent !important; /* Yes, important. Never */
 }
 .actions button { margin: 1em 0.125em }
-
-
 
 #search-history caption {
 	text-align: left;
