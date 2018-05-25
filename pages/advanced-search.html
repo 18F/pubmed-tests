@@ -1,6 +1,6 @@
 ---
 title: Advanced search
-permalink: advanced-search
+permalink: /advanced-search/
 
 layout: default
 ---
@@ -11,12 +11,12 @@ layout: default
       <section class="query-preview">
         <form action="#">
           <label for="query">Query</label>
-          <textarea name="query" id="" cols="30" rows="4" placeholder="Type a search, or use the builder below to get started." disabled></textarea>
+          <textarea name="query" id="" cols="30" rows="4" placeholder="Type a search, or use the builder below to get started."></textarea>
           <div class="actions query-preview--actions">
-            <button class="action action--search">Search</button>
-            <button class="action action--show-details">Show details</button>
-            <button class="action action--add-to-history">Add to history</button>
-            <button class="action action--edit-query">Edit</button>
+            <button class="action action-search">Search</button>
+            <button class="action action-show-details">Show details</button>
+            <button class="action action-add-to-history">Add to history</button>
+            <button class="action action-edit-query">Edit</button>
           </div>
         </form>
       </section>
@@ -184,7 +184,7 @@ layout: default
               <span class="icon icon-action-remove"></span>
               <span class="label-text">Remove</span>
             </button>
-            <fieldset class="query-builder--selector-group--boolean-operator fieldset--boolean-operator">
+            <fieldset class="query-builder--selector-group--boolean-operator fieldset--boolean-operator fieldset--radio">
               <div class="field field--radio field--and">
                 <label for="boolean-and">
                   <span class="field--text">And</span>
@@ -357,12 +357,18 @@ layout: default
               </div>
             </fieldset>
           </fieldset>
-          <button class="action action--add-another-group">Add another group</button>
+          <button class="action action-add-another-group">Add another group</button>
         </form>
       </section>
       <section class="search-details">
         <h1>Details</h1>
         <p>For more information about a search, enter a query above and click &ldquo;show details.&rdquo;</p>
+        <dl>
+          <dt class="search-details--results">Results</dt>
+          <dd class="search-details--results">1,946</dd>
+          <dt class="search-details--search-expansion">Search expansion</dt>
+          <dd class="search-details--search-expansion">"myocardial infarction"[MeSH Terms] OR ("myocardial"[All Fields] AND "infarction"[All Fields]) OR "myocardial infarction"[All Fields] OR ("heart"[All Fields] AND "attack"[All Fields]) OR "heart attack"[All Fields]</dd>          
+        </dl>
       </section>
     </div>
     <section class="search-history">
