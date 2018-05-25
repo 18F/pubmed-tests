@@ -87,21 +87,11 @@
 	.icon-minus::before {
 	  content: "bin";
 	}
-
-/*********
-.usa-skipnav{
-  position: absolute;
-  top: -9999em;
-}
-**************/
 /* @end */
 /* @end */
 /* @group tables */
 
-th {
-    background-color: #eee;
-    font-weight: 600;
-}
+
 tr.archived .status {
     color: #999;
     font-weight: 600;
@@ -110,33 +100,6 @@ td.important {
     background-color: #fff8c3;
 }
 
-/*
-table {
-    width: 100%;
-    table-layout: fixed;
-    margin-bottom: 1em;
-}
-
-table td,
-th {
-    border: 1px solid #ddd;
-    padding: 6px 8px 8px;
-    line-height: 1.2em;
-}
-th {
-    text-align: left;
-}
-
-td .time {
-    display: block;
-    font-size: 14px;
-    padding-top: 1px;
-}
-
-.is-blank {
-    color: #aaa;
-}
-*/
 /* @end */
 /* @group forms */
 
@@ -153,38 +116,6 @@ fieldset {
 body:not(:-moz-handler-blocked) fieldset {
     display: table-cell;
 }
-
-/*
-
-Let's not override more than we need to.
-
-input[type=tel],
-input[type=text],
-input[type=date],
-input[type=email],
-input[type=number],
-input[type=password],
-input[type=search],
-select,
-textarea {
-    -webkit-appearance: none;
-    -webkit-box-sizing: border-box;
-    padding: 4px 8px;
-    border: 1px solid #aaa;
-    line-height: 32px;
-    min-height: 38px;
-    min-width: 4em;
-    width: 100%;
-    margin: 0;
-    outline: none;
-    font: inherit;
-}
-input[type=radio],
-input[type=checkbox] {
-    outline: none;
-    border: none;
-}
-*/
 
 .field-select select {
     min-width: 0;
@@ -217,20 +148,7 @@ input[type=checkbox] {
 .field--select:hover::after {
     border-top-color: #888;
 }
-/*
-textarea {
-    display: block;
-    width: 100%;
-    max-width: 40em;
-    line-height: 1.25;
-    color: #333;
-}
 
-textarea[disabled] {
-	background: #f8f8f8;
-	border-color: #ccc;
-}
-*/
 button,
 .button {
     background: none;
@@ -383,12 +301,7 @@ div.field.field-checkbox+.is-branch {
 div.field.is-error .label-text {
     color: #a73856;
 }
-/*
-div.field.is-error input,
-div.field.is-error textarea {
-    border-color: #ce6246;
-}
-*/
+
 div.field.is-error .error-text,
 fieldset.fieldset-radio.is-error .error-text {
     color: #990017;
@@ -515,73 +428,6 @@ fieldset.fieldset-radio.is-error .error-text {
 }
 /* @end */
 
-/* @group .site-header */
-
-/**************** 
-* Remove in favor of existing pubmed styles 
-
-.ncbi-page-header{
-	height: ;
-}
-h1.logo a{
-	width: 220px;
-	height: 64px;
-  background: url(images/svg/pubmed.svg) no-repeat left/contain;
-  display: block;
-}
-
-h1.logo a span{
-  text-indent: -9999em;
-  display: inline;
-  position: absolute;
-}
-
-.site-header .search-form{
-	padding-right: 5em;
-	width: 640px;
-	position: relative;
-	margin-right: 0.4em;
-	margin-bottom: 0.2em;
-}
-.site-header .search-form label .label-text{
-	position: absolute;
-	left: -9999em;
-}
-
-.site-header .search-form input{
-  padding: 0.5em 0;
-  width: 100%;
-  border-right: none;
-  text-indent: 0.2em;
-}
-
-.site-header .search-form button{
-	background: #1072ba;
-	color: white;
-	border-radius: 0;
-	font-weight: 600;
-	border: none;
-	position: absolute;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	margin: 0;
-	width: 5em;
-}
-
-
-.site-header .actions-search-actions{
-  font-size: 14px;
-  clear: both;
-}
-
-.site-header .actions-search-actions .action{
-	margin-right: 0.8em;
-	color: #555;
-}
-
- @end */
-
 .boolean-label {
 	border-radius: 1em;
 	padding: 0.25em 0.5em;
@@ -662,18 +508,12 @@ input.term-input.tt-input[readonly] {
 	float: right;
 }
 
-
-
-
-
 /* Override normal pubmed textarea handling */
 #search-input-textarea {
 	width: 100%;
 	max-width: 100%;
 	margin: 0;
 }
-
-
 
 /* @group search details + history */
 
@@ -858,8 +698,6 @@ td.q {
 
 }
 
-
-
 .layout--wysiwyg .query-builder--toolbar form{
   padding-left: 242px;
   position: relative;
@@ -876,7 +714,6 @@ td.q {
 
 .layout--wysiwyg .fieldset--boolean-operator{ left: 0; }
 
-
 .layout--wysiwyg .query-builder--toolbar .field--field-type{
   width: 120px;
   left: 122px;
@@ -887,7 +724,6 @@ td.q {
 	top: 4px;
 	bottom: 4px;
 }
-
 
 .field--field-type select{
   border-radius: 2px 0 0 2px;
@@ -1028,23 +864,6 @@ td.q {
 }
 
 
-/* @group query-preview */
-
-/*
-.layout--advanced-search .wrapper > h1{
-  font-size: 20px;
-  font-weight: 600;
-  padding-top: 1em;
-  margin-bottom: 0.6em;
-}
-
-
-.layout--advanced-search .query-preview{ 
-	padding-right: 200px; 
-	position: relative;
-	margin-bottom: 1.5em;
-}
-*/
 .layout--advanced-search .query-preview { 
 	display: grid;
 	grid-template-columns: calc(100% - 200px) 200px;
@@ -1061,13 +880,7 @@ td.q {
 	position: absolute;
 	left: -9999em;
 }
-/* 
-.layout--advanced-search .query-preview textarea{
-	min-height: 112px; 
-	width: 100%;
-	max-width: none;
-}
-*/
+
 .layout--advanced-search .query-preview .action{ 
 	position: absolute; 
 	right: 0;
