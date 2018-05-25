@@ -87,50 +87,17 @@
 	.icon-minus::before {
 	  content: "bin";
 	}
-
-/*********
-.usa-skipnav{
-  position: absolute;
-  top: -9999em;
-}
-**************/
 /* @end */
 /* @end */
 /* @group tables */
 
-th {
-    background-color: #eee;
-    font-weight: 600;
-}
+
 tr.archived .status {
     color: #999;
     font-weight: 600;
 }
 td.important {
     background-color: #fff8c3;
-}
-
-table {
-    width: 100%;
-    table-layout: fixed;
-    margin-bottom: 1em;
-}
-table td,
-th {
-    border: 1px solid #ddd;
-    padding: 6px 8px 8px;
-    line-height: 1.2em;
-}
-th {
-    text-align: left;
-}
-td .time {
-    display: block;
-    font-size: 14px;
-    padding-top: 1px;
-}
-.is-blank {
-    color: #aaa;
 }
 
 /* @end */
@@ -148,32 +115,6 @@ fieldset {
 }
 body:not(:-moz-handler-blocked) fieldset {
     display: table-cell;
-}
-input[type=tel],
-input[type=text],
-input[type=date],
-input[type=email],
-input[type=number],
-input[type=password],
-input[type=search],
-select,
-textarea {
-    -webkit-appearance: none;
-    -webkit-box-sizing: border-box;
-    padding: 4px 8px;
-    border: 1px solid #aaa;
-    line-height: 32px;
-    min-height: 38px;
-    min-width: 4em;
-    width: 100%;
-    margin: 0;
-    outline: none;
-    font: inherit;
-}
-input[type=radio],
-input[type=checkbox] {
-    outline: none;
-    border: none;
 }
 
 .field-select select {
@@ -207,56 +148,7 @@ input[type=checkbox] {
 .field--select:hover::after {
     border-top-color: #888;
 }
-textarea {
-    display: block;
-    width: 100%;
-    max-width: 40em;
-    line-height: 1.25;
-    color: #333;
-}
 
-textarea[disabled] {
-	background: #f8f8f8;
-	border-color: #ccc;
-}
-
-button,
-.button {
-    background: none;
-    border: 1px solid;
-    color: #2e8540;
-    font: inherit;
-    padding: 10px 12px;
-    line-height: 16px;
-    cursor: pointer;
-    text-decoration: none;
-    border-radius: 3px;
-    display: inline-block;
-    vertical-align: middle;
-}
-button:hover,
-.button:hover {
-    background: #2e8540;
-    border-color: #2e8540;
-    color: white;
-    box-shadow: 0 1px 0 #f3f3f3;
-    text-decoration: none !important;
-}
-button:active,
-.button:active {
-    color: #7aa79d;
-    background: #1d5529;
-    border-color: #006e52;
-    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
-}
-.button-reject {
-    border-color: #981b1e !important;
-    color: #981b1e;
-}
-.button-reject:hover {
-    background: #981b1e;
-    color: white;
-}
 form a.a-return + h1 {
     margin-top: 1em !important;
 }
@@ -336,7 +228,6 @@ fieldset > legend,
 }
 .field input:focus,
 .field select:focus,
-.field textarea:focus,
 .field.field-checkbox.is-focused label,
 .field.field-radio.is-focused label {
     border-color: #1188ff;
@@ -373,10 +264,7 @@ div.field.field-checkbox+.is-branch {
 div.field.is-error .label-text {
     color: #a73856;
 }
-div.field.is-error input,
-div.field.is-error textarea {
-    border-color: #ce6246;
-}
+
 div.field.is-error .error-text,
 fieldset.fieldset-radio.is-error .error-text {
     color: #990017;
@@ -474,8 +362,9 @@ fieldset.fieldset-radio.is-error .error-text {
 
 
 .query-builder fieldset legend,
-.query-builder .field label .label-text{
- position: absolute; left: -9999em;  
+.query-builder .field label .label-text {
+	position: absolute; 
+	left: -9999em;  
 }
 
 /* @end */
@@ -503,6 +392,41 @@ fieldset.fieldset-radio.is-error .error-text {
 }
 /* @end */
 
+/* History */
+#search-history th,
+#search-history td {
+	padding: 0.75rem;
+}
+
+.history-controls {
+	width: 6em;
+}
+
+#search-history tbody button {
+	margin: 0 0.125em;
+	padding: 0;
+	background: transparent;
+}
+
+#search-history { 
+	margin-bottom: 1em;
+	font-size: 0.85em 
+}
+#search-history caption {
+	text-align: left;
+	font-weight: bold;
+}
+#search-history .q { width: 85%; }
+#search-history .num {
+	text-align: right;
+}
+
+/* Why is this pointer? They're not actionable? 
+   What were we thinking?
+td.q {
+	cursor: pointer;
+}
+*/
 /* Search manager */
 #search-manager .history-controls button {
 	white-space: nowrap;
@@ -519,21 +443,23 @@ input.term-input.tt-input[readonly] {
 	opacity: 50%
 }
 
-
 .search1-input-form [data-trigger] {
 	display: none;
 }
-#search-input-textarea {
-	width: 100%;
-	max-width: 100%;
-}
+/* Not confirmed, but this should be removable
 .search-btn[type="submit"] {
 	float: right;
 }
+*/
+
+/* Override normal pubmed textarea handling */
+#search-input-textarea {
+	width: 100%;
+	max-width: 100%;
+	margin: 0;
+}
 
 /* @group search details + history */
-
-
 
 .search-details,
 .search-history{  
@@ -716,8 +642,6 @@ td.q {
 
 }
 
-
-
 .layout--wysiwyg .query-builder--toolbar form{
   padding-left: 242px;
   position: relative;
@@ -734,7 +658,6 @@ td.q {
 
 .layout--wysiwyg .fieldset--boolean-operator{ left: 0; }
 
-
 .layout--wysiwyg .query-builder--toolbar .field--field-type{
   width: 120px;
   left: 122px;
@@ -745,7 +668,6 @@ td.q {
 	top: 4px;
 	bottom: 4px;
 }
-
 
 .field--field-type select{
   border-radius: 2px 0 0 2px;
@@ -886,37 +808,21 @@ td.q {
 }
 
 
-/* @group query-preview */
-
-.layout--advanced-search .wrapper > h1{
-  font-size: 20px;
-  font-weight: 600;
-  padding-top: 1em;
-  margin-bottom: 0.6em;
+.layout--advanced-search .query-preview { 
+	display: grid;
+	grid-template-columns: calc(100% - 200px) 200px;
+	column-gap: 20px;
 }
 
-.layout--advanced-search .query-preview{ 
-	padding-right: 200px; 
-	position: relative;
-	margin-bottom: 1.5em;
+/* Overrides a margin set on all submit buttons in pubmed 
+ * for this special case */
+.layout--advanced-search .query-preview [type=submit] {
+	margin: 0;
 }
 
 .layout--advanced-search .query-preview label{
 	position: absolute;
 	left: -9999em;
-}
-
-.layout--advanced-search .query-preview textarea{
-	min-height: 112px; 
-	width: 100%;
-	max-width: none;
-}
-
-.layout--advanced-search .query-preview .action{ 
-	position: absolute; 
-	right: 0;
-	bottom: 0;
-	width: 180px;
 }
 
 .layout--advanced-search .query-preview .action-search,
@@ -932,33 +838,6 @@ td.q {
 	 border: 0;
 }
 
-.layout--advanced-search .query-preview .action-search{
-	top: 0;
-	bottom: auto;
-	background: #0a5493;
-	border: none;
-	color: white;
-	font-size: 16px;
-	font-weight: 600;
-}
-
-.layout--advanced-search .query-preview .action-search:hover{ background: #08487f; }
-
-.layout--advanced-search .query-preview .action-search:active{color: #c7d9e9; }
-
-.layout--advanced-search .query-preview .action-show-details,
-.layout--advanced-search .query-preview .action-add-to-history{
-	bottom: 36px;
-	line-height: 30px;
-	border: 1px solid #aaa;
-}
-
-.layout--advanced-search .query-preview .action-show-details:hover,
-.layout--advanced-search .query-preview .action-add-to-history:hover{
-	color: #333;
-	border-color: #555;
-}
-
 .layout--advanced-search .query-preview .action-show-details:active,
 .layout--advanced-search .query-preview .action-add-to-history:active{
 	color: #888;
@@ -966,11 +845,13 @@ td.q {
 
 .layout--advanced-search .query-preview .action-add-to-history{ bottom: 0; }
 
+.layout--advanced-search .query-preview-textarea {position: relative;}
+
 .layout--advanced-search .query-preview .action-edit-query,
 .layout--advanced-search .query-preview .action-edit-query:hover{ 
 	position: absolute;
 	bottom: 8px;
-	right: 208px;
+	right: 10px;
 	border: none;
 	width: auto;
 	font-size: 0.8em;
@@ -1125,9 +1006,6 @@ td.q {
 .query-builder--selector-group--selector .actions .action-show-index{
 	right: 64px;
 	-webkit-font-smoothing: none;  
-}
-
-.query-builder--selector-group--selector .actions .action-show-index{
 }
 
 .query-builder--selector-group--selector .field select,
