@@ -61,11 +61,9 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
   // Add to history
-  // TO-DO: Intercept form submission, add to history
-  // and then allow form submission (if it is a submission)
+  // TO-DO: Intercept form submission, add to history, then allow form submission (if it is a submission)
   // TO-DO: Check for empty-history-row and remove if needed.
-  // TO-DO: Figure out event delegation and why 
-  // new add/remove buttons aren't working.
+  // TO-DO: Figure out event delegation and why new add/remove buttons aren't working.
   $(document).on( "click",  'button.add-to-history', function(e) {
     if (searchInput.value.length > 0) {
       // Note that we can't populate results for this query 
@@ -98,4 +96,92 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById('history-clear').addEventListener("click", function(e){
     searchTableBody.innerHTML = emptySearchRow;
   });
+
+  // Show search details
+  // TO-DO: Handle empty query string
+  var searchDetails = document.getElementById('search-details');
+  document.querySelector('.action-show-details').addEventListener("click", function(e){
+    searchDetails.open = true;
+  });
+
+  // Add query row
+  // TO-DO: Fix event delegation
+  // TO-DO: share newRow template? Copy existing HTML?
+  var fieldAdder = document.querySelectorAll('button.field-add');
+  var newRow = `
+  <div class="selector">
+  <div>
+  <select class="boolean-select" name="">
+      <option>AND</option>
+      <option>OR</option>
+      <option>NOT</option>
+  </select>
+</div>
+<div>
+<label for="id-search-opts-{{ num }}">Search in</label>
+<select name="search-opts-{{ num }}" id="id-search-opts-{{ num }}">
+  <option value="">Search in...</option>
+  <option>Affiliation</option>
+  <option>All Fields</option>
+  <option>Author</option>
+  <option>Author - Corporate</option>
+  <option>Author - First</option>
+  <option>Author - Full</option>
+  <option>Author - Identifier</option>
+  <option>Author - Last</option>
+  <option>Book</option>
+  <option>Conflict of Interest Statements</option>
+  <option>Date - Completion</option>
+  <option>Date - Create</option>
+  <option>Date - Entrez</option>
+  <option>Date - MeSH</option>
+  <option>Date - Modification</option>
+  <option>Date - Publication</option>
+  <option>EC/RN Number</option>
+  <option>Editor</option>
+  <option>Filter</option>
+  <option>Grant Number</option>
+  <option>ISBN</option>
+  <option>Investigator</option>
+  <option>Investigator - Full</option>
+  <option>Issue</option>
+  <option>Journal</option>
+  <option>Language</option>
+  <option>Location ID</option>
+  <option>MeSH Major Topic</option>
+  <option>MeSH Subheading</option>
+  <option>MeSH Terms</option>
+  <option>Other Term</option>
+  <option>Pagination</option>
+  <option>Pharmacological Action</option>
+  <option>Publication Type</option>
+  <option>Publisher</option>
+  <option>Secondary Source ID</option>
+  <option>Subject - Personal Name</option>
+  <option>Supplementary Concept</option>
+  <option>Text Word</option>
+  <option>Title</option>
+  <option>Title/Abstract</option>
+  <option>Transliterated Title</option>
+  <option>Volume</option>
+</select>
+</div>
+<div>
+<label for="id-search-term-{{ num }}">Search for</label>
+<input name="search-term-{{ num }}" id="id-search-term-{{ num }}" placeholder="For..." />
+</div>
+<div class="actions">
+  <button type="button" class="field-add" title="add a row">&#10133;</button>
+  <button type="button" class="field-remove" title="remove this row">&#128465;</button>
+</div>
+</div>
+      `;
+
+  for (i = 0; i < fieldAdder.length; ++i) {
+    fieldAdder[i].addEventListener("click", function(e) {
+      e.preventDefault();
+      this.parentNode.parentNode.insertAdjacentHTML('afterend', newRow);
+      buildQuery();
+    });
+  }
 });

@@ -175,7 +175,6 @@ fieldset > p {
     text-decoration: none;
 }
 
-.field label{ margin: 0; }
 
 .field .help-text,
 .p-customize-timeline {
@@ -362,7 +361,8 @@ fieldset.fieldset-radio.is-error .error-text {
 
 
 .query-builder fieldset legend,
-.query-builder .field label .label-text {
+.query-builder .field label .label-text,
+.query-builder .selector label {
 	position: absolute; 
 	left: -9999em;  
 }
@@ -393,33 +393,42 @@ fieldset.fieldset-radio.is-error .error-text {
 /* @end */
 
 /* History */
+#search-history-wrapper {
+	background: #e6e6e6;
+}
+#search-history { 
+	padding-bottom: 1em;
+	font-size: 0.85em;
+
+}
+
 #search-history th,
 #search-history td {
 	padding: 0.75rem;
+	border-color: #ccc;
 }
 
 .history-controls {
 	width: 6em;
 }
 
-#search-history tbody button {
+#search-history tbody button,
+.actions button {
 	margin: 0 0.125em;
 	padding: 0;
-	background: transparent;
+	background: transparent !important; /* Yes, important. Never */
 }
+.actions button { margin: 1em 0.125em }
 
-#search-history { 
-	margin-bottom: 1em;
-	font-size: 0.85em 
-}
+
+
 #search-history caption {
 	text-align: left;
 	font-weight: bold;
 }
-#search-history .q { width: 85%; }
-#search-history .num {
-	text-align: right;
-}
+
+/* Numeric table cells should be right-aligned */
+td.num { text-align: right; }
 
 /* Why is this pointer? They're not actionable? 
    What were we thinking?
@@ -456,18 +465,19 @@ input.term-input.tt-input[readonly] {
 #search-input-textarea {
 	width: 100%;
 	max-width: 100%;
+	min-height: 150px;
 	margin: 0;
 }
 
 /* @group search details + history */
 
-.search-details,
+/*
 .search-history{  
     margin-top: 1em;
     margin-bottom: 1em;
 }
 
-.search-history{ 
+.search-history { 
 margin-bottom: 8em; 
 }
 
@@ -478,7 +488,8 @@ margin-bottom: 8em;
 	line-height: 1.2em;
 	margin-bottom: 0.4em;
 }
-
+*/
+/*
 .search-details p,
 .search-details dt,
 .search-details dd,
@@ -515,19 +526,20 @@ margin-bottom: 8em;
 	font-size: 12px;
 	max-width: 50em;
 }
-
+*/
 /* History */
 #search-history th,
 #search-history td {
 	padding: 0.75rem;
 }
 
-.history-controls,
+/*
 #query-builder .actions {
 	width: 5em;
 }
+*/
 
-
+/*
 #search-history tbody button,
 #query-builder .actions button,
 #search-manager .history-controls button {
@@ -535,10 +547,7 @@ margin-bottom: 8em;
 	padding: 0;
 	background: transparent;
 }
-
-td.q {
-	cursor: pointer;
-}
+*/
 
 /* @end */
 
@@ -600,7 +609,6 @@ td.q {
 }
 
 .layout--wysiwyg .action-show-index-list:hover,
-.layout--wysiwyg .action-show-details:hover,
 .layout--wysiwyg .action-add-to-history:hover{
 	border-color: #a8a8a8;
 	border-bottom-color: #999;
@@ -610,7 +618,6 @@ td.q {
 
 
 .layout--wysiwyg .action-show-index-list:active,
-.layout--wysiwyg .action-show-details:active,
 .layout--wysiwyg .action-add-to-history:active{
 	background: #ddd;
 	border-color: #999;
@@ -792,9 +799,7 @@ td.q {
 /* @group .layout--advanced-search */
 
 .layout--advanced-search .advanced-search--primary-controls{
-	background: #f3f3f3;
-	padding: 20px;
-	position: relative;
+	padding: 20px 0;
 }
 
 .layout--advanced-search .advanced-search--primary-controls h1{
@@ -810,35 +815,25 @@ td.q {
 
 .layout--advanced-search .query-preview { 
 	display: grid;
-	grid-template-columns: calc(100% - 200px) 200px;
+	grid-template-columns: calc(100% - 180px) 180px;
 	column-gap: 20px;
+}
+
+.layout--advanced-search .query-preview--actions button {
+	width: 100%;
 }
 
 /* Overrides a margin set on all submit buttons in pubmed 
  * for this special case */
 .layout--advanced-search .query-preview [type=submit] {
-	margin: 0;
+	margin: 0 0 0.5em;
 }
 
-.layout--advanced-search .query-preview label{
+.layout--advanced-search .query-preview label {
 	position: absolute;
 	left: -9999em;
 }
 
-.layout--advanced-search .query-preview .action-search,
-.layout--advanced-search .query-preview .action-show-details,
-.layout--advanced-search .query-preview .action-add-to-history{
-	 background: white;
-	 color: #555;
-	 font-size: 14px;
-	 height: 32px;
-	 line-height: 32px;
-	 padding: 0;
-	 margin: 0;
-	 border: 0;
-}
-
-.layout--advanced-search .query-preview .action-show-details:active,
 .layout--advanced-search .query-preview .action-add-to-history:active{
 	color: #888;
 }
@@ -863,17 +858,46 @@ td.q {
 
 /* @end */
 
+
+
+
 /* @group query-builder */
 
-.query-builder .query-builder--selector-group{
+/* selector-groups are the outer fieldset
+ * Containing a group of selector fieldsets
+*/
+.query-builder .selector-group {
 	border: 2px solid #ccc;
 	padding: 4px;
 	background: white;
-	max-width: 720px;
+	max-width: calc(100% - 180px); /* Match the textarea */
 	margin-bottom: 32px;
+	
 }
 
-.query-builder .query-builder--selector-group:last-of-type{ margin-bottom: 0.4em; }
+.query-builder .selector-group:last-of-type{ margin-bottom: 0.4em; }
+
+/* selector fieldsets live within selector groups and wrap
+ * a set of query fields
+*/
+.query-builder .selector {
+	margin-bottom: 2px;
+	background: #eee;
+	padding: 4px;
+	max-width: none;
+	position: relative;
+	display: grid;
+	grid-template-columns: 5em 10em auto 5em;
+	column-gap: 10px;
+}
+
+/* On the first selector, showing the boolean makes no sense. */
+.query-builder .selector:first-of-type .boolean-select,
+.query-builder .selector:first-of-type .field-remove{ display: none; }
+
+/* Override pubmed default. We'll control max with grid */
+.query-builder .selector input[type="text"] { max-width: 100% }
+
 
 .query-builder .action-add-another-group,
 .query-builder .action-add-another-group:hover{
@@ -957,17 +981,18 @@ td.q {
 	line-height: 32px;
 }
 
-.query-builder--selector-group--selector .field--select::after{
+.query-builder .selector .field--select::after{
 	bottom: 0;
 	margin-bottom: 6px;
 }
 
-.query-builder--selector-group--selector .field,
-.query-builder--selector-group--selector .actions{ margin: 0; }
+.query-builder .selector .field,
+.query-builder .selector .actions{ margin: 0; }
 
-.query-builder--selector-group--selector .field{ width: 100%; }
+.query-builder .selector .field{ width: 100%; }
 
-.query-builder--selector-group--selector .actions{
+/*
+.query-builder .selector .actions{
 	position: absolute;
 	right: 4px;
 	top: 4px;
@@ -975,17 +1000,17 @@ td.q {
 	width: 96px;
 }
 
-.query-builder--selector-group--selector .actions .action{ 
+.query-builder .selector .actions .action{ 
 	padding: 0;
 	border: none;
 }
-
-.query-builder--selector-group--selector .action-remove{ right: 0; }
-.query-builder--selector-group--selector .action-add {
+*/
+.query-builder .selector .action-remove{ right: 0; }
+.query-builder .selector .action-add {
   right: 26px;
 }
 
-.query-builder--selector-group--selector .action-add .icon{
+.query-builder .selector .action-add .icon{
   background: #6a6a6a;
 	font-size: 10px;
 	border-radius: 100%;
@@ -998,41 +1023,34 @@ td.q {
 
 }
 
-.query-builder--selector-group--selector .action-add:hover .icon{
+/*
+.query-builder .selector .action-add:hover .icon{
 	background: #333;
 	color: white;
 }
-
-.query-builder--selector-group--selector .actions .action-show-index{
+*/
+.query-builder .selector .actions .action-show-index{
 	right: 64px;
 	-webkit-font-smoothing: none;  
 }
 
-.query-builder--selector-group--selector .field select,
-.query-builder--selector-group--selector .field input{
+.query-builder .selector .field select,
+.query-builder .selector .field input{
 	border-radius: 0;
 	min-height: 32px;
 	height: 32px;
 	font-size: 0.85em;
 }
 
-.query-builder--selector-group--selector .field--boolean-operator{
+.query-builder .selector .field--boolean-operator{
 	position: absolute;
 	left: 4px;
 	width: 72px;
 }
 
-.query-builder .query-builder--selector-group--selector{
-  margin-bottom: 2px;
-  background: #eee;
-  padding: 4px;
-  padding-left: 264px;
-  padding-right: 68px;
-  max-width: none;
-  position: relative;
-}
 
-.query-builder--selector-group--selector .field--field-type{
+
+.query-builder .selector .field--field-type{
 	position: absolute;
 	left: 80px;
 	width: 184px;
