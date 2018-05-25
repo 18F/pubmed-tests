@@ -73,34 +73,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b1af24ea35b0.
     
     document.addEventListener("DOMContentLoaded", function() {
       // Make history items pop into query box.
-      var historyItems = document.querySelectorAll('.use-q');
-      var historyAddItems = document.querySelectorAll('.add-q');
-      // .use-q: replace current query
-      for (i = 0; i < historyItems.length; ++i) {
-        historyItems[i].addEventListener("click", function(e){
-          searchInput.value = this.parentElement.nextElementSibling.innerHTML;
-        });
-      }
-      for (i = 0; i < historyAddItems.length; ++i) {
-        historyAddItems[i].addEventListener("click", function(e){
-          searchInput.value += ' AND ' + this.parentNode.nextElementSibling.innerHTML;
-        });
-      }
-      // make history download "work"
-      document.getElementById('history-download').addEventListener("click", function(e){
-        alert("Your download would be happening now if this weren't a prototype.");
-      });
-      // Make history clear "work"
-      document.getElementById('history-clear').addEventListener("click", function(e){
-        document.getElementById('history-body').innerHTML =
-          '<tr><td>1</td><td class="q"></td><td></td><td></td></tr>'
-      });
-      /*
-      document.querySelector('.build-query').addEventListener("click", function(e) {
-        e.preventDefault();
-        buildQuery();
-      });
-      */
+     
 
       // Yeah, we're totally cheating and dropping down to jquery for the event delegation.
       $(document).on( "change", '.selector select', buildQuery);

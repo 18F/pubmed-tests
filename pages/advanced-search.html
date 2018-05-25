@@ -8,18 +8,18 @@ layout: default
   <div class="wrapper">
     <h1>Advanced search</h1>
     <div class="advanced-search--primary-controls">
-      <section class="query-preview">
-        <form action="#">
-          <label for="query">Query</label>
-          <textarea name="query" id="" cols="30" rows="4" placeholder="Type a search, or use the builder below to get started." disabled></textarea>
-          <div class="actions query-preview--actions">
-            <button class="action action--search">Search</button>
-            <button class="action action--show-details">Show details</button>
-            <button class="action action--add-to-history">Add to history</button>
-            <button class="action action--edit-query">Edit</button>
-          </div>
-        </form>
-      </section>
+      <form action="/search/results" class="query-preview">
+        <div>
+          <label for="search-input-textarea">Query</label>
+          <textarea name="query" id="search-input-textarea" cols="30" rows="4" placeholder="Type a search, or use the builder below to get started."></textarea>
+        </div>
+        <div class="actions query-preview--actions">
+          <button class="action add-to-history" type="submit">Search</button>
+          <button class="action action--show-details">Show details</button>
+          <button class="action add-to-history" type="button">Add to history</button>
+          <button class="action action--edit-query">Edit</button>
+        </div>
+      </form>
       <section class="query-builder">
         <h1>Builder</h1>
         <form action="#">
@@ -365,9 +365,8 @@ layout: default
         <p>For more information about a search, enter a query above and click &ldquo;show details.&rdquo;</p>
       </section>
     </div>
-    <section class="search-history">
-      <h1>History</h1>
-      <p>Your history is currently empty! As you use PubMed, your recent queries will show up here to help you build more focused searches.</p>
-    </section>
+    
+    {% include components/search-history.html %}
+
   </div>
 </main>

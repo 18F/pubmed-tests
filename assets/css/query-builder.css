@@ -278,11 +278,13 @@ td.important {
     background-color: #fff8c3;
 }
 
+/*
 table {
     width: 100%;
     table-layout: fixed;
     margin-bottom: 1em;
 }
+
 table td,
 th {
     border: 1px solid #ddd;
@@ -292,15 +294,17 @@ th {
 th {
     text-align: left;
 }
+
 td .time {
     display: block;
     font-size: 14px;
     padding-top: 1px;
 }
+
 .is-blank {
     color: #aaa;
 }
-
+*/
 /* @end */
 /* @group forms */
 
@@ -317,6 +321,11 @@ fieldset {
 body:not(:-moz-handler-blocked) fieldset {
     display: table-cell;
 }
+
+/*
+
+Let's not override more than we need to.
+
 input[type=tel],
 input[type=text],
 input[type=date],
@@ -343,6 +352,7 @@ input[type=checkbox] {
     outline: none;
     border: none;
 }
+*/
 
 .field-select select {
     min-width: 0;
@@ -375,6 +385,7 @@ input[type=checkbox] {
 .field--select:hover::after {
     border-top-color: #888;
 }
+/*
 textarea {
     display: block;
     width: 100%;
@@ -387,7 +398,7 @@ textarea[disabled] {
 	background: #f8f8f8;
 	border-color: #ccc;
 }
-
+*/
 button,
 .button {
     background: none;
@@ -507,7 +518,6 @@ fieldset > legend,
 }
 .field input:focus,
 .field select:focus,
-.field textarea:focus,
 .field.field-checkbox.is-focused label,
 .field.field-radio.is-focused label {
     border-color: #1188ff;
@@ -544,10 +554,12 @@ div.field.field-checkbox+.is-branch {
 div.field.is-error .label-text {
     color: #a73856;
 }
+/*
 div.field.is-error input,
 div.field.is-error textarea {
     border-color: #ce6246;
 }
+*/
 div.field.is-error .error-text,
 fieldset.fieldset-radio.is-error .error-text {
     color: #990017;
@@ -642,7 +654,7 @@ fieldset.fieldset-radio.is-error .error-text {
 
 
 .query-builder fieldset legend,
-.query-builder .field label .label-text{
+.query-builder .field label .label-text, {
  position: absolute; left: -9999em;  
 }
 
@@ -766,24 +778,35 @@ span.boolean-label {
 	padding: 0.75rem;
 }
 
-.history-controls,
-#query-builder .actions {
-	width: 5em;
+.history-controls {
+	width: 6em;
 }
 
-
-#search-history tbody button,
-#query-builder .actions button,
-#search-manager .history-controls button {
+#search-history tbody button {
 	margin: 0 0.125em;
 	padding: 0;
 	background: transparent;
 }
 
+#search-history { 
+	margin-bottom: 1em;
+	font-size: 0.85em 
+}
+#search-history caption {
+	text-align: left;
+	font-weight: bold;
+}
+#search-history .q { width: 85%; }
+#search-history .num {
+	text-align: right;
+}
+
+/* Why is this pointer? They're not actionable? 
+   What were we thinking?
 td.q {
 	cursor: pointer;
 }
-
+*/
 /* Search manager */
 #search-manager .history-controls button {
 	white-space: nowrap;
@@ -800,21 +823,27 @@ input.term-input.tt-input[readonly] {
 	opacity: 50%
 }
 
-
 .search1-input-form [data-trigger] {
 	display: none;
-}
-#search-input-textarea {
-	width: 100%;
-	max-width: 100%;
 }
 .search-btn[type="submit"] {
 	float: right;
 }
 
+
+
+
+
+/* Override normal pubmed textarea handling */
+#search-input-textarea {
+	width: 100%;
+	max-width: 100%;
+	margin: 0;
+}
+
+
+
 /* @group search details + history */
-
-
 
 .search-details,
 .search-history{  
@@ -1091,6 +1120,7 @@ margin-bottom: 8em;
 
 /* @group query-preview */
 
+/*
 .layout--advanced-search .wrapper > h1{
   font-size: 20px;
   font-weight: 600;
@@ -1098,17 +1128,30 @@ margin-bottom: 8em;
   margin-bottom: 0.6em;
 }
 
+
 .layout--advanced-search .query-preview{ 
 	padding-right: 200px; 
 	position: relative;
 	margin-bottom: 1.5em;
+}
+*/
+.layout--advanced-search .query-preview { 
+	display: grid;
+	grid-template-columns: calc(100% - 200px) 200px;
+	column-gap: 20px;
+}
+
+/* Overrides a margin set on all submit buttons in pubmed 
+ * for this special case */
+.layout--advanced-search .query-preview [type=submit] {
+	margin: 0;
 }
 
 .layout--advanced-search .query-preview label{
 	position: absolute;
 	left: -9999em;
 }
-
+/* 
 .layout--advanced-search .query-preview textarea{
 	min-height: 112px; 
 }
@@ -1119,7 +1162,7 @@ margin-bottom: 8em;
 	bottom: 0;
 	width: 180px;
 }
-
+*/
 .layout--advanced-search .query-preview .action--search,
 .layout--advanced-search .query-preview .action--show-details,
 .layout--advanced-search .query-preview .action--add-to-history{
@@ -1302,9 +1345,6 @@ margin-bottom: 8em;
 .query-builder--selector-group--selector .actions .action-show-index{
 	right: 60px;
 	-webkit-font-smoothing: none;  
-}
-
-.query-builder--selector-group--selector .actions .action-show-index{
 }
 
 .query-builder--selector-group--selector .field select,
