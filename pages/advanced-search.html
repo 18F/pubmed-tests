@@ -5,9 +5,9 @@ permalink: /advanced-search/
 layout: default
 ---
 <main class="layout--advanced-search">
-  <div class="wrapper">
-    <h1>Advanced search</h1>
-    <div class="advanced-search--primary-controls">
+    <div class="advanced-search--primary-controls usa-grid">
+      <h1>Advanced search</h1>
+
       <form action="/search/results" class="query-preview">
         <div class="query-preview-textarea">
           <label for="search-input-textarea">Query</label>
@@ -16,11 +16,16 @@ layout: default
         </div>
         <div class="actions query-preview--actions">
           <button class="action add-to-history" type="submit">Search</button>
-          <button class="action action--show-details">Show details</button>
+          <button class="action action-show-details" type="button">Show details</button>
           <button class="action add-to-history" type="button">Add to history</button>
         </div>
       </form>
+
       <section class="query-builder">
+
+        {% include components/advanced-query-builder.html %}
+
+        <!--
         <h1>Builder</h1>
         <form action="#">
           <fieldset class="query-builder--selector-group">
@@ -359,10 +364,13 @@ layout: default
           </fieldset>
           <button class="action action-add-another-group">Add another group</button>
         </form>
+        -->
       </section>
-      <section class="search-details">
-        <h1>Details</h1>
+
+      <details id="search-details">
+        <summary>Search details</summary>
         <p>For more information about a search, enter a query above and click &ldquo;show details.&rdquo;</p>
+
         <dl>
           <dt class="search-details--results">Results</dt>
           <dd class="search-details--results">1,946</dd>
@@ -372,7 +380,7 @@ layout: default
       </section>
     </div>
     
-    {% include components/search-history.html %}
-
-  </div>
+    <div id="search-history-wrapper">
+      {% include components/search-history.html %}
+    </div>
 </main>
