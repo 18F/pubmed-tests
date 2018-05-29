@@ -132,7 +132,17 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById('history-clear').addEventListener("click", function(e){
     searchTableBody.innerHTML = emptySearchRow;
   });
-  // Toggle search readonly state
+  // Set up and toggle advanced search readonly state
+  var editButtonElem = document.createElement('template');
+  var editButton = `
+    <button type="button" class="action action--edit-query" id="edit-query-button">
+      Edit
+    </button>
+  `;
+  editButtonElem.innerHTML = editButton.trim();
+  searchInput.after(editButtonElem.content.firstChild);
+  searchInput.setAttribute('readonly', 'readonly');
+  // now add toggle listener
   document.getElementById('edit-query-button').addEventListener("click", function(e){
     if (searchInput.hasAttribute('readonly') == true) {
       searchInput.removeAttribute('readonly');
@@ -145,6 +155,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Show search details
   // TO-DO: Handle empty query string
   // TO-DO: mock details from current query
+  // TO-DO: Hide or change on query change, since current search isn't valid anymore
   var searchDetails = document.getElementById('search-details');
   document.querySelector('.action-show-details').addEventListener("click", function(e){
     searchDetails.open = true;
