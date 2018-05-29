@@ -709,7 +709,7 @@ WYSIWYG Styles
 /* @group .layout--wysiwyg */
 
 .layout--wysiwyg .wrapper > h1{
-  font-size: 24px;  
+  font-size: 20px;  
 }
 
 .layout--wysiwyg .query-builder h1{
