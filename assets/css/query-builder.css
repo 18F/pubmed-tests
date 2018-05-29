@@ -88,7 +88,7 @@
   content: "download";
 }
 
-.action-use-query .icon::before{
+.action--use-query .icon::before{
   content: "search";  
 }
 
@@ -686,12 +686,12 @@ td.history-controls{ width: 114px; }
   text-align: center;
 }
 
-.search-history table .action-use-query .icon{ 
+.search-history table .action--use-query .icon{ 
   position: relative;
   left: -2px;
 }
 
-.search-history .action.action-use-query{ border-radius: 3px 0 0 3px; }
+.search-history .action.action--use-query{ border-radius: 3px 0 0 3px; }
 .search-history .action.action--edit-query{ 
   border-radius: 0; 
   border-left: none;
