@@ -13,8 +13,8 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/9457fcbfaee2.
       <form action="/search/results" class="query-preview">
         <div class="query-preview-textarea">
           <label for="search-input-textarea">Query</label>
-          <textarea name="query" id="search-input-textarea" cols="30" rows="4" placeholder="Type a search, or use the builder below to get started."></textarea>
-          <button class="action action-edit-query">Edit</button>
+          <textarea name="query" readonly="readonly" id="search-input-textarea" cols="30" rows="4" placeholder="Type a search, or use the builder below to get started."></textarea>
+          <button type="button" class="action action-edit-query" id="edit-query-button">Edit</button>
         </div>
         <div class=" query-preview--actions">
           <button class="action add-to-history" type="submit">Search</button>
