@@ -59,8 +59,18 @@
     <label for="id-search-term-{{ num }}">Search for</label>
     <input name="search-term-{{ num }}" id="id-search-term-{{ num }}" placeholder="For..." />
     </div>
-    <div class="actions">
-        <button type="button" class="field-add" title="add a row">&#10133;</button>
-        <button type="button" class="field-remove" title="remove this row">&#128465;</button>
-    </div>
+  <div class="actions">
+    <button type="submit" class="action action--show-index">
+      <span class="icon icon--action-show-index"></span>
+      <span class="label-text">Show index</span>
+    </button>
+    <button type="submit" class="action action--add-selector field-add">
+      <span class="icon icon--action-add"></span>
+      <span class="label-text">Add new selector</span>
+    </button>
+    <button type="submit" class="action action--remove-selector field-remove">
+      <span class="icon icon--action-remove"></span>
+      <span class="label-text">Remove this selector</span>
+    </button>
+  </div>
 </div>
