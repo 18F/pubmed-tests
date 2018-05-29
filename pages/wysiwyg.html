@@ -99,26 +99,14 @@ layout: default
         </div>
       </section>
       <section class="query-builder--preview">
-        <form action="#">
-          <div class="field field--textarea">
-            <label for="query">Query</label>
-            <textarea name="query" id="" cols="30" rows="1" placeholder="Type a search, or use the tools above to get started."></textarea>            
-          </div>
-          <div class="actions query-preview--actions">
-            <button class="action action--search">Search</button>
-            <button class="action action--show-details">Show details</button>
-            <button class="action action--add-to-history">Add to history</button>
-          </div>
-        </form>
+          {% include components/query-preview-form.html %}
       </section>
     </section>
-    <section class="search-details">
-      <h1>Details</h1>
-      <p>For more information about a search, enter a query above and click &ldquo;show details.&rdquo;</p>
-    </section>
-    <section class="search-history">
-      <h1>History</h1>
-      <p>Your history is currently empty! As you use PubMed, your recent queries will show up here to help you build more focused searches.</p>
-    </section>
+
+    {% include components/search-details.html %}
+    
+    <div id="search-history-wrapper">
+      {% include components/search-history.html %}
+    </div>
   </div>
 </main>

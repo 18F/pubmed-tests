@@ -469,6 +469,18 @@ input.term-input.tt-input[readonly] {
 	max-width: 100%;
 	min-height: 150px;
 	margin: 0;
+	color: #000;
+	border-color: #369;
+	border-width: 2px;
+	background: #fff;
+}
+#search-input-textarea[readonly] {
+	color: #888;
+	border-color: #888;
+	background: #f6f6f6;
+}
+#search-input-textarea[readonly]:focus {
+	outline: 0;
 }
 
 /* @group search details + history */

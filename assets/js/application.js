@@ -144,6 +144,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Show search details
   // TO-DO: Handle empty query string
+  // TO-DO: mock details from current query
   var searchDetails = document.getElementById('search-details');
   document.querySelector('.action-show-details').addEventListener("click", function(e){
     searchDetails.open = true;
