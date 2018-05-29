@@ -97,7 +97,7 @@
 }
 
 .action-search-history-clear .icon::before,
-.action-remove-query .icon::before,
+.action--remove-query .icon::before,
 .action-remove .icon::before,
 .icon-minus::before {
   content: "bin";
@@ -697,9 +697,9 @@ td.history-controls{ width: 114px; }
   border-left: none;
   border-right: none;;
 }
-.search-history .action.action-remove-query{ border-radius: 0 3px 3px 0; }
+.search-history .action.action--remove-query{ border-radius: 0 3px 3px 0; }
 .search-history table .action--edit-query .icon{ margin-left: -3px; }
-.search-history table .action-remove-query .icon{ margin-left: -2px; }
+.search-history table .action--remove-query .icon{ margin-left: -2px; }
 
 /* @end */
 
