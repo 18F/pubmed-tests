@@ -363,17 +363,62 @@ layout: default
       <section class="search-details">
         <h1>Details</h1>
         <p>For more information about a search, enter a query above and click &ldquo;show details.&rdquo;</p>
+        <span class="notice">
+          <span class="label-text">Loading&hellip;</span>
+          <span class="icon icon-loading"></span>
+        </span>
         <dl>
           <dt class="search-details--results">Results</dt>
           <dd class="search-details--results">1,946</dd>
           <dt class="search-details--search-expansion">Search expansion</dt>
-          <dd class="search-details--search-expansion">"myocardial infarction"[MeSH Terms] OR ("myocardial"[All Fields] AND "infarction"[All Fields]) OR "myocardial infarction"[All Fields] OR ("heart"[All Fields] AND "attack"[All Fields]) OR "heart attack"[All Fields]</dd>          
+          <dd class="search-details--search-expansion">"myocardial infarction"[MeSH Terms] OR ("myocardial"[All Fields] AND "infarction"[All Fields]) OR "myocardial infarction"[All Fields] OR ("heart"[All Fields] AND "attack"[All Fields]) OR "heart attack"[All Fields]</dd>
         </dl>
       </section>
     </div>
     <section class="search-history">
       <h1>History</h1>
       <p>Your history is currently empty! As you use PubMed, your recent queries will show up here to help you build more focused searches.</p>
+      <h1>History</h1>
+      <div class="search-history--actions actions">
+        <button id="history-download" class="action action-search-history-download">
+          <span class="icon"></span>
+          <span class="label-text">Download</span>
+        </button>
+        <button id="history-clear" class="action action-search-history-clear">
+          <span class="icon icon-history-clear"></span>
+          <span class="label-text">Clear</span>
+        </button>
+      </div>
+      <table>
+        <caption>Search history</caption>    
+        <thead>
+          <tr>
+            <th class="q">Query</th>
+            <th class="num">Results</th>
+            <th class="history-controls">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="search-table-body">
+          <tr>
+            <td class="q">References for PMC Articles for PubMed (Select 29381688)</td>
+            <td class="num"><a href="#" title="Results for this query">33</a></td>
+            <td class="history-controls">
+              <button type="button" class="action use-q action-use-query" title="Use this query">
+                <span class="icon"></span>
+                <span class="label-text">Use this query</span>
+              </button>
+              <button type="button" class="action action-edit-query edit-q" title="Edit this query">
+                <span class="icon"></span>
+                <span class="label-text">Edit this query</span>
+              </button>
+              <button type="button" class="action action-remove-query rm-q" title="Remove this query">
+                <span class="icon"></span>
+                <span class="label-text">Remove this query</span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </section>
   </div>
 </main>

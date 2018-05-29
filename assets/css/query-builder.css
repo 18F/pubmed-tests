@@ -1,5 +1,43 @@
 /* @override http://localhost:4000/assets/css/query-builder.css */
 
+/* @override http://localhost:4000/assets/css/query-builder.css */
+
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.rotating {
+  -webkit-animation: rotating 2s linear infinite;
+  -moz-animation: rotating 2s linear infinite;
+  -ms-animation: rotating 2s linear infinite;
+  -o-animation: rotating 2s linear infinite;
+  animation: rotating 2s linear infinite;
+}
+
 
 /* @group bootstrap */
 
@@ -23,77 +61,83 @@
 
 /* @group icomoon */
 
-	@font-face {
-	  font-family: 'icomoon';
-	  src:  url('fonts/icomoon.eot?pzxgum');
-	  src:  url('fonts/icomoon.eot?pzxgum#iefix') format('embedded-opentype'),
-	    url('fonts/icomoon.ttf?pzxgum') format('truetype'),
-	    url('fonts/icomoon.woff?pzxgum') format('woff'),
-	    url('fonts/icomoon.svg?pzxgum#icomoon') format('svg');
-	  font-weight: normal;
-	  font-style: normal;
-	}
-	
-	.icon {
-	  /* use !important to prevent issues with browser extensions that change fonts */
-	  font-family: 'icomoon' !important;
-	  speak: none;
-	  font-style: normal;
-	  font-weight: normal;
-	  font-variant: normal;
-	  text-transform: none;
-	  line-height: 1;
-	  
-	  /* Enable Ligatures ================ */
-	  letter-spacing: 0;
-	  -webkit-font-feature-settings: "liga";
-	  -moz-font-feature-settings: "liga=1";
-	  -moz-font-feature-settings: "liga";
-	  -ms-font-feature-settings: "liga" 1;
-	  font-feature-settings: "liga";
-	  -webkit-font-variant-ligatures: discretionary-ligatures;
-	  font-variant-ligatures: discretionary-ligatures;
-	
-	  /* Better Font Rendering =========== */
-	  -webkit-font-smoothing: normal;
-	  -moz-osx-font-smoothing: grayscale;
-	}	
-	
-	.action .icon {
-	  /* use !important to prevent issues with browser extensions that change fonts */
-	  font-family: 'icomoon' !important;
-	  speak: none;
-	  font-style: normal;
-	  font-weight: normal;
-	  font-variant: normal;
-	  text-transform: none;
-	  line-height: 1;
-	
-	  /* Better Font Rendering =========== */
-	  -webkit-font-smoothing: antialiased;
-	  -moz-osx-font-smoothing: grayscale;
-	}
-	
-	.action-show-index .icon::before {
-	  content: "book";
-	}
-
-	.action-add .icon::before,
-	.icon-plus::before {
-	  content: "\add";
-	}
-	
-	.action-remove .icon::before,
-	.icon-minus::before {
-	  content: "bin";
-	}
-
-/*********
-.usa-skipnav{
-  position: absolute;
-  top: -9999em;
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?h4uqaa');
+  src:  url('fonts/icomoon.eot?h4uqaa#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?h4uqaa') format('truetype'),
+    url('fonts/icomoon.woff?h4uqaa') format('woff'),
+    url('fonts/icomoon.svg?h4uqaa#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
-**************/
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  -moz-osx-font-smoothing: grayscale;
+}	
+.action .icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+	
+.action-show-index .icon::before {
+  content: "book";
+}
+
+.action-add .icon::before,
+.icon-plus::before {
+  content: "\add";
+}
+
+.action-search-history-download .icon::before{
+  content: "download";
+}
+
+.action-use-query .icon::before{
+  content: "search";  
+}
+
+.action-edit-query .icon::before{
+  content: "edit";  
+}
+
+.action-search-history-clear .icon::before,
+.action-remove-query .icon::before,
+.action-remove .icon::before,
+.icon-minus::before {
+  content: "bin";
+  -webkit-font-smoothing: antialiased;
+}
+
 /* @end */
 /* @end */
 /* @group tables */
@@ -115,19 +159,15 @@ table {
     table-layout: fixed;
     margin-bottom: 1em;
 }
-table td,
-th {
+
+table th,
+table td{
     border: 1px solid #ddd;
     padding: 6px 8px 8px;
     line-height: 1.2em;
 }
 th {
     text-align: left;
-}
-td .time {
-    display: block;
-    font-size: 14px;
-    padding-top: 1px;
 }
 .is-blank {
     color: #aaa;
@@ -503,33 +543,6 @@ fieldset.fieldset-radio.is-error .error-text {
 }
 /* @end */
 
-/* Search manager */
-#search-manager .history-controls button {
-	white-space: nowrap;
-	color: #222;
-	font-weight: normal;
-    font-size: 14px;
-}
-#search-manager .query-stack div {
-	width:33%;
-	display: inline-block;
-}
-
-input.term-input.tt-input[readonly] {
-	opacity: 50%
-}
-
-
-.search1-input-form [data-trigger] {
-	display: none;
-}
-#search-input-textarea {
-	width: 100%;
-	max-width: 100%;
-}
-.search-btn[type="submit"] {
-	float: right;
-}
 
 /* @group search details + history */
 
@@ -590,10 +603,9 @@ margin-bottom: 8em;
 	max-width: 50em;
 }
 
-/* History */
-#search-history th,
-#search-history td {
-	padding: 0.75rem;
+.search-history th,
+.search-history td {
+	padding: 8px;
 }
 
 .history-controls,
@@ -602,17 +614,104 @@ margin-bottom: 8em;
 }
 
 
-#search-history tbody button,
-#query-builder .actions button,
-#search-manager .history-controls button {
+.search-history table{
+  table-layout: fixed;
+}
+.search-history tbody button {
 	margin: 0 0.125em;
 	padding: 0;
-	background: transparent;
 }
 
 td.q {
 	cursor: pointer;
 }
+
+th.num,
+td.num{ width: 8em; }
+
+th.history-controls,
+td.history-controls{ width: 114px; }
+
+.search-history > h1,
+.search-history--actions{
+	display: inline-block;  
+}
+
+.search-history--actions{
+	padding-left: 0.4em;
+	position: relative;
+	top: 12px;
+}
+
+.search-history--actions::after{
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.search-history .action{
+  border: 1px solid #aaa;
+  background-color:#f8f8f8;
+  background: linear-gradient(#fff, #eee);
+  font: inherit;
+  height: 32px;
+  line-height: 30px;
+  color: inherit;
+  font-size: 0.85em;
+  font-weight: 600;
+  padding: 0 12px;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 #f8f8f8;
+  margin: 0;
+  float: left;
+}
+
+.search-history .action:hover{
+  border-color: #999;
+  box-shadow: 0 1px 0 #f3f3f3;
+}
+
+.search-history .action:active{
+  background-color:#eee;
+  background: linear-gradient(#eee, #f8f8f8);
+  box-shadow: inset 0 1px 0 rgba(0,0,0,0.08), inset 0 -1px 0 rgba(255,255,255,0.125);
+  color: #888;
+}
+
+.search-history--actions .action-search-history-download{
+	border-radius: 3px 0 0 3px;
+}
+
+.search-history--actions .action-search-history-clear{
+	border-radius: 0 3px 3px 0;
+	border-left: 0;
+}
+
+.search-history caption,
+.search-history .history-controls .label-text{
+  position: absolute;
+  left: -9999em;
+}
+
+.search-history table .action{
+	width: 32px;
+	text-align: center;
+}
+
+.search-history table .action-use-query .icon{ 
+	position: relative;
+	left: -2px;
+}
+
+.search-history .action.action-use-query{ border-radius: 3px 0 0 3px; }
+.search-history .action.action-edit-query{ 
+	border-radius: 0; 
+	border-left: none;
+	border-right: none;;
+}
+.search-history .action.action-remove-query{ border-radius: 0 3px 3px 0; }
+.search-history table .action-edit-query .icon{ margin-left: -3px; }
+.search-history table .action-remove-query .icon{ margin-left: -2px; }
 
 /* @end */
 
