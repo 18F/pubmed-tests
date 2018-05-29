@@ -217,18 +217,23 @@ input[type=checkbox] {
 .field--select:hover::after {
     border-top-color: #888;
 }
+/* This needs to be scoped, if it's needed at all.
+ * It appears to mostly duplicate existing styles 
+*/
 textarea {
     display: block;
     width: 100%;
     max-width: 40em;
-    line-height: 1.25;
-    color: #333;
+	line-height: 1.25;
 }
 
+/* We don't have a disabled textarea. 
+* this should be removeable 
 textarea[disabled] {
 	background: #f8f8f8;
 	border-color: #ccc;
 }
+*/
 
 button,
 .button {
@@ -954,7 +959,8 @@ WYSIWYG Styles
 
 /* @group .layout--advanced-search */
 
-.layout--advanced-search .advanced-search--primary-controls{
+/* Override default pubmed usa-grid handling on this page. */
+.layout--advanced-search .usa-grid{
 	padding: 20px 0;
 }
 

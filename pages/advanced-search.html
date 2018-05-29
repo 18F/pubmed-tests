@@ -7,21 +7,18 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/9457fcbfaee2.
 
 ---
 <main class="layout--advanced-search">
-  <div class="wrapper">
-    <div class="advanced-search--primary-controls">
-      <h1>Advanced search</h1>
+  <div class="advanced-search--primary-controls usa-grid">
+    <h1>Advanced search</h1>
 
-      {% include components/query-preview-form.html %}
+    {% include components/query-preview-form.html %}
 
-      <section class="query-builder">
-        {% include components/advanced-query-builder.html %}
-      </section>
-      {% include components/search-details.html %}
-
-    </div>
-    
-    <div id="search-history-wrapper">
-      {% include components/search-history.html %}
-    </div>    
+    <section class="query-builder">
+      {% include components/advanced-query-builder.html %}
+    </section>
+    {% include components/search-details.html %}
   </div>
+  
+  <div id="search-history-wrapper" class="usa-grid">
+    {% include components/search-history.html %}
+  </div>    
 </main>
