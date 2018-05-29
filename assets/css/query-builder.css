@@ -4,27 +4,6 @@
 
 /* @override http://localhost:4000/assets/css/query-builder.css */
 
-
-/* @group bootstrap */
-
-.wrapper {
-    width: 95%;
-    max-width: 960px;
-    margin: 0 auto;
-    position: relative;
-}
-
-@media screen and (min-width: 568.88) {
-    .wrapper {
-        width: 90%;
-    }
-}
-.wrapper::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
 /* @group icomoon */
 
 @font-face {
@@ -110,10 +89,7 @@
 
 /* @group tables */
 
-th {
-    background-color: #eee;
-    font-weight: 600;
-}
+/* I don't think these are used and can safely be removed 
 tr.archived .status {
     color: #999;
     font-weight: 600;
@@ -121,26 +97,31 @@ tr.archived .status {
 td.important {
     background-color: #fff8c3;
 }
+*/
 
+/* blanket table overrides.
+ * TO-DO: Double check against pubmed styles */
 table {
     width: 100%;
     table-layout: fixed;
-    margin-bottom: 1em;
+}
+th {
+    background-color: #eee;
+	font-weight: 600;
+	text-align: left;
 }
 
 table th,
 table td{
     border: 1px solid #ddd;
-    padding: 6px 8px 8px;
-    line-height: 1.2em;
+    padding: 8px;
 }
-th {
-    text-align: left;
-}
+
+/* Unused???? Safe for removal? 
 .is-blank {
     color: #aaa;
 }
-
+*/
 /* @end */
 
 
@@ -530,7 +511,7 @@ fieldset.fieldset-radio.is-error .error-text {
 }
 #search-input-textarea[readonly] {
 	color: #888;
-	border-color: #888;
+	border-color: #aaa;
 	background: #f6f6f6;
 }
 #search-input-textarea[readonly]:focus {
@@ -541,28 +522,9 @@ fieldset.fieldset-radio.is-error .error-text {
 /* @group search details + history */
 
 
-.search-details,
-.search-history{  
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-.search-history{ 
-margin-bottom: 8em; 
-}
-
-.search-details h1,
-.search-history h1{
-  font-weight: 500;
-  font-size: 1em;
-  line-height: 1.2em;
-  margin-bottom: 0.4em;
-}
-
 .search-details p,
 .search-details dt,
-.search-details dd,
-.search-history p{
+.search-details dd {
   max-width: 30em;
   line-height: 1.33em;
   font-style: inherit;
@@ -596,53 +558,23 @@ margin-bottom: 8em;
   max-width: 50em;
 }
 
-.search-history th,
-.search-history td {
-  padding: 8px;
+#query-builder .actions { width: 5em; }
+
+
+/* Search history table */
+.search-history table {
+	margin: 0 0 1em; /* Required pubmed override */
+}
+/* Numeric cells should always be right-aligned */
+.num { 
+   width: 5em;
+   text-align: right;
 }
 
-.history-controls,
-#query-builder .actions {
-  width: 5em;
-}
+.history-controls { width: 114px; }
 
 
-.search-history table{
-  table-layout: fixed;
-}
-.search-history tbody button {
-  margin: 0 0.125em;
-  padding: 0;
-}
-
-td.q {
-  cursor: pointer;
-}
-
-th.num,
-td.num{ width: 8em; }
-
-th.history-controls,
-td.history-controls{ width: 114px; }
-
-.search-history > h1,
-.search-history--actions{
-  display: inline-block;  
-}
-
-.search-history--actions{
-  padding-left: 0.4em;
-  position: relative;
-  top: 12px;
-}
-
-.search-history--actions::after{
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.search-history .action{
+.search-history button {
   border: 1px solid #aaa;
   background-color:#f8f8f8;
   background: linear-gradient(#fff, #eee);
@@ -657,38 +589,25 @@ td.history-controls{ width: 114px; }
   box-shadow: 0 1px 0 #f8f8f8;
   margin: 0;
   float: left;
+  width: 32px;
+  text-align: center;
 }
 
-.search-history .action:hover{
+.search-history button:hover{
   border-color: #999;
   box-shadow: 0 1px 0 #f3f3f3;
 }
 
-.search-history .action:active{
+.search-history button:active{
   background-color:#eee;
   background: linear-gradient(#eee, #f8f8f8);
   box-shadow: inset 0 1px 0 rgba(0,0,0,0.08), inset 0 -1px 0 rgba(255,255,255,0.125);
   color: #888;
 }
 
-.search-history--actions .action-search-history-download{
-  border-radius: 3px 0 0 3px;
-}
-
-.search-history--actions .action-search-history-clear{
-  border-radius: 0 3px 3px 0;
-  border-left: 0;
-}
-
-.search-history caption,
 .search-history .history-controls .label-text{
   position: absolute;
   left: -9999em;
-}
-
-.search-history table .action{
-  width: 32px;
-  text-align: center;
 }
 
 .search-history table .action--use-query .icon{ 
@@ -700,11 +619,18 @@ td.history-controls{ width: 114px; }
 .search-history .action.action--edit-query{ 
   border-radius: 0; 
   border-left: none;
-  border-right: none;;
+  border-right: none;
 }
 .search-history .action.action--remove-query{ border-radius: 0 3px 3px 0; }
 .search-history table .action--edit-query .icon{ margin-left: -3px; }
 .search-history table .action--remove-query .icon{ margin-left: -2px; }
+
+/* Let the history table footer buttons stretch out. */
+.search-history tfoot button {
+	width: auto;
+	margin-left: 1em;
+	float: right;
+}
 
 /* @end */
 
@@ -964,7 +890,8 @@ WYSIWYG Styles
 	padding: 20px 0;
 }
 
-.layout--advanced-search .advanced-search--primary-controls h1{
+.layout--advanced-search .advanced-search--primary-controls h1,
+.search-history caption {
 	text-transform: uppercase;
 	font-size: 14px;
 }
@@ -996,13 +923,10 @@ WYSIWYG Styles
 	left: -9999em;
 }
 
-.layout--advanced-search .query-preview .action--add-to-history:active{
-	color: #888;
-}
-
 .layout--advanced-search .query-preview .action--add-to-history{ bottom: 0; }
 
-.layout--advanced-search .query-preview-textarea {position: relative;}
+.layout--advanced-search .query-preview-textarea { position: relative; }
+.layout--advanced-search .query-preview .action--add-to-history:active{ color: #888; }
 
 .layout--advanced-search .query-preview .action--edit-query,
 .layout--advanced-search .query-preview .action--edit-query:hover{ 
