@@ -2,6 +2,8 @@ function initBody() {
   $('body').removeClass('no-js');
 }
 
+
+
 $(document).ready(function() {
   initBody();
   var radioGroupName;
@@ -38,7 +40,41 @@ document.addEventListener("DOMContentLoaded", function() {
     <tr id="empty-history-row">
       <td colspan="3">You have no history items. Start searching!</td>
     </tr>
-  `;  
+  `;
+
+  function buildQuery() {
+    var output = '';
+    var qbSelectGroups = document.querySelectorAll('.selector-group');
+    // Go through selector groups
+    for (i = 0; i < qbSelectGroups.length; ++i) {
+      
+      // and/or not check
+      if (i > 0) {
+        output += document.querySelector('[name="switch_2"]:checked').value;
+      }
+      // now find all the selectors within this selector groups
+      var selectors = qbSelectGroups[i].querySelectorAll('.selector');
+      for (j = 0; j < selectors.length; ++j) {
+        // first get the term value
+        var termInput = selectors[j].querySelector('input');
+
+        if (termInput.value.length > 0) {
+          if (j > 0) {
+            var booleanSelect = selectors[j].querySelector('.boolean-select');
+            output += " " + booleanSelect.value + " ";
+          }
+          output += '"' +  termInput.value + '"';
+          output += '[' + selectors[j].querySelector('.search-opts').value + ']';
+        }
+      }
+      // if there are multiple selectors in the selector group,
+      // then we have to wrap in parens
+      if (selectors.length > 1) {
+        output = "(" + output + ")";
+      }
+    }
+    searchInput.value = output;
+  }
 
   // Make history items pop into query box.
   // TO-DO: determine whether to add boolean based on existing string
@@ -96,6 +132,15 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById('history-clear').addEventListener("click", function(e){
     searchTableBody.innerHTML = emptySearchRow;
   });
+  // Toggle search readonly state
+  document.getElementById('edit-query-button').addEventListener("click", function(e){
+    if (searchInput.hasAttribute('readonly') == true) {
+      searchInput.removeAttribute('readonly');
+      searchInput.focus();
+    } else {
+      searchInput.setAttribute('readonly', 'readonly');
+    }
+  });
 
   // Show search details
   // TO-DO: Handle empty query string
@@ -104,84 +149,84 @@ document.addEventListener("DOMContentLoaded", function() {
     searchDetails.open = true;
   });
 
+  // Yeah, we're totally cheating and dropping down to jquery for the event delegation.
+  $(document).on( "change", '.selector select', buildQuery);
+  $(document).on( "keyup",  '.selector input', buildQuery);
+
   // Add query row
   // TO-DO: Fix event delegation
   // TO-DO: share newRow template? Copy existing HTML?
   var fieldAdder = document.querySelectorAll('button.field-add');
   var newRow = `
-  <div class="selector">
-  <div>
-  <select class="boolean-select" name="">
-      <option>AND</option>
-      <option>OR</option>
-      <option>NOT</option>
-  </select>
-</div>
-<div>
-<label for="id-search-opts-{{ num }}">Search in</label>
-<select name="search-opts-{{ num }}" id="id-search-opts-{{ num }}">
-  <option value="">Search in...</option>
-  <option>Affiliation</option>
-  <option>All Fields</option>
-  <option>Author</option>
-  <option>Author - Corporate</option>
-  <option>Author - First</option>
-  <option>Author - Full</option>
-  <option>Author - Identifier</option>
-  <option>Author - Last</option>
-  <option>Book</option>
-  <option>Conflict of Interest Statements</option>
-  <option>Date - Completion</option>
-  <option>Date - Create</option>
-  <option>Date - Entrez</option>
-  <option>Date - MeSH</option>
-  <option>Date - Modification</option>
-  <option>Date - Publication</option>
-  <option>EC/RN Number</option>
-  <option>Editor</option>
-  <option>Filter</option>
-  <option>Grant Number</option>
-  <option>ISBN</option>
-  <option>Investigator</option>
-  <option>Investigator - Full</option>
-  <option>Issue</option>
-  <option>Journal</option>
-  <option>Language</option>
-  <option>Location ID</option>
-  <option>MeSH Major Topic</option>
-  <option>MeSH Subheading</option>
-  <option>MeSH Terms</option>
-  <option>Other Term</option>
-  <option>Pagination</option>
-  <option>Pharmacological Action</option>
-  <option>Publication Type</option>
-  <option>Publisher</option>
-  <option>Secondary Source ID</option>
-  <option>Subject - Personal Name</option>
-  <option>Supplementary Concept</option>
-  <option>Text Word</option>
-  <option>Title</option>
-  <option>Title/Abstract</option>
-  <option>Transliterated Title</option>
-  <option>Volume</option>
-</select>
-</div>
-<div>
-<label for="id-search-term-{{ num }}">Search for</label>
-<input name="search-term-{{ num }}" id="id-search-term-{{ num }}" placeholder="For..." />
-</div>
-<div class="actions">
-  <button type="button" class="field-add" title="add a row">&#10133;</button>
-  <button type="button" class="field-remove" title="remove this row">&#128465;</button>
-</div>
-</div>
-      `;
-
-  for (i = 0; i < fieldAdder.length; ++i) {
-    fieldAdder[i].addEventListener("click", function(e) {
-      e.preventDefault();
-      this.parentNode.parentNode.insertAdjacentHTML('afterend', newRow);
-      buildQuery();
-    });
-  }
+    <div class="selector">
+      <div>
+        <select class="boolean-select" name="">
+            <option>AND</option>
+            <option>OR</option>
+            <option>NOT</option>
+        </select>
+      </div>
+      <div>
+        <label for="id-search-opts-{{ num }}">Search in</label>
+        <select class="search-opts" name="search-opts-{{ num }}" id="id-search-opts-{{ num }}">
+          <option value="">Search in...</option>
+          <option>Affiliation</option>
+          <option>All Fields</option>
+          <option>Author</option>
+          <option>Author - Corporate</option>
+          <option>Author - First</option>
+          <option>Author - Full</option>
+          <option>Author - Identifier</option>
+          <option>Author - Last</option>
+          <option>Book</option>
+          <option>Conflict of Interest Statements</option>
+          <option>Date - Completion</option>
+          <option>Date - Create</option>
+          <option>Date - Entrez</option>
+          <option>Date - MeSH</option>
+          <option>Date - Modification</option>
+          <option>Date - Publication</option>
+          <option>EC/RN Number</option>
+          <option>Editor</option>
+          <option>Filter</option>
+          <option>Grant Number</option>
+          <option>ISBN</option>
+          <option>Investigator</option>
+          <option>Investigator - Full</option>
+          <option>Issue</option>
+          <option>Journal</option>
+          <option>Language</option>
+          <option>Location ID</option>
+          <option>MeSH Major Topic</option>
+          <option>MeSH Subheading</option>
+          <option>MeSH Terms</option>
+          <option>Other Term</option>
+          <option>Pagination</option>
+          <option>Pharmacological Action</option>
+          <option>Publication Type</option>
+          <option>Publisher</option>
+          <option>Secondary Source ID</option>
+          <option>Subject - Personal Name</option>
+          <option>Supplementary Concept</option>
+          <option>Text Word</option>
+          <option>Title</option>
+          <option>Title/Abstract</option>
+          <option>Transliterated Title</option>
+          <option>Volume</option>
+        </select>
+      </div>
+      <div>
+        <label for="id-search-term-{{ num }}">Search for</label>
+        <input name="search-term-{{ num }}" id="id-search-term-{{ num }}" placeholder="For..." />
+      </div>
+      <div class="actions">
+        <button type="button" class="field-add" title="add a row">&#10133;</button>
+        <button type="button" class="field-remove" title="remove this row">&#128465;</button>
+      </div>
+    </div>`;
+  $(document).on( "click", '.field-add', function(e){
+    e.preventDefault();
+    this.parentNode.parentNode.insertAdjacentHTML('afterend', newRow);
+    buildQuery();
+  });
 });
