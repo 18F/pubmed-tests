@@ -4,6 +4,8 @@
 
 /* @override http://localhost:4000/assets/css/query-builder.css */
 
+/* @override http://localhost:4000/assets/css/query-builder.css */
+
 
 /* @group bootstrap */
 
@@ -24,6 +26,7 @@
     display: table;
     clear: both;
 }
+/* @end */
 
 /* @group icomoon */
 
@@ -75,11 +78,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
   
-.action-show-index .icon::before {
+.action--show-index .icon::before {
   content: "book";
 }
 
-.action-add .icon::before,
+.action--add-selector .icon::before,
 .icon-plus::before {
   content: "\add";
 }
@@ -98,15 +101,12 @@
 
 .action-search-history-clear .icon::before,
 .action--remove-query .icon::before,
-.action-remove .icon::before,
+.action--remove-selector .icon::before,
 .icon-minus::before {
   content: "bin";
-  -webkit-font-smoothing: antialiased;
 }
 
 /* @end */
-/* @end */
-
 
 /* @group tables */
 
