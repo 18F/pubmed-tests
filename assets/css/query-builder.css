@@ -399,6 +399,11 @@ fieldset.fieldset-radio.is-error .error-text {
 #search-history { 
 	padding-bottom: 1em;
 	font-size: 0.85em;
+	padding-left: 0; /* Override usa-grid left padding */
+}
+/* Retain width even if content is cleared */
+#search-history table {
+	width: 100%
 }
 
 #search-history th,
