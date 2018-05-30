@@ -556,7 +556,6 @@ fieldset.fieldset-radio.is-error .error-text {
 
 #query-builder .actions { width: 5em; }
 
-
 /* Search history table */
 .search-history table {
 	margin: 0 0 1em; /* Required pubmed override */
