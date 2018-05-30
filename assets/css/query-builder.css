@@ -247,9 +247,13 @@ button:active,
     background: #981b1e;
     color: white;
 }
+/* Is this actually used???
 form a.a-return + h1 {
     margin-top: 1em !important;
 }
+*/
+
+/* We shouldn't see this. It's an anti-pattern.
 fieldset > p {
     font-size: 14px;
     line-height: 1.4;
@@ -257,6 +261,7 @@ fieldset > p {
     margin-top: 0;
     margin-bottom: 1em;
 }
+*/
 .description-text,
 .p-description-text {
     margin-top: 8px;
@@ -273,8 +278,10 @@ fieldset > p {
     text-decoration: none;
 }
 
+/* Our labels are handled explicitly throughout here.
+ * We should be able to remove this. 
 .field label{ margin: 0; }
-
+*/
 .field .help-text,
 .p-customize-timeline {
     font-size: 14px;
@@ -290,6 +297,7 @@ fieldset div.field:last-of-type+fieldset {
     margin-top: 24px;
     margin-bottom: 4px;
 }
+/* We're handling label text on a per-case basis, not globally 
 fieldset > legend,
 .field span.label-text {
     display: block;
@@ -304,6 +312,8 @@ fieldset > legend,
     color: #888;
     cursor: not-allowed;
 }
+*/
+/* We have no radio fields. Probably can remove 
 .field.field-radio {
     display: inline-block;
     vertical-align: middle;
@@ -324,6 +334,9 @@ fieldset > legend,
 .field.field-checkbox input {
     margin-right: 0.4em;
 }
+*/
+
+/* We should be inheriting these styles from pubmed
 .field input:focus,
 .field select:focus,
 .field textarea:focus,
@@ -360,6 +373,7 @@ div.field.field-checkbox+.is-branch {
     margin-left: 3px;
     margin-bottom: 16px;
 }
+*/
 
 /* We'll use pubmed error states as needed
 div.field.is-error .label-text {
@@ -434,18 +448,20 @@ fieldset.fieldset-radio.is-error .error-text {
 
 /* @group .query-builder */
 
+/* UNUSED. REMOVE
 .query-builder.is-active {  display: block; }
 
 .query-builder::after {
 	border-bottom-color: white;
 	margin-bottom: -1px;
 }
-
-.query-builder h1{
+*/
+/* UNUSED. REMOVE
+.query-builder h1 {
 	font-weight: 600;
 	margin-bottom: 0.67em; 
 }
-
+*/
 .query-builder .field-any-all{
   display: inline-block;
   margin: 0;
@@ -466,9 +482,12 @@ fieldset.fieldset-radio.is-error .error-text {
 }
 
 .query-builder fieldset legend,
-.query-builder .field label .label-text{
+.query-builder .selector label {
  position: absolute; left: -9999em;  
 }
+
+/* Pubmed override. DO NOT REMOVE */
+.query-builder .selector input { margin: 0; }
 
 /* @end */
 
@@ -965,10 +984,12 @@ WYSIWYG Styles
 	
 }
 
+/*
 .query-builder .selector-group:last-of-type{ margin-bottom: 0.4em; }
+*/
 
-/* selector fieldsets live within selector groups and wrap
- * a set of query fields
+/* selector fieldsets live within selector groups 
+ * and wrap a set of query fields
 */
 .query-builder .selector {
 	margin-bottom: 2px;
@@ -981,8 +1002,10 @@ WYSIWYG Styles
 	column-gap: 10px;
 }
 
-/* On the first selector, showing the boolean makes no sense. */
-.query-builder .selector:first-of-type .boolean-select,
+/* On the first selector in the first selector group, 
+ * showing the boolean makes no sense. 
+ * We also don't want to be able to delete the first row */
+.query-builder--selector-group:first-of-type .selector:first-of-type .boolean-select,
 .query-builder .selector:first-of-type .field-remove{ display: none; }
 
 /* Override pubmed default. We'll control max with grid */
@@ -1050,11 +1073,12 @@ WYSIWYG Styles
 	left: 7px;
 }
 
+
 .query-builder .query-builder--selector-group +
-.query-builder--selector-group{
-	padding-top: 28px;
+.query-builder--selector-group {
 	position: relative;
 }
+
 
 .query-builder .query-builder--selector-group +
 .query-builder--selector-group .fieldset--boolean-operator{
@@ -1138,14 +1162,10 @@ WYSIWYG Styles
 	width: 72px;
 }
 
-
-
 .query-builder .selector .field--field-type{
 	position: absolute;
 	left: 80px;
 	width: 184px;
 }
-
-
 
 /* @end */

@@ -13,7 +13,11 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/9457fcbfaee2.
     {% include components/query-preview-form.html %}
 
     <section class="query-builder">
-      {% include components/advanced-query-builder.html %}
+      <h1>Query builder</h1>
+      <form action="." method="get">
+        {% include components/advanced-query-builder.html %}
+        <button class="selector-row-add" type="button">Add another group</button>
+      </form>
     </section>
     {% include components/search-details.html %}
   </div>
