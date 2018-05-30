@@ -517,6 +517,7 @@ fieldset.fieldset-radio.is-error .error-text {
 
 /* @group search details + history */
 
+.layout--advanced-search .search-details { margin: 2em 0 0; }
 
 .search-details p,
 .search-details dt,
@@ -525,16 +526,15 @@ fieldset.fieldset-radio.is-error .error-text {
   line-height: 1.33em;
   font-style: inherit;
   font-size: 0.85em;
-  margin: 0;
-  margin-bottom: 0.7em;
+  margin: 0.75em 0;
 }
 
 .search-details dt {
   font-weight: 600;
-  padding-top: 1em;
+  padding-top: 0.75em;
 }
 
-.search-details dl{
+.search-details dl {
   border-left: 2px solid #ccc;
   padding-left: 0.8em; 
 }
@@ -551,7 +551,7 @@ fieldset.fieldset-radio.is-error .error-text {
 .search-details dd.search-details--search-expansion{
   font-family: Consolas, "Courier New", Courier, mono;
   font-size: 12px;
-  max-width: 50em;
+  max-width: 60em;
 }
 
 #query-builder .actions { width: 5em; }
@@ -905,12 +905,6 @@ WYSIWYG Styles
 	text-transform: uppercase;
 	font-size: 14px;
 }
-
-.layout--advanced-search .search-details{
-  margin-top: 2em;
-  margin-bottom: 0;
-}
-
 
 .layout--advanced-search .query-preview { 
 	display: grid;
