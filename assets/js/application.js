@@ -81,7 +81,8 @@ document.addEventListener("DOMContentLoaded", function() {
   // TO-DO: sort out "and/or/nor" options
   for (i = 0; i < historyItems.length; ++i) {
     historyItems[i].addEventListener("click", function(e){
-      searchInput.value += ' AND ' + this.parentNode.parentNode.querySelector('.q').innerHTML;
+      var thisInput = this.closest('tr').querySelector('input[type=text]');
+      searchInput.value += ' AND ' + thisInput.value;
     });
   }
   // Remove history items
@@ -96,10 +97,21 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   }
-  // Add to history
+  // Edit history items
+  $(document).on( "click",  'button.edit-q', function(e) {
+    var thisInput = this.closest('tr').querySelector('input[type=text]');
+    if (thisInput.hasAttribute('readonly') == true) {
+      thisInput.removeAttribute('readonly');
+      thisInput.focus();
+    } else { // Reset on second click
+      thisInput.setAttribute('readonly', 'readonly');
+    }
+  });
+  // Add to history table
   // TO-DO: Intercept form submission, add to history, then allow form submission (if it is a submission)
   // TO-DO: Check for empty-history-row and remove if needed.
   // TO-DO: Figure out event delegation and why new add/remove buttons aren't working.
+  // TO-DO: Sanitize input and add protection against bad characters
   $(document).on( "click",  'button.add-to-history', function(e) {
     if (searchInput.value.length > 0) {
       // Note that we can't populate results for this query 
@@ -107,7 +119,9 @@ document.addEventListener("DOMContentLoaded", function() {
       var template = document.createElement('template');
       var newRow = `
       <tr>
-        <td class="q">${searchInput.value}</td>
+        <td class="q">
+          <input type="text" readonly="readonly" value="${searchInput.value}">
+        </td>
         <td class="num">
           <a href="#" title="Results for this query"></a>
         </td>
@@ -157,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // TO-DO: mock details from current query
   // TO-DO: Hide or change on query change, since current search isn't valid anymore
   var searchDetails = document.getElementById('search-details');
-  document.querySelector('.action-show-details').addEventListener("click", function(e){
+  document.querySelector('.action--show-details').addEventListener("click", function(e){
     searchDetails.open = true;
   });
 
