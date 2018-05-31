@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var searchTableBody = document.getElementById('search-table-body');
   var historyItems = searchTableBody.querySelectorAll('.use-q');
   var historyRemoveItems = searchTableBody.querySelectorAll('.rm-q');
+  var randomResultsInt = 0; // To be set later when we mock results
   var emptySearchRow = `
     <tr id="empty-history-row">
       <td colspan="3">You have no history items. Start searching!</td>
@@ -47,8 +48,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
     var qbSelectGroups = document.querySelectorAll('.query-builder--selector-group');
     // Go through selector groups
-    console.log('building with groups... ', qbSelectGroups.length)
-
     for (i = 0; i < qbSelectGroups.length; ++i) {
       // and/or not check
       if (i > 0) {
@@ -76,8 +75,49 @@ document.addEventListener("DOMContentLoaded", function() {
         output = "(" + output + ")";
       }
     }
-    console.log(output)
     searchInput.value = output;
+    mockQueryDetails();
+  }
+
+  function mockQueryDetails() {
+    var qVal = searchInput.value + '[MeSH Terms] OR ' + searchInput.value;
+    randomResultsInt = Math.floor(Math.random() * (100000 - 1)) + 1;
+    document.querySelector('dd.search-details--results').innerHTML = randomResultsInt;
+    document.querySelector('dd.search-details--search-expansion').innerHTML = qVal;
+  }
+
+  function addToHistory() {
+    if (searchInput.value.length > 0) {
+      // Note that we can't populate results for this query 
+      // without actually running the query. 
+      var template = document.createElement('template');
+      mockQueryDetails(); // so we can get a fresh randomResultsInt
+      var newRow = `
+        <tr>
+          <td class="q">
+            <input type="text" readonly="readonly" value='${searchInput.value}'>
+          </td>
+          <td class="num">
+            <a href="#" title="Results for this query">${randomResultsInt}</a>
+          </td>
+          <td class="history-controls button-group">
+            <button type="button" class="action use-q action--use-query" title="Use this query">
+              <span class="icon"></span>
+              <span class="label-text">Use this query</span>
+            </button>
+            <button type="button" class="action action--edit-query edit-q" title="Edit this query">
+              <span class="icon"></span>
+              <span class="label-text">Edit this query</span>
+            </button>
+            <button type="button" class="action action--remove-query rm-q" title="Remove this query">
+              <span class="icon"></span>
+              <span class="label-text">Remove this query</span>
+            </button>
+          </td>
+        </tr>`;
+      template.innerHTML = newRow.trim();
+      searchTableBody.appendChild(template.content.firstChild);
+    }
   }
 
   // Make history items pop into query box.
@@ -115,34 +155,12 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   // Add to history table
-  // TO-DO: Intercept form submission, add to history, then allow form submission (if it is a submission)
   // TO-DO: Check for empty-history-row and remove if needed.
   // TO-DO: Figure out event delegation and why new add/remove buttons aren't working.
   // TO-DO: Sanitize input and add protection against bad characters
-  $(document).on( "click",  'button.add-to-history', function(e) {
-    if (searchInput.value.length > 0) {
-      // Note that we can't populate results for this query 
-      // without actually running the query. 
-      var template = document.createElement('template');
-      var newRow = `
-      <tr>
-        <td class="q">
-          <input type="text" readonly="readonly" value="${searchInput.value}">
-        </td>
-        <td class="num">
-          <a href="#" title="Results for this query"></a>
-        </td>
-        <td class="history-controls">
-          <button type="button" class="use-q" title="Use this query">&#128269;</button>
-          <button type="button" class="rm-q" title="Remove this query">&#128465;</button>
-        </td>
-      </tr>`;
-      template.innerHTML = newRow.trim();
-      searchTableBody.appendChild(template.content.firstChild);
-    }
+  $(document).on( "click",  'button.action--add-to-history', function(e) {
+    addToHistory();
     e.preventDefault();
-    // This is where form submission check would need to go. 
-    // Otherwise we're blocking submission.
   });
 
   // make history download "work"
@@ -155,6 +173,20 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   
   // ADVANCED SEARCH ********************************
+
+  // Search/form submission
+  document.querySelector('.query-preview [type=submit]').addEventListener("click", function(e) {
+    addToHistory();
+    alert(`
+      Normally you would go to search results after clicking "search".
+      For testing purposes we're going to keep you on this page.
+      Note that your history has been updated with your search terms. 
+      `);
+    e.preventDefault();
+  })
+  
+
+
   // Set up and toggle advanced search readonly state
   var editButtonElem = document.createElement('template');
   var editButton = `
@@ -267,8 +299,10 @@ document.addEventListener("DOMContentLoaded", function() {
   // TO-DO: Hide or change on query change, since current search isn't valid anymore
   var searchDetails = document.getElementById('search-details');
   document.querySelector('.action--show-details').addEventListener("click", function(e){
+    mockQueryDetails()
     searchDetails.open = true;
   });
+  searchDetails.addEventListener("click", mockQueryDetails);
 
   // Yeah, we're totally cheating and dropping down to jquery for the event delegation.
   $(document).on( "change", '.selector select', buildQuery);

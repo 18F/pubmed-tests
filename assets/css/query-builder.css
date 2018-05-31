@@ -542,7 +542,7 @@ fieldset.fieldset-radio.is-error .error-text {
 .search-details p,
 .search-details dt,
 .search-details dd {
-  max-width: 30em;
+  max-width: 50em;
   line-height: 1.33em;
   font-style: inherit;
   font-size: 0.85em;
