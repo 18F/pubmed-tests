@@ -985,7 +985,7 @@ td.q input:focus {
 /* On the first selector in the first selector group, 
  * showing the boolean makes no sense. 
  * We also don't want to be able to delete the first row */
-.query-builder--selector-group:first-of-type .selector:first-of-type .boolean-select,
+.query-builder--selector-group .selector:first-of-type .boolean-select,
 .query-builder .selector:first-of-type .field-remove{ display: none; }
 
 /* And because we don't show the remove button on the first-row,

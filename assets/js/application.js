@@ -44,13 +44,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function buildQuery() {
     var output = '';
-    var qbSelectGroups = document.querySelectorAll('.selector-group');
+    
+    var qbSelectGroups = document.querySelectorAll('.query-builder--selector-group');
     // Go through selector groups
+    console.log('building with groups... ', qbSelectGroups.length)
+
     for (i = 0; i < qbSelectGroups.length; ++i) {
-      
       // and/or not check
       if (i > 0) {
-        output += document.querySelector('[name="switch_2"]:checked').value;
+        var b = document.querySelector('[name="selector-group-boolean-select"]').value;
+        output += ' ' + b + ' ';
       }
       // now find all the selectors within this selector groups
       var selectors = qbSelectGroups[i].querySelectorAll('.selector');
@@ -73,6 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
         output = "(" + output + ")";
       }
     }
+    console.log(output)
     searchInput.value = output;
   }
 
@@ -85,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
       searchInput.value += ' AND ' + thisInput.value;
     });
   }
+
   // Remove history items
   for (i = 0; i < historyRemoveItems.length; ++i) {
     historyRemoveItems[i].addEventListener("click", function(e){
@@ -97,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   }
+
   // Edit history items
   $(document).on( "click",  'button.edit-q', function(e) {
     var thisInput = this.closest('tr').querySelector('input[type=text]');
@@ -107,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function() {
       thisInput.setAttribute('readonly', 'readonly');
     }
   });
+
   // Add to history table
   // TO-DO: Intercept form submission, add to history, then allow form submission (if it is a submission)
   // TO-DO: Check for empty-history-row and remove if needed.
@@ -253,8 +260,6 @@ document.addEventListener("DOMContentLoaded", function() {
     this.insertAdjacentHTML('beforebegin', newRow);
     buildQuery();
   });
-
-
 
   // Seach Details ************************************
   // TO-DO: Handle empty query string
