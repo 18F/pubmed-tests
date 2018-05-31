@@ -172,9 +172,14 @@ document.addEventListener("DOMContentLoaded", function() {
   $(document).on( "click",  'button.selector-row-add', function() {
     var newRow = `
       <fieldset class="query-builder--selector-group">
+        <select class="boolean-select" name="selector-group-boolean-select">
+          <option>AND</option>
+          <option>OR</option>
+          <option>NOT</option>
+        </select>
         <div class="selector">
           <div>
-              <select class="boolean-select" name="">
+              <select class="boolean-select" name="boolean-select">
                   <option>AND</option>
                   <option>OR</option>
                   <option>NOT</option>
@@ -231,13 +236,10 @@ document.addEventListener("DOMContentLoaded", function() {
           </div>
           <div>
             <label for="id-search-term-{{ num }}">Search for</label>
-            <input name="search-term-{{ num }}" id="id-search-term-{{ num }}" placeholder="For..." />
+            <input type="text" name="search-term-{{ num }}" id="id-search-term-{{ num }}" placeholder="For..." />
           </div>
-          <div class="actions">
-            <button type="submit" class="action action--show-index">
-              <span class="icon icon--action-show-index"></span>
-              <span class="label-text">Show index</span>
-            </button>
+          <div class="button-group">
+            <!-- Don't forget to implement show index here -->
             <button type="submit" class="action action--add-selector field-add">
               <span class="icon icon--action-add"></span>
               <span class="label-text">Add new selector</span>
@@ -247,7 +249,6 @@ document.addEventListener("DOMContentLoaded", function() {
               <span class="label-text">Remove this selector</span>
             </button>
           </div>
-        </div>
       </fieldset>`;
     this.insertAdjacentHTML('beforebegin', newRow);
     buildQuery();
@@ -332,11 +333,23 @@ document.addEventListener("DOMContentLoaded", function() {
       </div>
       <div>
         <label for="id-search-term-{{ num }}">Search for</label>
-        <input name="search-term-{{ num }}" id="id-search-term-{{ num }}" placeholder="For..." />
+        <input type="text" name="search-term-{{ num }}" id="id-search-term-{{ num }}" placeholder="For..." />
       </div>
-      <div class="actions">
-        <button type="button" class="field-add" title="add a row">&#10133;</button>
-        <button type="button" class="field-remove" title="remove this row">&#128465;</button>
+      <div class="button-group">
+        <!-- We are not ready to implment this.
+        <button type="submit" class="action action--show-index">
+          <span class="icon icon--action-show-index"></span>
+          <span class="label-text">Show index</span>
+        </button>
+        -->
+        <button type="submit" class="action action--add-selector field-add">
+          <span class="icon icon--action-add"></span>
+          <span class="label-text">Add new selector</span>
+        </button>
+        <button type="submit" class="action action--remove-selector field-remove">
+          <span class="icon icon--action-remove"></span>
+          <span class="label-text">Remove this selector</span>
+        </button>
       </div>
     </div>`;
   $(document).on( "click", '.field-add', function(e){
