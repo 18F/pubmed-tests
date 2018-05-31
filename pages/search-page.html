@@ -17,7 +17,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b1af24ea35b0.
 
 
 <div class="top-query-builder">
-  {% include components/advanced-query-builder.html %}
+  {% include components/query-builder.html %}
 </div>
 
 <div role="search" class="usa-grid search-input">
@@ -90,7 +90,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b1af24ea35b0.
           </div>
           <fieldset class="selector-group">
               <fieldset class="selector">
-                  {% include components/search-opts-snippet.html num="3" %}
+                  {% include components/query-builder-row.html num="3" %}
               </fieldset>
               <button class="boolean-label add-field" type="button">
                 <span class="boolean-label-add" title="add another">+</span>
@@ -110,7 +110,7 @@ styles: "https://www.ncbi.nlm.nih.gov/labs/pubmed/static/CACHE/css/b1af24ea35b0.
       $(document).on( "click",  'button.add-field', function() {
         var newField = `
           <span class="boolean-label">or</span><fieldset class="selector">
-              {% include components/search-opts-snippet.html num="2" %}
+              {% include components/query-builder-row.html num="2" %}
             </fieldset>
           `;
         this.insertAdjacentHTML('beforebegin', newField);

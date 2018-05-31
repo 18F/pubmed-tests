@@ -131,6 +131,7 @@ fieldset {
 body:not(:-moz-handler-blocked) fieldset {
     display: table-cell;
 }
+/*
 input[type=tel],
 input[type=text],
 input[type=date],
@@ -157,7 +158,7 @@ input[type=checkbox] {
     outline: none;
     border: none;
 }
-
+*/
 .field-select select {
     min-width: 0;
     background: white;
@@ -168,6 +169,7 @@ input[type=checkbox] {
     line-height: 1.2;
     width: 100%;
 }
+/* UNUSED? REMOVE?
 .field--select {
     position: relative;
     z-index: 1;
@@ -189,6 +191,7 @@ input[type=checkbox] {
 .field--select:hover::after {
     border-top-color: #888;
 }
+*/
 /* This needs to be scoped, if it's needed at all.
  * It appears to mostly duplicate existing styles 
 */
@@ -209,7 +212,7 @@ textarea[disabled] {
 
 /* We need to seriously audit these form styles and be sure 
  * We're not including conflicts or cruft
-*/
+
 button,
 .button {
     background: none;
@@ -247,9 +250,14 @@ button:active,
     background: #981b1e;
     color: white;
 }
+*/
+/* Is this actually used???
 form a.a-return + h1 {
     margin-top: 1em !important;
 }
+*/
+
+/* We shouldn't see this. It's an anti-pattern.
 fieldset > p {
     font-size: 14px;
     line-height: 1.4;
@@ -257,6 +265,7 @@ fieldset > p {
     margin-top: 0;
     margin-bottom: 1em;
 }
+
 .description-text,
 .p-description-text {
     margin-top: 8px;
@@ -272,9 +281,11 @@ fieldset > p {
 .description-text a:hover {
     text-decoration: none;
 }
-
+*/
+/* Our labels are handled explicitly throughout here.
+ * We should be able to remove this. 
 .field label{ margin: 0; }
-
+*/
 .field .help-text,
 .p-customize-timeline {
     font-size: 14px;
@@ -290,6 +301,7 @@ fieldset div.field:last-of-type+fieldset {
     margin-top: 24px;
     margin-bottom: 4px;
 }
+/* We're handling label text on a per-case basis, not globally 
 fieldset > legend,
 .field span.label-text {
     display: block;
@@ -304,6 +316,8 @@ fieldset > legend,
     color: #888;
     cursor: not-allowed;
 }
+*/
+/* We have no radio fields. Probably can remove 
 .field.field-radio {
     display: inline-block;
     vertical-align: middle;
@@ -324,6 +338,9 @@ fieldset > legend,
 .field.field-checkbox input {
     margin-right: 0.4em;
 }
+*/
+
+/* We should be inheriting these styles from pubmed
 .field input:focus,
 .field select:focus,
 .field textarea:focus,
@@ -360,6 +377,7 @@ div.field.field-checkbox+.is-branch {
     margin-left: 3px;
     margin-bottom: 16px;
 }
+*/
 
 /* We'll use pubmed error states as needed
 div.field.is-error .label-text {
@@ -434,18 +452,20 @@ fieldset.fieldset-radio.is-error .error-text {
 
 /* @group .query-builder */
 
+/* UNUSED. REMOVE
 .query-builder.is-active {  display: block; }
 
 .query-builder::after {
 	border-bottom-color: white;
 	margin-bottom: -1px;
 }
-
-.query-builder h1{
+*/
+/* UNUSED. REMOVE
+.query-builder h1 {
 	font-weight: 600;
 	margin-bottom: 0.67em; 
 }
-
+*/
 .query-builder .field-any-all{
   display: inline-block;
   margin: 0;
@@ -466,7 +486,7 @@ fieldset.fieldset-radio.is-error .error-text {
 }
 
 .query-builder fieldset legend,
-.query-builder .field label .label-text{
+.query-builder .selector label {
  position: absolute; left: -9999em;  
 }
 
@@ -517,7 +537,7 @@ fieldset.fieldset-radio.is-error .error-text {
 
 /* @group search details + history */
 
-.layout--advanced-search .search-details { margin: 2em 0 0; }
+.layout--advanced-search .search-details { margin: 1em 0 0; }
 
 .search-details p,
 .search-details dt,
@@ -556,17 +576,18 @@ fieldset.fieldset-radio.is-error .error-text {
 
 #query-builder .actions { width: 5em; }
 
-/* Search history table */
+/*********** Search history table ****************/
 .search-history table {
 	margin: 0 0 1em; /* Required pubmed override */
+	font-size: 0.875em; /* Takes it down to ~14px */
 }
 
 td.q { 
 	width: 80%;
-	padding: 0; 
+	padding: 0; /* zero out padding so input fills */
 }
-/* Hide input in cell and recreate table padding */
-td.q input {
+
+td.q input { /* Hide input in cell and recreate table padding */
 	border: 2px solid transparent;
 	padding: 6px;
 	max-width: 100%;
@@ -581,71 +602,59 @@ td.q input:focus {
    text-align: right;
 }
 
-.history-controls { width: 114px; }
+.history-controls { width: 114px }
 
-.search-history button {
+.search-history tfoot button {
+	margin: 0 0 0 1em; /* override pubmed standard margin */
+	float: right;
+}
+
+/* BUTTONS AND BUTTON GROUPS ********************/
+/* Pubmed mixes in .usa-button primary to all buttons
+   And doesn't really use any other button styles.
+   So we'll need to define them.
+************************************************/
+.button-group { white-space: nowrap }
+
+.button-group button {
   border: 1px solid #aaa;
-  background-color:#f8f8f8;
   background: linear-gradient(#fff, #eee);
-  font: inherit;
-  height: 32px;
   line-height: 30px;
   color: inherit;
   font-size: 0.85em;
-  font-weight: 600;
-  padding: 0 12px;
-  border-radius: 3px;
+  padding: 0 10px;
   box-shadow: 0 1px 0 #f8f8f8;
-  margin: 0;
-  float: left;
-  width: 32px;
+  margin: 0 -5px 0 0; /* collapse up double-border and inline-block gap */
+  display: inline-block; /* more reliably block wrapping than float. Flex may be better yet. */
   text-align: center;
 }
 
-.search-history button:hover {
-  border-color: #999;
+.button-group button:hover {
   box-shadow: 0 1px 0 #f3f3f3;
+  border: 1px solid #999; /* overrides pubmed standard color and width */
   color: #369; /* Overrides pubmed standard */
 }
 
-.search-history button:active {
-  background-color:#eee;
+.button-group button:active {
   background: linear-gradient(#eee, #f8f8f8);
   box-shadow: inset 0 1px 0 rgba(0,0,0,0.08), inset 0 -1px 0 rgba(255,255,255,0.125);
   color: #888;
 }
 
-.search-history .history-controls .label-text{
+.button-group .label-text {
   position: absolute;
   left: -9999em;
 }
 
-.search-history table .action--use-query .icon{ 
-  position: relative;
-  left: -2px;
+.button-group button:first-of-type { 
+  border-radius: 3px 0 0 3px; 
 }
 
-.search-history .action.action--use-query { border-radius: 3px 0 0 3px; }
-.search-history .action.action--edit-query{ 
-  border-radius: 0; 
-  border-left: none;
-  border-right: none;
-}
-.search-history .action.action--remove-query { border-radius: 0 3px 3px 0; }
-.search-history table .action--edit-query .icon{ margin-left: -3px; }
-.search-history table .action--remove-query .icon{ margin-left: -2px; }
-
-/* Let the history table footer buttons stretch out. */
-.search-history tfoot button {
-	width: auto;
-	margin-left: 1em;
-	float: right;
-}
+.button-group button:last-of-type { border-radius: 0 3px 3px 0; }
 
 /* @end */
 
-WYSIWYG Styles
-
+/******* WYSIWYG Styles ****************/
 
 /* @group .layout--wysiwyg */
 
@@ -697,7 +706,6 @@ WYSIWYG Styles
   font-size: 0.85em;
   font-weight: 600;
   padding: 0 12px;
-  border-radius: 3px;
   box-shadow: 0 1px 0 #f8f8f8;
   margin: 0;
   float: left;
@@ -893,19 +901,23 @@ WYSIWYG Styles
 
 /* @end */
 
-/* @group .layout--advanced-search */
 
-/* Override default pubmed usa-grid handling on this page. */
+
+/***************** ADVANCED SEARCH ***************************/
+
+/* Override default pubmed usa-grid handling on this page for some extra width */
 .layout--advanced-search .usa-grid{
 	padding: 20px 0;
 }
 
-.layout--advanced-search .advanced-search--primary-controls h1,
-.search-history caption {
+/* TO-DO: see is there is an existing header style we can use ********/
+.layout--advanced-search h1,
+.layout--advanced-search table caption {
 	text-transform: uppercase;
 	font-size: 14px;
 }
 
+/** Query preview form **/
 .layout--advanced-search .query-preview { 
 	display: grid;
 	grid-template-columns: calc(100% - 180px) 180px;
@@ -919,7 +931,7 @@ WYSIWYG Styles
 /* Overrides a margin set on all submit buttons in pubmed 
  * for this special case */
 .layout--advanced-search .query-preview [type=submit] {
-	margin: 0 0 0.5em;
+	margin: 0 0 1.5em;
 }
 
 .layout--advanced-search .query-preview label {
@@ -927,10 +939,7 @@ WYSIWYG Styles
 	left: -9999em;
 }
 
-.layout--advanced-search .query-preview .action--add-to-history{ bottom: 0; }
-
 .layout--advanced-search .query-preview-textarea { position: relative; }
-.layout--advanced-search .query-preview .action--add-to-history:active{ color: #888; }
 
 .layout--advanced-search .query-preview .action--edit-query,
 .layout--advanced-search .query-preview .action--edit-query:hover{ 
@@ -948,64 +957,58 @@ WYSIWYG Styles
 
 /* @end */
 
-
-
-
 /* @group query-builder */
 
 /* selector-groups are the outer fieldset
  * Containing a group of selector fieldsets
 */
-.query-builder .selector-group {
-	border: 2px solid #ccc;
+.query-builder .query-builder--selector-group {
+	border: 2px solid #ddd;
 	padding: 4px;
 	background: white;
-	max-width: calc(100% - 180px); /* Match the textarea */
-	margin-bottom: 32px;
-	
 }
 
-.query-builder .selector-group:last-of-type{ margin-bottom: 0.4em; }
-
-/* selector fieldsets live within selector groups and wrap
- * a set of query fields
+/* selector fieldsets live within selector groups 
+ * and wrap a set of query fields
 */
 .query-builder .selector {
 	margin-bottom: 2px;
 	background: #eee;
-	padding: 4px;
+	padding: 4px 10px;
 	max-width: none;
 	position: relative;
 	display: grid;
-	grid-template-columns: 5em 10em auto 5em;
-	column-gap: 10px;
+	grid-template-columns: 5em 10em auto 8em;
+	column-gap: 15px;
 }
 
-/* On the first selector, showing the boolean makes no sense. */
-.query-builder .selector:first-of-type .boolean-select,
+/* On the first selector in the first selector group, 
+ * showing the boolean makes no sense. 
+ * We also don't want to be able to delete the first row */
+.query-builder--selector-group:first-of-type .selector:first-of-type .boolean-select,
 .query-builder .selector:first-of-type .field-remove{ display: none; }
+
+/* And because we don't show the remove button on the first-row,
+*  We need to handle a single-button button group
+* (this can be removed when we show the "show index" button) */
+.query-builder .selector:first-of-type .button-group button:first-of-type {
+	border-radius: 3px;
+}
 
 /* Override pubmed default. We'll control max with grid */
 .query-builder .selector input[type="text"] { max-width: 100% }
 
-
-.query-builder .action-add-another-group,
-.query-builder .action-add-another-group:hover{
-	border: none;
-	padding: 0 1px;
-	text-decoration: underline !important;
-	line-height: 1.2;
-	color: #555;
-	font-size: 14px;
-	background: none;
+/* Because button-groups are artifically limited to ~30px 
+*  And therefore fall off the baseline grid, we'll have to help them back on */
+.query-builder .selector .button-group {
+	padding: 8px 0
 }
 
+/*
 .query-builder .label-text{
   position: absolute;
   left: -9999em;
 }
-
-.query-builder .action-add-another-group:hover{ color: #333; }
 
 .query-builder--selector-group .action-remove,
 .query-builder--selector-group .action-add,
@@ -1049,22 +1052,24 @@ WYSIWYG Styles
 	top: 7px;
 	left: 7px;
 }
+*/
 
-.query-builder .query-builder--selector-group +
-.query-builder--selector-group{
-	padding-top: 28px;
+.query-builder--selector-group + .query-builder--selector-group {
 	position: relative;
+	margin-top: 2em;
 }
 
-.query-builder .query-builder--selector-group +
-.query-builder--selector-group .fieldset--boolean-operator{
-  position: absolute;
-  left: 8px;
-  top: -20px;
-  font-size: 0.8em;
+.query-builder [name=selector-group-boolean-select]{
+	position: absolute;
+    left: 8px;
+    top: -42px;
+    font-size: 0.875em;
+    width: 10em;
+	z-index: 100;
+	height: 40px; /* pubmed override */
 }
 
-.query-builder--selector-group .fieldset--boolean-operator .field{ 
+.query-builder--selector-group .fieldset--boolean-operator .field { 
 	float: left; 
 	margin: 0;
 	height: auto;
@@ -1123,7 +1128,7 @@ WYSIWYG Styles
 	right: 64px;
 	-webkit-font-smoothing: none;  
 }
-
+/*
 .query-builder .selector .field select,
 .query-builder .selector .field input{
 	border-radius: 0;
@@ -1131,21 +1136,17 @@ WYSIWYG Styles
 	height: 32px;
 	font-size: 0.85em;
 }
-
+*/
 .query-builder .selector .field--boolean-operator{
 	position: absolute;
 	left: 4px;
 	width: 72px;
 }
 
-
-
 .query-builder .selector .field--field-type{
 	position: absolute;
 	left: 80px;
 	width: 184px;
 }
-
-
 
 /* @end */
