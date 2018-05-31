@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function buildQuery() {
     var output = '';
-    
     var qbSelectGroups = document.querySelectorAll('.query-builder--selector-group');
     // Go through selector groups
     for (i = 0; i < qbSelectGroups.length; ++i) {
@@ -184,8 +183,6 @@ document.addEventListener("DOMContentLoaded", function() {
       `);
     e.preventDefault();
   })
-  
-
 
   // Set up and toggle advanced search readonly state
   var editButtonElem = document.createElement('template');
@@ -293,6 +290,10 @@ document.addEventListener("DOMContentLoaded", function() {
     buildQuery();
   });
 
+  // Rebuild query on selector group boolean change:
+  $(document).on( "change",  '[name=selector-group-boolean-select]', function() {
+    buildQuery();
+  })
   // Seach Details ************************************
   // TO-DO: Handle empty query string
   // TO-DO: mock details from current query
