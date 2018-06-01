@@ -76,21 +76,7 @@
   content: "bin";
 }
 
-/* @end */
-
-/* @group tables */
-
-/* I don't think these are used and can safely be removed 
-tr.archived .status {
-    color: #999;
-    font-weight: 600;
-}
-td.important {
-    background-color: #fff8c3;
-}
-*/
-
-/* blanket table overrides.
+/* blanket table and form overrides.
  * TO-DO: Double check against pubmed styles */
 table {
     width: 100%;
@@ -108,16 +94,6 @@ table td{
     padding: 8px;
 }
 
-/* Unused???? Safe for removal? 
-.is-blank {
-    color: #aaa;
-}
-*/
-/* @end */
-
-
-/* @group forms */
-
 legend {
     padding: 0;
     display: table;
@@ -131,34 +107,7 @@ fieldset {
 body:not(:-moz-handler-blocked) fieldset {
     display: table-cell;
 }
-/*
-input[type=tel],
-input[type=text],
-input[type=date],
-input[type=email],
-input[type=number],
-input[type=password],
-input[type=search],
-select,
-textarea {
-    -webkit-appearance: none;
-    -webkit-box-sizing: border-box;
-    padding: 4px 8px;
-    border: 1px solid #aaa;
-    line-height: 32px;
-    min-height: 38px;
-    min-width: 4em;
-    width: 100%;
-    margin: 0;
-    outline: none;
-    font: inherit;
-}
-input[type=radio],
-input[type=checkbox] {
-    outline: none;
-    border: none;
-}
-*/
+
 .field-select select {
     min-width: 0;
     background: white;
@@ -169,303 +118,40 @@ input[type=checkbox] {
     line-height: 1.2;
     width: 100%;
 }
-/* UNUSED? REMOVE?
-.field--select {
-    position: relative;
-    z-index: 1;
+
+.query-builder label { margin-top: 0; /* Pubmed override */ }
+
+/* Override normal pubmed radio box handling */
+.fieldset--radio input[type=radio] + label:before {
+	display: none;
 }
 
-.field--select::after {
-    content: "";
-    border: 6px solid black;
-    position: absolute;
-    right: 6px;
-    bottom: 0;
-    margin-bottom: 9px;
-    border-color: #aaa transparent transparent transparent;
-    z-index: 1;
-}
-.field--select:hover select {
-    border-color: #aaa;
-}
-.field--select:hover::after {
-    border-top-color: #888;
-}
-*/
-/* This needs to be scoped, if it's needed at all.
- * It appears to mostly duplicate existing styles 
-*/
-textarea {
-    display: block;
-    width: 100%;
-    max-width: 40em;
-	line-height: 1.25;
-}
+/* piggyback on button group for radio button groups, 
+*  but we need to fill the buttons with the labels for checked state. 
+*  Normally, we'd handle this with a mixin. */
+.fieldset--radio.button-group > * { padding: 0; }
 
-/* We don't have a disabled textarea. 
-* this should be removeable 
-textarea[disabled] {
-	background: #f8f8f8;
-	border-color: #ccc;
-}
-*/
-
-/* We need to seriously audit these form styles and be sure 
- * We're not including conflicts or cruft
-
-button,
-.button {
-    background: none;
-    border: 1px solid;
-    color: #2e8540;
-    font: inherit;
-    padding: 10px 12px;
-    line-height: 16px;
-    cursor: pointer;
-    text-decoration: none;
-    border-radius: 3px;
-    display: inline-block;
-    vertical-align: middle;
-}
-button:hover,
-.button:hover {
-    background: #2e8540;
-    border-color: #2e8540;
-    color: white;
-    box-shadow: 0 1px 0 #f3f3f3;
-    text-decoration: none !important;
-}
-button:active,
-.button:active {
-    color: #7aa79d;
-    background: #1d5529;
-    border-color: #006e52;
-    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
-}
-.button-reject {
-    border-color: #981b1e !important;
-    color: #981b1e;
-}
-.button-reject:hover {
-    background: #981b1e;
-    color: white;
-}
-*/
-/* Is this actually used???
-form a.a-return + h1 {
-    margin-top: 1em !important;
-}
-*/
-
-/* We shouldn't see this. It's an anti-pattern.
-fieldset > p {
-    font-size: 14px;
-    line-height: 1.4;
-    color: #444;
-    margin-top: 0;
-    margin-bottom: 1em;
-}
-
-.description-text,
-.p-description-text {
-    margin-top: 8px;
-    font-size: 12px;
-    line-height: 1.3;
-    max-width: 28em;
-    display: block;
-    color: #333;
-}
-.description-text a {
-    color: inherit;
-}
-.description-text a:hover {
-    text-decoration: none;
-}
-*/
-/* Our labels are handled explicitly throughout here.
- * We should be able to remove this. 
-.field label{ margin: 0; }
-*/
-.field .help-text,
-.p-customize-timeline {
-    font-size: 14px;
-    line-height: 1.33em;
-    display: block;
-    margin-top: 8px;
-}
-fieldset.fieldset-radio {
-    margin-bottom: 18px;
-}
-
-fieldset div.field:last-of-type+fieldset {
-    margin-top: 24px;
-    margin-bottom: 4px;
-}
-/* We're handling label text on a per-case basis, not globally 
-fieldset > legend,
-.field span.label-text {
-    display: block;
-    max-width: 40em;
-    margin: 0 0 12px;
-    padding: 0;
-    position: static;
-    font: inherit;
-    line-height: 24px;
-}
-.field.is-disabled span.label-text {
-    color: #888;
-    cursor: not-allowed;
-}
-*/
-/* We have no radio fields. Probably can remove 
-.field.field-radio {
-    display: inline-block;
-    vertical-align: middle;
-    margin-bottom: 6px;
-    margin-right: 0.4em;
-}
-.field.field-radio label {
-    display: inline-block;
-    padding: 8px 12px 8px 12px;
-    min-height: 32px;
-    line-height: 1;
-    vertical-align: middle;
-    background: white;
-    border: 1px solid #bbb;
-    border-radius: 3px;
-}
-.field.field-radio input,
-.field.field-checkbox input {
-    margin-right: 0.4em;
-}
-*/
-
-/* We should be inheriting these styles from pubmed
-.field input:focus,
-.field select:focus,
-.field textarea:focus,
-.field.field-checkbox.is-focused label,
-.field.field-radio.is-focused label {
-    border-color: #1188ff;
-    box-shadow: 0 0 0 1px rgba(17, 136, 255, 0.15);
-    outline: none;
-}
-.field-select.is-focused::after {
-    border-top-color: #1188ff;
-}
-div.field.field-checkbox span.label-text,
-div.field.field-radio span.label-text,
-div.field.field-radio input {
-    display: inline;
-    vertical-align: middle;
-    font-weight: normal;
-}
-div.field.field-checkbox {
-    position: relative;
-    padding-left: 24px;
-    margin-bottom: 8px;
-}
-div.field.field-checkbox input {
-    font-size: 1em;
-    line-height: 1;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-div.field.field-checkbox+.is-branch {
-    margin-top: -4px !important;
-    margin-left: 3px;
-    margin-bottom: 16px;
-}
-*/
-
-/* We'll use pubmed error states as needed
-div.field.is-error .label-text {
-    color: #a73856;
-}
-div.field.is-error input,
-div.field.is-error textarea {
-    border-color: #ce6246;
-}
-
-div.field.is-error .error-text,
-fieldset.fieldset-radio.is-error .error-text {
-    color: #990017;
-    display: block;
-    padding-top: 12px;
-    font-style: italic;
-    font-size: 14px;
-}
-div.field.is-error .error-text,
-fieldset.fieldset-radio.is-error .error-text {
-    color: #af1830;
-    font-size: 14px;
-    padding-top: 6px;
-    display: block;
-    font-style: italic;
-}
-*/
-.fieldset--boolean-operator input{
-	position: absolute;
-	left: -9999em;
-}
-
-.fieldset--boolean-operator .field{
-	background: white;
-	margin: 0;
-	width: auto;
-	padding: 0 0.5em;
-	line-height: 36px;
-	height: 38px;
-	font-weight: 600;
-	border: 0;
-	border-color: #aaa;
-	border-style: solid;
-	border-top-width: 1px;
-	border-bottom-width: 1px;
-	color: #888;
-	float: left;
-	font-size: 14px;
-}
-
-.fieldset--boolean-operator .field.is-focused{ color: #333; }
-.fieldset--boolean-operator .query-builder--toolbar .field{ font-size: 0.8em; }
-
-.fieldset--boolean-operator .field--and{
-	padding-left: 0.5em;
-	border-left-width: 1px;
-	border-radius: 2px 0 0 2px;
-}
-
-.fieldset--boolean-operator .field--not{
-	padding-right: 0.75em;
-	border-right-width: 1px;
-	border-radius:  0 2px 2px 0;
-}
-
-.fieldset--boolean-operator .field--radio.is-active{
+.fieldset--radio input[type=radio]:checked + label{
 	background: #333;
 	color: white;
 	border-color: #333;
 }
+.fieldset--radio input[type=radio][disabled] + label{
+	background: #e0e0e0;
+	color: #999;
+	cursor: not-allowed
+}
 
+.fieldset--boolean-operator .field label {
+	line-height: 40px; /* align with pubmed inputs */
+	margin-bottom: 0; /* override pubmed default margin */
+	padding: 0 0.5em;
+	min-width: 3em;
+}
 
 /* @group .query-builder */
 
-/* UNUSED. REMOVE
-.query-builder.is-active {  display: block; }
 
-.query-builder::after {
-	border-bottom-color: white;
-	margin-bottom: -1px;
-}
-*/
-/* UNUSED. REMOVE
-.query-builder h1 {
-	font-weight: 600;
-	margin-bottom: 0.67em; 
-}
-*/
 .query-builder .field-any-all{
   display: inline-block;
   margin: 0;
@@ -537,7 +223,7 @@ fieldset.fieldset-radio.is-error .error-text {
 
 /* @group search details + history */
 
-.layout--advanced-search .search-details { margin: 1em 0 0; }
+.search-details { margin: 1em 0 0; }
 
 .search-details p,
 .search-details dt,
@@ -592,9 +278,7 @@ td.q input { /* Hide input in cell and recreate table padding */
 	padding: 6px;
 	max-width: 100%;
 }
-td.q input:focus {
-	border-color: #369;
-}
+td.q input:focus { border-color: #369; }
 
 /* Numeric cells should always be right-aligned */
 .num { 
@@ -616,7 +300,9 @@ td.q input:focus {
 ************************************************/
 .button-group { white-space: nowrap }
 
-.button-group button {
+/* we're scoping on all direct selectors to be
+*  more flexible in regards to possible link or label-based groups */
+.button-group > * { 
   border: 1px solid #aaa;
   background: linear-gradient(#fff, #eee);
   line-height: 30px;
@@ -629,211 +315,89 @@ td.q input:focus {
   text-align: center;
 }
 
-.button-group button:hover {
+.button-group > *:hover {
   box-shadow: 0 1px 0 #f3f3f3;
   border: 1px solid #999; /* overrides pubmed standard color and width */
   color: #369; /* Overrides pubmed standard */
 }
 
-.button-group button:active {
+.button-group > *:active {
   background: linear-gradient(#eee, #f8f8f8);
   box-shadow: inset 0 1px 0 rgba(0,0,0,0.08), inset 0 -1px 0 rgba(255,255,255,0.125);
   color: #888;
 }
 
-.button-group .label-text {
-  position: absolute;
-  left: -9999em;
-}
-
-.button-group button:first-of-type { 
+.button-group > *:first-of-type { 
   border-radius: 3px 0 0 3px; 
 }
 
-.button-group button:last-of-type { border-radius: 0 3px 3px 0; }
+.button-group > *:last-of-type { border-radius: 0 3px 3px 0; }
 
 /* @end */
 
 /******* WYSIWYG Styles ****************/
 
-/* @group .layout--wysiwyg */
-
-.layout--wysiwyg .wrapper > h1{
-  font-size: 20px;  
+.layout--wysiwyg .query-builder { 
+	min-width: 512px; 
+	position: relative;
 }
 
-.layout--wysiwyg .query-builder h1{
-  position: absolute;
-  left: -9999em;
+.layout--wysiwyg .query-preview--actions {
+	position: absolute;
+	top: 5px;
+	right: 10px;
 }
-
-.layout--wysiwyg h1.logo a{
-  width: 180px;
-}
-
-.layout--wysiwyg h2{
-  position: absolute;
-  left: -9999em;
-}
-
-.layout--wysiwyg .query-builder{ min-width: 512px; }
-
-.layout--wysiwyg .query-builder--toolbar,
-.layout--wysiwyg .query-builder--preview{
-  background: #ddd;
-  border: 1px solid #ccc;
-}
-
-.layout--wysiwyg .query-builder--toolbar::after,
-.layout--wysiwyg .query-builder--preview::after{
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.layout--wysiwyg .query-builder--toolbar form,
-.layout--wysiwyg .query-builder--preview{ position: relative; }
-
-
-.layout--wysiwyg .query-builder .action{
+.layout--wysiwyg .query-builder .action {
   border: 1px solid #aaa;
   background-color:#f8f8f8;
   background: linear-gradient(#fff, #eee);
   font: inherit;
-  height: 38px;
-  line-height: 36px;
+  height: 42px;
+  line-height: 42px;
   color: inherit;
   font-size: 0.85em;
   font-weight: 600;
   padding: 0 12px;
   box-shadow: 0 1px 0 #f8f8f8;
   margin: 0;
-  float: left;
 }
 
-.layout--wysiwyg .query-builder .action:hover{
+.layout--wysiwyg .query-builder .action:hover {
   border-color: #999;
   box-shadow: 0 1px 0 #f3f3f3;
 }
 
-.layout--wysiwyg .query-builder .action:active{
+.layout--wysiwyg .query-builder .action:active {
   background-color:#eee;
   background: linear-gradient(#eee, #f8f8f8);
   box-shadow: inset 0 1px 0 rgba(0,0,0,0.08), inset 0 -1px 0 rgba(255,255,255,0.125);
   color: #888;
 }
-
-
-/* @group query-builder--toolbar */
+/* TO-DO: Figure out spacing disparity that makes this necessary */
+.layout--wysiwyg #search-history-wrapper { padding-top: 1em }
 
 .layout--wysiwyg .query-builder--toolbar{ 
-  border-bottom: none; 
+  background: #ddd;
+  border: solid #ccc;
+  border-width: 1px 1px 0;
   box-shadow: inset 0 1px #fff;
   border-radius: 3px 3px 0 0;
-  margin-top: 1em;
-  padding: 4px;
-  padding-right: 114px;
-  position: relative;
-  height: 47px;
-}
-
-
-.layout--wysiwyg .query-builder--toolbar form{ height: 38px; }
-
-.layout--wysiwyg .query-builder .query-builder--toolbar .field--value input,
-.layout--wysiwyg .query-builder--toolbar .field--field-type select{ 
-  font-size: 14px;
-  height: 32px;
-
-}
-
-
-
-.layout--wysiwyg .query-builder--toolbar form{
-  padding-left: 242px;
+  margin-top: 0.5em;
+  padding: 5px;
   position: relative;
 }
 
-.layout--wysiwyg .fieldset--boolean-operator,
-.layout--wysiwyg .query-builder--toolbar .field--field-type,
-.layout--wysiwyg .query-builder--toolbar .field--value,
-.layout--wysiwyg .query-builder--toolbar .actions{
-  position: absolute;
-  top: 0;  
-  margin: 0;
+.layout--wysiwyg .query-builder--toolbar input,
+.layout--wysiwyg .query-builder--toolbar select { margin: 0; /* Required pubmed override */ }
+
+.layout--wysiwyg .query-builder--toolbar {
+  display: grid;
+  grid-template-columns: 8em 10em 24em 8em;
+  column-gap: 15px;
 }
+.layout--wysiwyg .query-builder--toolbar .field--value { position: relative; }
 
-.layout--wysiwyg .fieldset--boolean-operator{ left: 0; }
-
-
-.layout--wysiwyg .query-builder--toolbar .field--field-type{
-  width: 120px;
-  left: 122px;
-}
-
-.layout--wysiwyg .query-builder--toolbar .actions{
-  right: 4px;
-  top: 4px;
-  bottom: 4px;
-}
-
-
-.field--field-type select{
-  border-radius: 2px 0 0 2px;
-  border-right: none;
-  padding-right: 1.75em;
-  background-size: 0.6em;
-  background-position: 96% center;
-}
-
-.field--field-type::after{
-  display: none;
-}
-
-.layout--wysiwyg .query-builder--toolbar .field--value{
-  position: absolute;
-  left: 242px;
-  right: 0;
-}
-
-.layout--wysiwyg .query-builder .query-builder--toolbar .field--value input{
-  border-radius: 0 2px 2px 0;
-  box-shadow: inset 0 1px 0 rgba(0,0,0,0.04);
-}
-
-
-/* @end */
-  
-.layout--wysiwyg .query-builder--preview{ 
-  padding-bottom: 3px; }
-
-.layout--wysiwyg .query-builder--preview label{
-  position: absolute;
-  left: -9999em;
-  
-}
-.layout--wysiwyg .query-builder--preview textarea{
-  width: 100%;
-  max-width: none;
-  border: none;
-  border-top-color: #d3d3d3;
-  padding: 0.4em;
-  padding-top: 0.8em;
-  text-indent: 0.1em;
-  height: auto;
-  box-shadow: inset 0 1px rgba(0,0,0,0.03);
-  min-height: 3em;
-  border-bottom: 1px solid #ccc;
-}
-
-.layout--wysiwyg .query-builder--preview .action{
-  margin-left: 4px;
-  margin-top: 4px;
-  margin-bottom: 2px;
-}
-
-.layout--wysiwyg .query-builder .action--add,
-.layout--wysiwyg .query-builder .action--add:hover{
+.layout--wysiwyg .query-builder .action--add {
   position: absolute;
   right: 0;
   top: 0;
@@ -849,70 +413,32 @@ td.q input:focus {
   border-radius: 2px;
 }
 
-.layout--wysiwyg .query-builder .action-show-index-list .icon{ display: none; }
-
-.layout--wysiwyg .query-builder--preview .action--search{
-  background: #105592;
-  border-color: #0e4a80;
-  color: white;
-  margin: 0;
-  position: absolute;
-  right: 4px;
-  bottom: 52px;
-  box-shadow: none;
-  border-radius: 2px;
+.layout--wysiwyg .query-preview-textarea #search-input-textarea {
+	width: 100%;
+	box-shadow: inset 0 1px rgba(0,0,0,0.03);
+	height: 4em;
+	min-height: auto;
 }
-
-@media screen and (min-width: 799.999px){
-  
-  .layout--wysiwyg .query-builder--toolbar form{ padding-left: 320px; }
-  .layout--wysiwyg .query-builder--toolbar .field--field-type{ width: 198px; }  
-  .layout--wysiwyg .query-builder--toolbar .field--value{ left: 320px; }  
-
-}
-
-@media screen and (min-width: 888.888px){
-  
-  .layout--wysiwyg .query-builder--toolbar{
-      padding-right: 370px;
-  }
-  
-  .layout--wysiwyg .query-builder--toolbar > div.actions{
-    right: 259px;
-  }
-
-  .layout--wysiwyg .query-builder--preview{ padding-bottom: 20px; }
-  
-  .layout--wysiwyg .query-builder--preview .action{ margin: 0; }
-  
-  .layout--wysiwyg .query-builder--preview .action--search{ bottom: 25px; }
-  
-  .layout--wysiwyg .query-builder--preview .action--show-details,
-  .layout--wysiwyg .query-builder--preview .action--add-to-history{
-    position: absolute;
-    right: 4px;
-    bottom: 100%;
-    margin-bottom: 6px;  
-    height: 37px;
-  }  
-
-  .layout--wysiwyg .query-builder--preview .action--show-details{ margin-right: 128px; } 
-}
-
 /* @end */
 
-
+.query-preview label,
+.query-builder .label-text,
+.button-group .label-text {
+	position: absolute;
+	left: -9999em;
+}
 
 /***************** ADVANCED SEARCH ***************************/
 
 /* Override default pubmed usa-grid handling on this page for some extra width */
-.layout--advanced-search .usa-grid{
-	padding: 20px 0;
-}
+.layout--advanced-search .usa-grid,
+.layout--wysiwyg, 
+.layout--wysiwyg .usa-grid { padding: 20px 0; }
 
-/* TO-DO: see is there is an existing header style we can use ********/
+/* TO-DO: Create reusable heading styles ********/
 .layout--advanced-search h1,
-.layout--advanced-search table caption {
+.search-history table caption,
+.layout--wysiwyg h1 {
 	text-transform: uppercase;
 	font-size: 14px;
 }
@@ -924,23 +450,11 @@ td.q input:focus {
 	column-gap: 20px;
 }
 
-.layout--advanced-search .query-preview--actions button {
-	width: 100%;
-}
-
 /* Overrides a margin set on all submit buttons in pubmed 
  * for this special case */
-.layout--advanced-search .query-preview [type=submit] {
-	margin: 0 0 1.5em;
-}
-
-.layout--advanced-search .query-preview label {
-	position: absolute;
-	left: -9999em;
-}
-
+.layout--advanced-search .query-preview [type=submit] { margin: 0 0 1.5em; }
 .layout--advanced-search .query-preview-textarea { position: relative; }
-
+.layout--advanced-search .query-preview--actions button { width: 100%; }
 .layout--advanced-search .query-preview .action--edit-query,
 .layout--advanced-search .query-preview .action--edit-query:hover{ 
 	position: absolute;
@@ -955,22 +469,16 @@ td.q input:focus {
 	background: none;
 }
 
-/* @end */
-
-/* @group query-builder */
-
 /* selector-groups are the outer fieldset
- * Containing a group of selector fieldsets
-*/
-.query-builder .query-builder--selector-group {
+ * Containing a group of selector fieldsets */
+ .layout--advanced-search .query-builder--selector-group {
 	border: 2px solid #ddd;
 	padding: 4px;
 	background: white;
 }
 
 /* selector fieldsets live within selector groups 
- * and wrap a set of query fields
-*/
+ * and wrap a set of query fields */
 .query-builder .selector {
 	margin-bottom: 2px;
 	background: #eee;
@@ -991,74 +499,22 @@ td.q input:focus {
 /* And because we don't show the remove button on the first-row,
 *  We need to handle a single-button button group
 * (this can be removed when we show the "show index" button) */
-.query-builder .selector:first-of-type .button-group button:first-of-type {
-	border-radius: 3px;
-}
+.query-builder .selector:first-of-type .button-group button:first-of-type { border-radius: 3px; }
 
 /* Override pubmed default. We'll control max with grid */
 .query-builder .selector input[type="text"] { max-width: 100% }
 
 /* Because button-groups are artifically limited to ~30px 
-*  And therefore fall off the baseline grid, we'll have to help them back on */
-.query-builder .selector .button-group {
-	padding: 8px 0
-}
-
-/*
-.query-builder .label-text{
-  position: absolute;
-  left: -9999em;
-}
-
-.query-builder--selector-group .action-remove,
-.query-builder--selector-group .action-add,
-.query-builder--selector-group .action-show-index{
-  width: 28px;
-  height: 28px;
-  padding: 8px;
-  margin: 0;
-  font-size: 16px;
-  line-height: 32px;
-  color: #555;
-  text-align: center;
-  position: absolute;
-  top: 4px;
-  background: none;
-  border: 1px solid #aaa;
-}
-
-.query-builder--selector-group .action-remove:hover,
-.query-builder--selector-group .action-add:hover,
-.query-builder--selector-group .action-show-index:hover{ color: black; }
-
-.query-builder--selector-group .action-remove{ text-indent: 1px;  }
-.query-builder--selector-group .action-remove .icon{ -webkit-font-smoothing: none; }
-
-.query-builder--selector-group > .action-remove{
-	width: 32px;
-	height: 32px;
-	right: 5px;
-	top: -1em;
-	background: white;
-	line-height: 9999em;
-}
-
-.query-builder--selector-group > .action-remove:hover{
-	border-color: #333;
-}
-
-.query-builder--selector-group > .action-remove .icon{
-	position: absolute;
-	top: 7px;
-	left: 7px;
-}
-*/
+*  And therefore fall off the baseline grid, we'll have to help them back on.
+   Alternately, we should really consider just aligning them to the baseline grid. */
+.query-builder .selector .button-group { padding: 8px 0 }
 
 .query-builder--selector-group + .query-builder--selector-group {
 	position: relative;
 	margin-top: 2em;
 }
 
+/* The boolean-selecotor between selector groups */
 .query-builder [name=selector-group-boolean-select]{
 	position: absolute;
     left: 8px;
@@ -1068,85 +524,3 @@ td.q input:focus {
 	z-index: 100;
 	height: 40px; /* pubmed override */
 }
-
-.query-builder--selector-group .fieldset--boolean-operator .field { 
-	float: left; 
-	margin: 0;
-	height: auto;
-	line-height: 32px;
-}
-
-.query-builder .selector .field--select::after{
-	bottom: 0;
-	margin-bottom: 6px;
-}
-
-.query-builder .selector .field,
-.query-builder .selector .actions{ margin: 0; }
-
-.query-builder .selector .field{ width: 100%; }
-
-/*
-.query-builder .selector .actions{
-	position: absolute;
-	right: 4px;
-	top: 4px;
-	bottom: 4px;
-	width: 96px;
-}
-
-.query-builder .selector .actions .action{ 
-	padding: 0;
-	border: none;
-}
-*/
-.query-builder .selector .action-remove{ right: 0; }
-.query-builder .selector .action-add {
-  right: 26px;
-}
-
-.query-builder .selector .action-add .icon{
-  background: #6a6a6a;
-	font-size: 10px;
-	border-radius: 100%;
-	line-height: 22px;
-	text-indent: 1px;
-	width: 20px;
-	height: 20px;
-  color: white;
-  display: block;
-
-}
-
-/*
-.query-builder .selector .action-add:hover .icon{
-	background: #333;
-	color: white;
-}
-*/
-.query-builder .selector .actions .action-show-index{
-	right: 64px;
-	-webkit-font-smoothing: none;  
-}
-/*
-.query-builder .selector .field select,
-.query-builder .selector .field input{
-	border-radius: 0;
-	min-height: 32px;
-	height: 32px;
-	font-size: 0.85em;
-}
-*/
-.query-builder .selector .field--boolean-operator{
-	position: absolute;
-	left: 4px;
-	width: 72px;
-}
-
-.query-builder .selector .field--field-type{
-	position: absolute;
-	left: 80px;
-	width: 184px;
-}
-
-/* @end */

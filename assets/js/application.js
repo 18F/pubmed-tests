@@ -1,37 +1,10 @@
-function initBody() {
-  $('body').removeClass('no-js');
-}
-
-
-
 $(document).ready(function() {
-  initBody();
-  var radioGroupName;
-  // $('input').focus(function(){
-  //   $(this).parents('.field').addClass('is-focused')
-  //   return false;
-  // });
-
-  // $('input').blur(function(){
-  //   $(this).parents('.field').removeClass('is-focused')
-  //   return false;
-  // });
-
-  $('.fieldset--radio .field--radio input').change(function(){
-    var radioGroupName = $(this).attr('name');
-    $(this).parents('.field--radio').addClass('is-active');
-    $('input[type=radio][name=' + radioGroupName + ']').each(function(){
-      if ($(this).is(':checked') == false ){
-        $(this).parents('.field--radio').removeClass('is-active');
-      }
-    });
-  });
+  // TO-DO: Move this into DomContentLoaded below
+  $('body').removeClass('no-js');
 });
 
 // Leaving jQuery out of it unless absolutely necessary
 document.addEventListener("DOMContentLoaded", function() {
-  // HISTORY
-  // Possible to-do: Write to and recover from localstorage?
   var searchInput = document.getElementById('search-input-textarea');
   var searchTableBody = document.getElementById('search-table-body');
   var historyItems = searchTableBody.querySelectorAll('.use-q');
@@ -78,6 +51,20 @@ document.addEventListener("DOMContentLoaded", function() {
     mockQueryDetails();
   }
 
+  function addWysiwyg() {
+    var output = ''
+    var bool = document.querySelector('input[name=wysiwyg-boolean]:checked');
+    if (!bool.disabled) {
+      output = bool.value
+    }
+    output += document.getElementById('id-wysiwyg-field-value').value;
+    output += '[' + document.getElementById('id-wysiwyg-field-type').value + ']';
+    searchInput.value += output;
+    
+    SetWysiwygBooleanState();
+    mockQueryDetails();
+  }
+
   function mockQueryDetails() {
     var qVal = 'These are not real search details AND ' + searchInput.value + '[MeSH Terms] OR ' + searchInput.value;
     randomResultsInt = Math.floor(Math.random() * (100000 - 1)) + 1;
@@ -86,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function addToHistory() {
+    // TO-DO: Read/write to localstorage??
     if (searchInput.value.length > 0) {
       // Note that we can't populate results for this query 
       // without actually running the query. 
@@ -119,6 +107,22 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
+  function SetWysiwygBooleanState() {
+    var wysiwygBooleanInputs = document.querySelectorAll('.fieldset--radio.button-group input');
+    // Make wysiwyg toolbar booleans disabled until you'd be adding to something in a query
+    if (searchInput.value.length > 0) {
+      wysiwygBooleanInputs.forEach( (input) =>{
+        input.disabled = false;
+      });
+    } else {
+      wysiwygBooleanInputs.forEach( (input) =>{
+        input.disabled = true;
+      });
+    }
+  }
+
+  SetWysiwygBooleanState();
+  
   // Make history items pop into query box.
   // TO-DO: determine whether to add boolean based on existing string
   // TO-DO: sort out "and/or/nor" options
@@ -185,24 +189,27 @@ document.addEventListener("DOMContentLoaded", function() {
   })
 
   // Set up and toggle advanced search readonly state
-  var editButtonElem = document.createElement('template');
-  var editButton = `
-    <button type="button" class="action action--edit-query" id="edit-query-button">
-      Edit
-    </button>
-  `;
-  editButtonElem.innerHTML = editButton.trim();
-  searchInput.after(editButtonElem.content.firstChild);
-  searchInput.setAttribute('readonly', 'readonly');
-  // now add toggle listener
-  document.getElementById('edit-query-button').addEventListener("click", function(e){
-    if (searchInput.hasAttribute('readonly') == true) {
-      searchInput.removeAttribute('readonly');
-      searchInput.focus();
-    } else {
-      searchInput.setAttribute('readonly', 'readonly');
-    }
-  });
+  if (document.querySelector('.layout--advanced-search')) {
+    var editButtonElem = document.createElement('template');
+    var editButton = `
+      <button type="button" class="action action--edit-query" id="edit-query-button">
+        Edit
+      </button>
+    `;
+    editButtonElem.innerHTML = editButton.trim();
+    searchInput.after(editButtonElem.content.firstChild);
+    searchInput.setAttribute('readonly', 'readonly');
+    
+    // now add toggle listener
+    document.getElementById('edit-query-button').addEventListener("click", function(e){
+      if (searchInput.hasAttribute('readonly') == true) {
+        searchInput.removeAttribute('readonly');
+        searchInput.focus();
+      } else {
+        searchInput.setAttribute('readonly', 'readonly');
+      }
+    });
+  }
 
   // Add new selector group row
   $(document).on( "click",  'button.selector-row-add', function() {
@@ -294,6 +301,13 @@ document.addEventListener("DOMContentLoaded", function() {
   $(document).on( "change",  '[name=selector-group-boolean-select]', function() {
     buildQuery();
   })
+
+  // Add wysiwyg entry to search input
+  $(document).on( "click",  '.query-builder--toolbar [type=submit]', function(e) {
+    e.preventDefault();
+    addWysiwyg();
+  })
+
   // Seach Details ************************************
   // TO-DO: Handle empty query string
   // TO-DO: mock details from current query
@@ -304,6 +318,8 @@ document.addEventListener("DOMContentLoaded", function() {
     searchDetails.open = true;
   });
   searchDetails.addEventListener("click", mockQueryDetails);
+
+  searchInput.addEventListener("keydown", SetWysiwygBooleanState);
 
   // Yeah, we're totally cheating and dropping down to jquery for the event delegation.
   $(document).on( "change", '.selector select', buildQuery);
