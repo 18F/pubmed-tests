@@ -185,24 +185,27 @@ document.addEventListener("DOMContentLoaded", function() {
   })
 
   // Set up and toggle advanced search readonly state
-  var editButtonElem = document.createElement('template');
-  var editButton = `
-    <button type="button" class="action action--edit-query" id="edit-query-button">
-      Edit
-    </button>
-  `;
-  editButtonElem.innerHTML = editButton.trim();
-  searchInput.after(editButtonElem.content.firstChild);
-  searchInput.setAttribute('readonly', 'readonly');
-  // now add toggle listener
-  document.getElementById('edit-query-button').addEventListener("click", function(e){
-    if (searchInput.hasAttribute('readonly') == true) {
-      searchInput.removeAttribute('readonly');
-      searchInput.focus();
-    } else {
-      searchInput.setAttribute('readonly', 'readonly');
-    }
-  });
+  if (document.querySelector('.layout--advanced-search')) {
+    var editButtonElem = document.createElement('template');
+    var editButton = `
+      <button type="button" class="action action--edit-query" id="edit-query-button">
+        Edit
+      </button>
+    `;
+    editButtonElem.innerHTML = editButton.trim();
+    searchInput.after(editButtonElem.content.firstChild);
+    searchInput.setAttribute('readonly', 'readonly');
+    
+    // now add toggle listener
+    document.getElementById('edit-query-button').addEventListener("click", function(e){
+      if (searchInput.hasAttribute('readonly') == true) {
+        searchInput.removeAttribute('readonly');
+        searchInput.focus();
+      } else {
+        searchInput.setAttribute('readonly', 'readonly');
+      }
+    });
+  }
 
   // Add new selector group row
   $(document).on( "click",  'button.selector-row-add', function() {

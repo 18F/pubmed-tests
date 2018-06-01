@@ -537,7 +537,7 @@ fieldset.fieldset-radio.is-error .error-text {
 
 /* @group search details + history */
 
-.layout--advanced-search .search-details { margin: 1em 0 0; }
+.search-details { margin: 1em 0 0; }
 
 .search-details p,
 .search-details dt,
@@ -656,12 +656,7 @@ td.q input:focus {
 
 /******* WYSIWYG Styles ****************/
 
-/* @group .layout--wysiwyg */
-
-.layout--wysiwyg .wrapper > h1{
-  font-size: 20px;  
-}
-
+/*
 .layout--wysiwyg .query-builder h1{
   position: absolute;
   left: -9999em;
@@ -675,8 +670,20 @@ td.q input:focus {
   position: absolute;
   left: -9999em;
 }
-
-.layout--wysiwyg .query-builder{ min-width: 512px; }
+*/
+.layout--wysiwyg .query-builder { 
+	min-width: 512px; 
+	position: relative;
+}
+.layout--wysiwyg .query-preview--actions {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+}
+/* TO-DO: Figure out spacing disparity that makes this necessary */
+.layout--wysiwyg #search-history-wrapper {
+	padding-top: 1em
+}
 
 .layout--wysiwyg .query-builder--toolbar,
 .layout--wysiwyg .query-builder--preview{
@@ -812,18 +819,10 @@ td.q input:focus {
   left: -9999em;
   
 }
-.layout--wysiwyg .query-builder--preview textarea{
+.layout--wysiwyg #search-input-textarea {
   width: 100%;
-  max-width: none;
-  border: none;
-  border-top-color: #d3d3d3;
-  padding: 0.4em;
-  padding-top: 0.8em;
-  text-indent: 0.1em;
-  height: auto;
   box-shadow: inset 0 1px rgba(0,0,0,0.03);
-  min-height: 3em;
-  border-bottom: 1px solid #ccc;
+  height: 3em;
 }
 
 .layout--wysiwyg .query-builder--preview .action{
@@ -906,13 +905,16 @@ td.q input:focus {
 /***************** ADVANCED SEARCH ***************************/
 
 /* Override default pubmed usa-grid handling on this page for some extra width */
-.layout--advanced-search .usa-grid{
+.layout--advanced-search .usa-grid,
+.layout--wysiwyg, 
+.layout--wysiwyg .usa-grid {
 	padding: 20px 0;
 }
 
-/* TO-DO: see is there is an existing header style we can use ********/
+/* TO-DO: Create reusable heading styles ********/
 .layout--advanced-search h1,
-.layout--advanced-search table caption {
+.layout--advanced-search table caption,
+.layout--wysiwyg h1 {
 	text-transform: uppercase;
 	font-size: 14px;
 }

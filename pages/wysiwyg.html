@@ -4,109 +4,105 @@ permalink: /wysiwyg/
 
 layout: default
 ---
-<main class="layout--wysiwyg">
-  <div class="wrapper">
+<main class="layout--wysiwyg usa-grid">
+  <section class="query-builder usa-grid">
     <h1>Advanced search</h1>
-    <section class="query-builder">
-      <h1>Builder</h1>
-      <section class="query-builder--toolbar">
-        <form action="#">
-          <fieldset class="fieldset fieldset--radio fieldset--boolean-operator">
-            <div class="field field--radio field--and">
-              <label for="boolean-and">
-                <span class="field--text">And</span>
-                <input type="radio" value="and" name="boolean" id="boolean-and" />
-              </label>
-            </div>
-            <div class="field field--radio field--or">
-              <label for="boolean-or">
-                <span class="field--text">Or</span>
-                <input type="radio" value="or" name="boolean" id="boolean-or" />
-              </label>
-            </div>
-            <div class="field field--radio field--not">
-              <label for="boolean-not">
-                <span class="field--text">Not</span>
-                <input type="radio" value="not" name="boolean" id="boolean-not" />
-              </label>
-            </div>
-          </fieldset>
-          <div class="field field--select field--field-type">
-            <label for="">
-              <span class="label-text">Field</span>
-              <select class="" name="">
-                <option>Affiliation</option>
-                <option selected>All Fields</option>
-                <option>Author</option>
-                <option>Author - Corporate</option>
-                <option>Author - First</option>
-                <option>Author - Full</option>
-                <option>Author - Identifier</option>
-                <option>Author - Last</option>
-                <option>Book</option>
-                <option>Conflict of Interest Statements</option>
-                <option>Date - Completion</option>
-                <option>Date - Create</option>
-                <option>Date - Entrez</option>
-                <option>Date - MeSH</option>
-                <option>Date - Modification</option>
-                <option>Date - Publication</option>
-                <option>EC/RN Number</option>
-                <option>Editor</option>
-                <option>Filter</option>
-                <option>Grant Number</option>
-                <option>ISBN</option>
-                <option>Investigator</option>
-                <option>Investigator - Full</option>
-                <option>Issue</option>
-                <option>Journal</option>
-                <option>Language</option>
-                <option>Location ID</option>
-                <option>MeSH Major Topic</option>
-                <option>MeSH Subheading</option>
-                <option>MeSH Terms</option>
-                <option>Other Term</option>
-                <option>Pagination</option>
-                <option>Pharmacological Action</option>
-                <option>Publication Type</option>
-                <option>Publisher</option>
-                <option>Secondary Source ID</option>
-                <option>Subject - Personal Name</option>
-                <option>Supplementary Concept</option>
-                <option>Text Word</option>
-                <option>Title</option>
-                <option>Title/Abstract</option>
-                <option>Transliterated Title</option>
-                <option>Volume</option>
-              </select>
+    <section class="query-builder--toolbar">
+      <form action="#">
+        <fieldset class="fieldset fieldset--radio fieldset--boolean-operator">
+          <div class="field field--radio field--and">
+            <label for="boolean-and">
+              <span class="field--text">And</span>
+              <input type="radio" value="and" name="boolean" id="boolean-and" />
             </label>
           </div>
-          <div class="field field--value">
-            <label for="">
-              <span class="label-text">Value</span>
-              <input type="text" name="" value="">
+          <div class="field field--radio field--or">
+            <label for="boolean-or">
+              <span class="field--text">Or</span>
+              <input type="radio" value="or" name="boolean" id="boolean-or" />
             </label>
           </div>
-          <div class="actions">
-            <button type="submit" class="action action--add">Add</button>
+          <div class="field field--radio field--not">
+            <label for="boolean-not">
+              <span class="field--text">Not</span>
+              <input type="radio" value="not" name="boolean" id="boolean-not" />
+            </label>
           </div>
-        </form>
-        <div class="actions">
-          <a href="#" class="action action--show-index-list">
-            <span class="icon-text">Show index</span>
-            <span class="icon icon--show-index-list"></span>
-          </a>
+        </fieldset>
+        <div class="field field--select field--field-type">
+          <label for="">
+            <span class="label-text">Field</span>
+            <select class="" name="">
+              <option>Affiliation</option>
+              <option selected>All Fields</option>
+              <option>Author</option>
+              <option>Author - Corporate</option>
+              <option>Author - First</option>
+              <option>Author - Full</option>
+              <option>Author - Identifier</option>
+              <option>Author - Last</option>
+              <option>Book</option>
+              <option>Conflict of Interest Statements</option>
+              <option>Date - Completion</option>
+              <option>Date - Create</option>
+              <option>Date - Entrez</option>
+              <option>Date - MeSH</option>
+              <option>Date - Modification</option>
+              <option>Date - Publication</option>
+              <option>EC/RN Number</option>
+              <option>Editor</option>
+              <option>Filter</option>
+              <option>Grant Number</option>
+              <option>ISBN</option>
+              <option>Investigator</option>
+              <option>Investigator - Full</option>
+              <option>Issue</option>
+              <option>Journal</option>
+              <option>Language</option>
+              <option>Location ID</option>
+              <option>MeSH Major Topic</option>
+              <option>MeSH Subheading</option>
+              <option>MeSH Terms</option>
+              <option>Other Term</option>
+              <option>Pagination</option>
+              <option>Pharmacological Action</option>
+              <option>Publication Type</option>
+              <option>Publisher</option>
+              <option>Secondary Source ID</option>
+              <option>Subject - Personal Name</option>
+              <option>Supplementary Concept</option>
+              <option>Text Word</option>
+              <option>Title</option>
+              <option>Title/Abstract</option>
+              <option>Transliterated Title</option>
+              <option>Volume</option>
+            </select>
+          </label>
         </div>
-      </section>
-      <section class="query-builder--preview">
-          {% include components/query-preview-form.html %}
-      </section>
+        <div class="field field--value">
+          <label for="">
+            <span class="label-text">Value</span>
+            <input type="text" name="" value="">
+          </label>
+        </div>
+        <div class="actions">
+          <button type="submit" class="action action--add">Add</button>
+        </div>
+      </form>
+      <div class="actions">
+        <a href="#" class="action action--show-index-list">
+          <span class="icon-text">Show index</span>
+          <span class="icon icon--show-index-list"></span>
+        </a>
+      </div>
     </section>
 
-    {% include components/search-details.html %}
+    {% include components/query-preview-form.html %}
+  </section>
+
+  {% include components/search-details.html %}
     
-    <div id="search-history-wrapper">
-      {% include components/search-history.html %}
-    </div>
+  <div id="search-history-wrapper" class="usa-grid">
+    {% include components/search-history.html %}
   </div>
 </main>
