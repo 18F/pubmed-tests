@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function mockQueryDetails() {
-    var qVal = searchInput.value + '[MeSH Terms] OR ' + searchInput.value;
+    var qVal = 'These are not real search details AND ' + searchInput.value + '[MeSH Terms] OR ' + searchInput.value;
     randomResultsInt = Math.floor(Math.random() * (100000 - 1)) + 1;
     document.querySelector('dd.search-details--results').innerHTML = randomResultsInt;
     document.querySelector('dd.search-details--search-expansion').innerHTML = qVal;
