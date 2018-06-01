@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var booleanSelect = selectors[j].querySelector('.boolean-select');
             output += " " + booleanSelect.value + " ";
           }
-          output += '"' +  termInput.value + '"';
+          output +=   termInput.value;
           output += '[' + selectors[j].querySelector('.search-opts').value + ']';
         }
       }
