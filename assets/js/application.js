@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
     </tr>
   `;
 
+  // Build advanced search query as needed 
   function buildQuery() {
     var output = '';
     var qbSelectGroups = document.querySelectorAll('.query-builder--selector-group');
@@ -51,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
     mockQueryDetails();
   }
 
+  // Add WYSIWYG entry to main search box
   function addWysiwyg() {
     var output = ''
     var bool = document.querySelector('input[name=wysiwyg-boolean]:checked');
@@ -65,6 +67,8 @@ document.addEventListener("DOMContentLoaded", function() {
     mockQueryDetails();
   }
 
+  // Rather than actually running a search and bringing back search details
+  // We are mocking the results.
   function mockQueryDetails() {
     var qVal = 'These are not real search details AND ' + searchInput.value + '[MeSH Terms] OR ' + searchInput.value;
     randomResultsInt = Math.floor(Math.random() * (100000 - 1)) + 1;
@@ -72,8 +76,12 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector('dd.search-details--search-expansion').innerHTML = qVal;
   }
 
+  // Populate history table with new searches as needed.
   function addToHistory() {
     // TO-DO: Read/write to localstorage??
+    // TO-DO: Check for empty-history-row and remove if needed.
+    // TO-DO: Figure out event delegation and why new add/remove buttons aren't working.
+    // TO-DO: Sanitize input and add protection against bad characters
     if (searchInput.value.length > 0) {
       // Note that we can't populate results for this query 
       // without actually running the query. 
@@ -107,6 +115,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
+  // Helper to toggle WYSIWYG and/or/not booleans depending on 
+  // whether or not there is anything in the search box to add to
   function SetWysiwygBooleanState() {
     var wysiwygBooleanInputs = document.querySelectorAll('.fieldset--radio.button-group input');
     // Make wysiwyg toolbar booleans disabled until you'd be adding to something in a query
@@ -120,7 +130,6 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     }
   }
-
   SetWysiwygBooleanState();
   
   // Make history items pop into query box.
@@ -157,10 +166,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  // Add to history table
-  // TO-DO: Check for empty-history-row and remove if needed.
-  // TO-DO: Figure out event delegation and why new add/remove buttons aren't working.
-  // TO-DO: Sanitize input and add protection against bad characters
+  // Add to history table event handler
   $(document).on( "click",  'button.action--add-to-history', function(e) {
     addToHistory();
     e.preventDefault();
@@ -209,7 +215,12 @@ document.addEventListener("DOMContentLoaded", function() {
         searchInput.setAttribute('readonly', 'readonly');
       }
     });
+
+    // Finally, since we're already making advanced search adjustments, 
+    // Adjust placeholder text for this layout
+    searchInput.setAttribute('placeholder', "Type a search, or use the builder below to get started.");
   }
+  
 
   // Add new selector group row
   $(document).on( "click",  'button.selector-row-add', function() {

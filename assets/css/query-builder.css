@@ -344,23 +344,32 @@ td.q input:focus { border-color: #369; }
 
 .layout--wysiwyg .query-preview--actions {
 	position: absolute;
-	top: 5px;
+	top: 6px;
 	right: 10px;
 }
+
 .layout--wysiwyg .query-builder .action {
-  border: 1px solid #aaa;
-  background-color:#f8f8f8;
-  background: linear-gradient(#fff, #eee);
   font: inherit;
   height: 42px;
   line-height: 42px;
-  color: inherit;
   font-size: 0.85em;
   font-weight: 600;
   padding: 0 12px;
   box-shadow: 0 1px 0 #f8f8f8;
   margin: 0;
 }
+
+/* The not selector is so we leave the primary button color alone */
+.layout--wysiwyg .query-builder .action:not([type=submit]) {
+  border: 1px solid #aaa;
+  background-color:#f8f8f8;
+  background: linear-gradient(#fff, #eee);
+}
+
+.layout--wysiwyg .query-builder .action[type=submit] {
+	border: 1px solid #555;
+  }
+
 
 .layout--wysiwyg .query-builder .action:hover {
   border-color: #999;
