@@ -324,10 +324,6 @@ document.addEventListener("DOMContentLoaded", function() {
   // TO-DO: mock details from current query
   // TO-DO: Hide or change on query change, since current search isn't valid anymore
   var searchDetails = document.getElementById('search-details');
-  document.querySelector('.action--show-details').addEventListener("click", function(e){
-    mockQueryDetails()
-    searchDetails.open = true;
-  });
   searchDetails.addEventListener("click", mockQueryDetails);
 
   searchInput.addEventListener("keydown", SetWysiwygBooleanState);

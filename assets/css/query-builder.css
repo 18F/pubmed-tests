@@ -158,19 +158,6 @@ body:not(:-moz-handler-blocked) fieldset {
   margin-right: 0.2em;
 }
 
-.query-builder .field-any-all select{
-	padding-top: 2px;
-	padding-bottom: 2px;
-	min-height: auto;
-	font-size: 0.85em;
-	font-weight: 600;
-}
-
-.query-builder .field-any-all::after{
-	margin-bottom: 0.2em;
-	border-width: 0.33em;
-}
-
 .query-builder fieldset legend,
 .query-builder .selector label {
  position: absolute; left: -9999em;  
@@ -204,7 +191,8 @@ body:not(:-moz-handler-blocked) fieldset {
 #search-input-textarea {
 	width: 100%;
 	max-width: 100%;
-	min-height: 150px;
+	min-height: 105px;
+	height: 105px;
 	margin: 0;
 	color: #000;
 	border-color: #369;
@@ -411,7 +399,7 @@ td.q input:focus { border-color: #369; }
 	column-gap: 20px;
 }
 .query-preview--actions button { width: 100%; }
-.query-preview [type=submit] { margin: 0 0 1.6em; }
+.query-preview [type=submit] { margin: 0 0 1.5em; }
 
 
 /* Overrides a margin set on all submit buttons in pubmed 
