@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?h4uqaa');
-  src:  url('fonts/icomoon.eot?h4uqaa#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?h4uqaa') format('truetype'),
-    url('fonts/icomoon.woff?h4uqaa') format('woff'),
-    url('fonts/icomoon.svg?h4uqaa#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?vb13lh');
+  src:  url('fonts/icomoon.eot?vb13lh#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?vb13lh') format('truetype'),
+    url('fonts/icomoon.woff?vb13lh') format('woff'),
+    url('fonts/icomoon.svg?vb13lh#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -75,6 +75,18 @@
 .icon-minus::before {
   content: "bin";
 }
+
+.icon-cross:before { content: "\ea0f"; }
+.icon-checkmark:before { content: "\ea10"; }
+.icon-download:before { content: "\e903"; }
+.icon-spinner:before { content: "\e901"; }
+.icon-pencil:before { content: "\e900"; }
+.icon-book:before { content: "\20"; }
+.icon-trash:before { content: "\e9ac"; }
+.icon-plus:before { content: "\add"; }
+.icon-minus:before { content: "\ea0b"; }
+.icon-search:before { content: "\e902"; }
+
 
 /* blanket table and form overrides.
  * TO-DO: Double check against pubmed styles */
