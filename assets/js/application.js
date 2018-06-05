@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
           </td>
         </tr>`;
       template.innerHTML = newRow.trim();
-      searchTableBody.appendChild(template.content.firstChild);
+      searchTableBody.insertBefore(template.content.firstChild, searchTableBody.firstChild);
     }
   }
 
