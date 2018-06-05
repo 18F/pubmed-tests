@@ -68,10 +68,15 @@ document.addEventListener("DOMContentLoaded", function() {
   // Rather than actually running a search and bringing back search details
   // We are mocking the results.
   function mockQueryDetails() {
-    var qVal = 'These are not real search details AND ' + searchInput.value + '[MeSH Terms] OR ' + searchInput.value;
-    randomResultsInt = Math.floor(Math.random() * (100000 - 1)) + 1;
-    document.querySelector('dd.search-details--results').innerHTML = randomResultsInt;
-    document.querySelector('dd.search-details--search-expansion').innerHTML = qVal;
+    if (searchInput.value.length > 0) {
+      var qVal = 'These are not real search details AND ' + searchInput.value + '[MeSH Terms] OR ' + searchInput.value;
+      randomResultsInt = Math.floor(Math.random() * (100000 - 1)) + 1;
+      document.querySelector('dd.search-details--results').innerHTML = randomResultsInt;
+      document.querySelector('dd.search-details--search-expansion').innerHTML = qVal;
+    } else {
+      document.querySelector('dd.search-details--results').innerHTML = '';
+      document.querySelector('dd.search-details--search-expansion').innerHTML = "When you run a search, we'll show the details here to help you refine your results";
+    }
   }
 
   // Populate history table with new searches as needed.
@@ -317,7 +322,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // TO-DO: Handle empty query string
   // TO-DO: Hide or change on query change, since current search isn't valid anymore
   var searchDetails = document.getElementById('search-details');
-  searchDetails.addEventListener("click", mockQueryDetails);
+  searchDetails.queryselector('summary').addEventListener("click", mockQueryDetails);
 
   searchInput.addEventListener("keydown", SetWysiwygBooleanState);
 
