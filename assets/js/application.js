@@ -7,8 +7,6 @@ $(document).ready(function() {
 document.addEventListener("DOMContentLoaded", function() {
   var searchInput = document.getElementById('search-input-textarea');
   var searchTableBody = document.getElementById('search-table-body');
-  var historyItems = searchTableBody.querySelectorAll('.use-q');
-  var historyRemoveItems = searchTableBody.querySelectorAll('.rm-q');
   var randomResultsInt = 0; // To be set later when we mock results
   var emptySearchRow = `
     <tr id="empty-history-row">
@@ -135,25 +133,21 @@ document.addEventListener("DOMContentLoaded", function() {
   // Make history items pop into query box.
   // TO-DO: determine whether to add boolean based on existing string
   // TO-DO: sort out "and/or/nor" options
-  for (i = 0; i < historyItems.length; ++i) {
-    historyItems[i].addEventListener("click", function(e){
-      var thisInput = this.closest('tr').querySelector('input[type=text]');
-      searchInput.value += ' AND ' + thisInput.value;
-    });
-  }
+  $(document).on( "click",  'button.use-q', function(e) {
+    var thisInput = this.closest('tr').querySelector('input[type=text]');
+    searchInput.value += ' AND ' + thisInput.value;
+  });
 
   // Remove history items
-  for (i = 0; i < historyRemoveItems.length; ++i) {
-    historyRemoveItems[i].addEventListener("click", function(e){
-      var row = this.parentElement.parentElement;
-      row.parentElement.removeChild(row);
-      // Now check the row count and add "no items" if needed.
-      var historyRowCount = searchTableBody.querySelectorAll('tr').length;
-      if (historyRowCount == 0) {
-        searchTableBody.innerHTML = emptySearchRow;
-      }
-    });
-  }
+  $(document).on( "click",  'button.rm-q', function(e) {
+    var row = this.parentElement.parentElement;
+    row.parentElement.removeChild(row);
+    // Now check the row count and add "no items" if needed.
+    var historyRowCount = searchTableBody.querySelectorAll('tr').length;
+    if (historyRowCount == 0) {
+      searchTableBody.innerHTML = emptySearchRow;
+    }
+  });
 
   // Edit history items
   $(document).on( "click",  'button.edit-q', function(e) {
@@ -321,7 +315,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Seach Details ************************************
   // TO-DO: Handle empty query string
-  // TO-DO: mock details from current query
   // TO-DO: Hide or change on query change, since current search isn't valid anymore
   var searchDetails = document.getElementById('search-details');
   searchDetails.addEventListener("click", mockQueryDetails);
@@ -334,7 +327,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Add query row
   // TO-DO: Fix event delegation
-  // TO-DO: share newRow template? Copy existing HTML?
   var fieldAdder = document.querySelectorAll('button.field-add');
   var newRow = `
     <div class="selector">
