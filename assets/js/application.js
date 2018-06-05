@@ -120,8 +120,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Helper to toggle WYSIWYG and/or/not booleans depending on 
   // whether or not there is anything in the search box to add to
+  // TO-DO: consider breaking this up into one or more toggle-disabled functions.
   function SetWysiwygBooleanState() {
+    var wysiwygField = document.getElementById('id-wysiwyg-field-value');
+    // fail fast:
+    if (!wysiwygField) {
+      return
+    }
+
     var wysiwygBooleanInputs = document.querySelectorAll('.fieldset--radio.button-group input');
+    var wysiwygSubmit = document.querySelector('.query-builder--toolbar [type=submit]');
+    var otherWysiwygButtons = document.querySelectorAll('.query-preview button');
     // Make wysiwyg toolbar booleans disabled until you'd be adding to something in a query
     if (searchInput.value.length > 0) {
       wysiwygBooleanInputs.forEach( (input) =>{
@@ -132,7 +141,34 @@ document.addEventListener("DOMContentLoaded", function() {
         input.disabled = true;
       });
     }
+    // Submit button should be disabled until there is input in the query builder toolbar
+    if (wysiwygField.value.length > 0) {
+      wysiwygSubmit.disabled = false;
+      // and check and see if the other buttons should be disabled,
+      // based on whether or not there's anything in searchInput
+      if (searchInput.value.length > 0) {
+        otherWysiwygButtons.forEach( (input) =>{
+          input.disabled = false;
+        });
+      } else {
+        otherWysiwygButtons.forEach( (input) =>{
+          input.disabled = true;
+        });
+      }
+    } else {
+      wysiwygSubmit.disabled = true;
+      if (searchInput.value.length > 0) {
+        otherWysiwygButtons.forEach( (input) =>{
+          input.disabled = false;
+        });
+      } else {
+        otherWysiwygButtons.forEach( (input) =>{
+          input.disabled = true;
+        });
+      }
+    }
   }
+
   SetWysiwygBooleanState();
   
   // Make history items pop into query box.
@@ -322,9 +358,10 @@ document.addEventListener("DOMContentLoaded", function() {
   // TO-DO: Handle empty query string
   // TO-DO: Hide or change on query change, since current search isn't valid anymore
   var searchDetails = document.getElementById('search-details');
-  searchDetails.queryselector('summary').addEventListener("click", mockQueryDetails);
+  searchDetails.querySelector('summary').addEventListener("click", mockQueryDetails);
 
   searchInput.addEventListener("keydown", SetWysiwygBooleanState);
+  document.getElementById('id-wysiwyg-field-value').addEventListener("keydown", SetWysiwygBooleanState);
 
   // Yeah, we're totally cheating and dropping down to jquery for the event delegation.
   $(document).on( "change", '.selector select', buildQuery);

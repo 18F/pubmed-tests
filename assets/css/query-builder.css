@@ -339,13 +339,13 @@ td.q input:focus { border-color: #369; }
   background: #ddd;
   border: solid #ccc;
   border-width: 1px;
-  box-shadow: inset 0 1px #fff;
+  box-shadow: inset 0 1px rgb(104, 61, 61);
   border-radius: 3px 3px 0 0;
   margin-top: 0.5em;
   padding: 5px;
   position: relative;
   display: grid;
-  grid-template-columns: 8em 10em auto 180px;
+  grid-template-columns: 8em 10em auto;
   column-gap: 15px;
 }
 
@@ -353,20 +353,16 @@ td.q input:focus { border-color: #369; }
 .layout--wysiwyg .query-builder--toolbar select { margin: 0; /* Required pubmed override */ }
 .layout--wysiwyg .query-builder--toolbar .field--value { position: relative;}
 
+.layout--wysiwyg .query-builder--toolbar .field--value label,
+.layout--wysiwyg .query-builder--toolbar .field--value input { max-width: 100%;  width: 100%}
+.layout--wysiwyg .query-builder--toolbar .field--value label {padding-right: 4px;} /* avoid border peek */
 .layout--wysiwyg .query-builder .action--add {
   position: absolute;
   right: 0;
   top: 0;
   bottom: 0;
   margin: 0;
-  background: #aaa;
-  color: white;
-  border: 0;
-  padding: 2px 8px 3px; 
-  height: auto;
-  min-height: 0;
-  line-height: 1.67em;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 /* @end */
 
@@ -393,12 +389,12 @@ td.q input:focus { border-color: #369; }
 }
 
 /** Query preview form **/
-.query-preview { 
-	display: grid;
-	grid-template-columns: auto 180px;
-	column-gap: 20px;
+.query-preview--actions { 
+	float: right; 
+	width: 50%;
+	text-align: right
 }
-.query-preview--actions button { width: 100%; }
+.query-preview--actions button { width: 48%; display: inline-block }
 .query-preview [type=submit] { margin: 0 0 1.5em; }
 
 
