@@ -120,7 +120,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Helper to toggle WYSIWYG and/or/not booleans depending on 
   // whether or not there is anything in the search box to add to
-  // TO-DO: consider breaking this up into one or more toggle-disabled functions.
   function SetWysiwygBooleanState() {
     var wysiwygField = document.getElementById('id-wysiwyg-field-value');
     // fail fast:
@@ -129,6 +128,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     var wysiwygBooleanInputs = document.querySelectorAll('.fieldset--radio.button-group input');
     var wysiwygSubmit = document.querySelector('.query-builder--toolbar [type=submit]');
+    
     // Make wysiwyg toolbar booleans disabled until you'd be adding to something in a query
     if (searchInput.value.length > 0) {
       wysiwygBooleanInputs.forEach( (input) =>{
@@ -219,6 +219,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Search/form submission
   document.querySelector('.query-preview [type=submit]').addEventListener("click", function(e) {
     addToHistory();
+    searchInput.value = '';
     alert(`
       Normally you would go to search results after clicking "search".
       For testing purposes we're going to keep you on this page.
@@ -253,7 +254,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Adjust placeholder text for this layout
     searchInput.setAttribute('placeholder', "Type a search, or use the builder below to get started.");
   }
-  
 
   // Add new selector group row
   $(document).on( "click",  'button.selector-row-add', function() {
@@ -348,8 +348,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Add wysiwyg entry to search input
   $(document).on( "click",  '.query-builder--toolbar [type=submit]', function(e) {
-    e.preventDefault();
     addWysiwyg();
+    document.getElementById('id-wysiwyg-field-value').value = '';
+    e.preventDefault();
   })
 
   // Seach Details ************************************
@@ -372,7 +373,6 @@ document.addEventListener("DOMContentLoaded", function() {
   $(document).on( "keyup",  '.selector input', buildQuery);
 
   // Add query row
-  // TO-DO: Fix event delegation
   var fieldAdder = document.querySelectorAll('button.field-add');
   var newRow = `
     <div class="selector">
