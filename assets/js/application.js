@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
     searchInput.value = output;
+    ToggleSearchButtonState();
     mockQueryDetails();
   }
 
@@ -83,7 +84,6 @@ document.addEventListener("DOMContentLoaded", function() {
   function addToHistory() {
     // TO-DO: Read/write to localstorage??
     // TO-DO: Check for empty-history-row and remove if needed.
-    // TO-DO: Figure out event delegation and why new add/remove buttons aren't working.
     // TO-DO: Sanitize input and add protection against bad characters
     if (searchInput.value.length > 0) {
       // Note that we can't populate results for this query 
@@ -127,10 +127,8 @@ document.addEventListener("DOMContentLoaded", function() {
     if (!wysiwygField) {
       return
     }
-
     var wysiwygBooleanInputs = document.querySelectorAll('.fieldset--radio.button-group input');
     var wysiwygSubmit = document.querySelector('.query-builder--toolbar [type=submit]');
-    var otherWysiwygButtons = document.querySelectorAll('.query-preview button');
     // Make wysiwyg toolbar booleans disabled until you'd be adding to something in a query
     if (searchInput.value.length > 0) {
       wysiwygBooleanInputs.forEach( (input) =>{
@@ -144,39 +142,39 @@ document.addEventListener("DOMContentLoaded", function() {
     // Submit button should be disabled until there is input in the query builder toolbar
     if (wysiwygField.value.length > 0) {
       wysiwygSubmit.disabled = false;
-      // and check and see if the other buttons should be disabled,
-      // based on whether or not there's anything in searchInput
-      if (searchInput.value.length > 0) {
-        otherWysiwygButtons.forEach( (input) =>{
-          input.disabled = false;
-        });
-      } else {
-        otherWysiwygButtons.forEach( (input) =>{
-          input.disabled = true;
-        });
-      }
     } else {
       wysiwygSubmit.disabled = true;
-      if (searchInput.value.length > 0) {
-        otherWysiwygButtons.forEach( (input) =>{
-          input.disabled = false;
-        });
-      } else {
-        otherWysiwygButtons.forEach( (input) =>{
-          input.disabled = true;
-        });
-      }
+    }
+    // and check and see if the other buttons should be disabled,
+    // based on whether or not there's anything in searchInput
+    ToggleSearchButtonState();
+  }
+  SetWysiwygBooleanState();
+
+  // Toggles add to history and search button state
+  // Based on presence of content in searchinput
+  function ToggleSearchButtonState() {
+    var buttons = document.querySelectorAll('.query-preview button');
+    if (searchInput.value.length > 0) {
+      buttons.forEach( (input) =>{
+        input.disabled = false;
+      });
+    } else {
+      buttons.forEach( (input) =>{
+        input.disabled = true;
+      });
     }
   }
+  ToggleSearchButtonState();
 
-  SetWysiwygBooleanState();
-  
   // Make history items pop into query box.
-  // TO-DO: determine whether to add boolean based on existing string
   // TO-DO: sort out "and/or/nor" options
   $(document).on( "click",  'button.use-q', function(e) {
     var thisInput = this.closest('tr').querySelector('input[type=text]');
-    searchInput.value += ' AND ' + thisInput.value;
+    if (searchInput.value.length > 0) {
+      searchInput.value += ' AND '
+    }
+    searchInput.value += + thisInput.value;
   });
 
   // Remove history items
@@ -360,8 +358,14 @@ document.addEventListener("DOMContentLoaded", function() {
   var searchDetails = document.getElementById('search-details');
   searchDetails.querySelector('summary').addEventListener("click", mockQueryDetails);
 
+  // Since ToggleSearchButtonState is called from within SetWysiwygBooleanState
+  // this can do double-duty and call both.
   searchInput.addEventListener("keydown", SetWysiwygBooleanState);
-  document.getElementById('id-wysiwyg-field-value').addEventListener("keydown", SetWysiwygBooleanState);
+  
+  var wysiwygBuilderField = document.getElementById('id-wysiwyg-field-value')
+  if (wysiwygBuilderField) {
+    wysiwygBuilderField.addEventListener("keydown", SetWysiwygBooleanState);
+  }
 
   // Yeah, we're totally cheating and dropping down to jquery for the event delegation.
   $(document).on( "change", '.selector select', buildQuery);
