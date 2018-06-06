@@ -115,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </tr>`;
       template.innerHTML = newRow.trim();
       searchTableBody.insertBefore(template.content.firstChild, searchTableBody.firstChild);
+      searchInput.value = '';
     }
   }
 
