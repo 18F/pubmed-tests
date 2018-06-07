@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", function() {
       output += '(';
     }
     for (i = 0; i < qbSelectGroups.length; ++i) {
-      // and/or not check
+      // If we have more than one group, 
+      // Add parens and boolean.
       if (i > 0) {
         var thisGroupBoolean = qbSelectGroups[i].querySelector('[name="selector-group-boolean-select"]').value;
         output += ') ' + thisGroupBoolean + ' (';
@@ -43,8 +44,8 @@ document.addEventListener("DOMContentLoaded", function() {
           output += '[' + selectors[j].querySelector('.search-opts').value + ']';
         }
       }
-      // If needed, close parens
     }
+    // If needed, close parens
     if (qbSelectGroups.length > 1) {
       output += ")";
     }
