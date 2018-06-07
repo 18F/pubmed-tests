@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?vb13lh');
-  src:  url('fonts/icomoon.eot?vb13lh#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?vb13lh') format('truetype'),
-    url('fonts/icomoon.woff?vb13lh') format('woff'),
-    url('fonts/icomoon.svg?vb13lh#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?vwhmxd');
+  src:  url('fonts/icomoon.eot?vwhmxd#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?vwhmxd') format('truetype'),
+    url('fonts/icomoon.woff?vwhmxd') format('woff'),
+    url('fonts/icomoon.svg?vwhmxd#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -31,8 +31,9 @@
   -webkit-font-variant-ligatures: discretionary-ligatures;
   font-variant-ligatures: discretionary-ligatures;
 
+  /* Better Font Rendering =========== */
   -moz-osx-font-smoothing: grayscale;
-} 
+}
 .action .icon {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
@@ -76,16 +77,17 @@
   content: "bin";
 }
 
+.icon-book:before { content: "\20"; }
 .icon-cross:before { content: "\ea0f"; }
 .icon-checkmark:before { content: "\ea10"; }
 .icon-download:before { content: "\e903"; }
-.icon-spinner:before { content: "\e901"; }
+.icon-info-circle:before { content: "\e904"; }
 .icon-pencil:before { content: "\e900"; }
-.icon-book:before { content: "\20"; }
-.icon-trash:before { content: "\e9ac"; }
-.icon-plus:before { content: "\add"; }
 .icon-minus:before { content: "\ea0b"; }
+.icon-plus:before { content: "\add"; }
 .icon-search:before { content: "\e902"; }
+.icon-spinner:before { content: "\e901"; }
+.icon-trash:before { content: "\e9ac"; }
 
 
 /* blanket table and form overrides.
