@@ -86,6 +86,10 @@ document.addEventListener("DOMContentLoaded", function() {
     // TO-DO: Check for empty-history-row and remove if needed.
     // TO-DO: Sanitize input and add protection against bad characters
     if (searchInput.value.length > 0) {
+      // First make sure the emptyHistoryRow is not in place
+      if (document.getElementById('empty-history-row')) {
+        searchTableBody.innerHTML = ''
+      }
       // Note that we can't populate results for this query 
       // without actually running the query. 
       var template = document.createElement('template');
