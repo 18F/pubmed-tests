@@ -216,49 +216,7 @@ body:not(:-moz-handler-blocked) fieldset {
 	border-color: #aaa;
 	background: #f6f6f6;
 }
-#search-input-textarea[readonly]:focus {
-	outline: 0;
-}
-
-
-/* @group search details + history */
-
-.search-details { margin: 1em 0 0; }
-
-.search-details p,
-.search-details dt,
-.search-details dd {
-  max-width: 50em;
-  line-height: 1.33em;
-  font-style: inherit;
-  font-size: 0.85em;
-  margin: 0.75em 0;
-}
-
-.search-details dt {
-  font-weight: 600;
-  padding-top: 0.75em;
-}
-
-.search-details dl {
-  border-left: 2px solid #ccc;
-  padding-left: 0.8em; 
-}
-
-.search-details .search-details--results{
-  padding-top: 0;
-  display: inline;
-}
-
-.search-details dt.search-details--results::after{
-  content: ":";
-}
-
-.search-details dd.search-details--search-expansion{
-  font-family: Consolas, "Courier New", Courier, mono;
-  font-size: 12px;
-  max-width: 60em;
-}
+#search-input-textarea[readonly]:focus { outline: 0; }
 
 #query-builder .actions { width: 5em; }
 
@@ -280,13 +238,19 @@ td.q input { /* Hide input in cell and recreate table padding */
 }
 td.q input:focus { border-color: #369; }
 
+td.q .search-details { 
+	padding: 0 6px; 
+	margin: 0 0 6px 6px;
+	border-left: 2px solid #ddd;
+}
+
 /* Numeric cells should always be right-aligned */
 .num { 
    width: 5em;
    text-align: right;
 }
 
-.history-controls { width: 114px }
+.history-controls { width: 150px }
 
 .search-history tfoot button {
 	margin: 0 0 0 1em; /* override pubmed standard margin */
@@ -347,6 +311,10 @@ td.q input:focus { border-color: #369; }
 	border-radius: 0 0 3px 3px;
 }
 
+details[open] summary::-webkit-details-marker {
+	color:red;
+	background:white;
+}
 .layout--wysiwyg .query-builder--toolbar{ 
   background: #ddd;
   border: solid #ccc;
