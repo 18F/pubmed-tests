@@ -1,14 +1,7 @@
-<link rel="stylesheet" href="/assets/css/uswds-mod.css" type="text/css" />
-<link rel="stylesheet" href="/assets/css/ncbi.css" type="text/css" />
 <!-- Mobile browser address bar color -->
 <meta name="theme-color" content="#205493">
-<!-- Project base styles -->
-<link rel="stylesheet" href="/assets/css/home.css" type="text/css" />
-<link rel="stylesheet" href="/assets/css/project-base.css" type="text/css" />
 
 {% assign _styles = '' | split: '' %}
-{% assign _default_styles = '' | split: ''
-  | push: '/assets/css/main.css' %}
 {% assign _styles = _styles
   | push: _default_styles
   | push: site.styles
@@ -19,3 +12,4 @@
   href="{{ _style.href | default: _style | relative_url }}"
   media="{{ _style.media | default: 'screen' }}">
 {% endfor %}{% endfor %}
+
