@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (searchInput.value.length > 0) {
       searchInput.value += ' AND '
     }
-    searchInput.value += + thisInput.value;
+    searchInput.value += thisInput.value;
   });
 
   // Remove history items
