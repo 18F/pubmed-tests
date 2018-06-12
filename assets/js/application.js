@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     searchInput.value = output;
     ToggleSearchButtonState();
-    mockQueryDetails();
   }
 
   // Add WYSIWYG entry to main search box
@@ -64,23 +63,21 @@ document.addEventListener("DOMContentLoaded", function() {
     output += document.getElementById('id-wysiwyg-field-value').value;
     output += '[' + document.getElementById('id-wysiwyg-field-type').value + ']';
     searchInput.value += output;
-    
+
     SetWysiwygBooleanState();
-    mockQueryDetails();
   }
 
   // Rather than actually running a search and bringing back search details
   // We are mocking the results.
   function mockQueryDetails() {
+    let details;
     if (searchInput.value.length > 0) {
-      var qVal = 'These are not real search details AND ' + searchInput.value + '[MeSH Terms] OR ' + searchInput.value;
-      randomResultsInt = Math.floor(Math.random() * (100000 - 1)) + 1;
-      document.querySelector('dd.search-details--results').innerHTML = randomResultsInt;
-      document.querySelector('dd.search-details--search-expansion').innerHTML = qVal;
+      details = 'These are not real search details AND they are faked AND ' + searchInput.value + '[MeSH Terms] OR ' + searchInput.value;
     } else {
-      document.querySelector('dd.search-details--results').innerHTML = '';
-      document.querySelector('dd.search-details--search-expansion').innerHTML = "When you run a search, we'll show the details here to help you refine your results";
+      // This shouldn't ever appear now. But just in case...
+      details = "When you run a search, we'll show the details here to help you refine your results";
     }
+    return `<p class="search-details" hidden>${details}</p>`
   }
 
   // Populate history table with new searches as needed.
@@ -95,12 +92,15 @@ document.addEventListener("DOMContentLoaded", function() {
       }
       // Note that we can't populate results for this query 
       // without actually running the query. 
-      var template = document.createElement('template');
-      mockQueryDetails(); // so we can get a fresh randomResultsInt
+      let template = document.createElement('template');
+      let randomResultsInt = Math.floor(Math.random() * (100000 - 1)) + 1;
+      mockQueryDetails();
+      // TO-DO: write out details element to use mockDetails
       var newRow = `
         <tr>
           <td class="q">
             <input type="text" readonly="readonly" value='${searchInput.value}'>
+            ${mockQueryDetails()}
           </td>
           <td class="num">
             <a href="#" title="Results for this query">${randomResultsInt}</a>
@@ -113,6 +113,10 @@ document.addEventListener("DOMContentLoaded", function() {
             <button type="button" class="action action--edit-query edit-q" title="Edit this query">
               <span class="icon"></span>
               <span class="label-text">Edit this query</span>
+            </button>
+            <button type="button" class="action toggle-details" title="View details of this query">
+              <span class="icon icon-info">&#9432;</span>
+              <span class="label-text">View details of this query</span>
             </button>
             <button type="button" class="action action--remove-query rm-q" title="Remove this query">
               <span class="icon"></span>
@@ -220,6 +224,15 @@ document.addEventListener("DOMContentLoaded", function() {
   // Make history clear "work"
   document.getElementById('history-clear').addEventListener("click", function(e){
     searchTableBody.innerHTML = emptySearchRow;
+  });
+  // Toggle search details
+  $(document).on( "click",  'button.toggle-details', function(e) {
+    var thisDetails = this.closest('tr').querySelector('.search-details');
+    if (thisDetails.hasAttribute('hidden') == true) {
+      thisDetails.removeAttribute('hidden');
+    } else { // Reset on second click
+      thisDetails.setAttribute('hidden', 'hidden');
+    }
   });
   
   // ADVANCED SEARCH ********************************
@@ -361,11 +374,13 @@ document.addEventListener("DOMContentLoaded", function() {
     e.preventDefault();
   })
 
-  // Seach Details ************************************
+  /* Seach Details ************************************
+  This is deprecated by new search detail handling
   // TO-DO: Handle empty query string
   // TO-DO: Hide or change on query change, since current search isn't valid anymore
   var searchDetails = document.getElementById('search-details');
   searchDetails.querySelector('summary').addEventListener("click", mockQueryDetails);
+  */
 
   // Since ToggleSearchButtonState is called from within SetWysiwygBooleanState
   // this can do double-duty and call both.
