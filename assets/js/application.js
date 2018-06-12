@@ -57,13 +57,14 @@ document.addEventListener("DOMContentLoaded", function() {
   function addWysiwyg() {
     var output = ''
     var bool = document.querySelector('input[name=wysiwyg-boolean]:checked');
+    // If we've allowed the boolean to be enabled, then add it.
     if (!bool.disabled) {
       output = bool.value
     }
     output += document.getElementById('id-wysiwyg-field-value').value;
     output += '[' + document.getElementById('id-wysiwyg-field-type').value + ']';
     searchInput.value += output;
-
+    // Now reset the boolean state as needed.
     SetWysiwygBooleanState();
   }
 
@@ -83,7 +84,6 @@ document.addEventListener("DOMContentLoaded", function() {
   // Populate history table with new searches as needed.
   function addToHistory() {
     // TO-DO: Read/write to localstorage??
-    // TO-DO: Check for empty-history-row and remove if needed.
     // TO-DO: Sanitize input and add protection against bad characters
     if (searchInput.value.length > 0) {
       // First make sure the emptyHistoryRow is not in place
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
       let template = document.createElement('template');
       let randomResultsInt = Math.floor(Math.random() * (100000 - 1)) + 1;
       mockQueryDetails();
-      // TO-DO: write out details element to use mockDetails
+
       var newRow = `
         <tr>
           <td class="q">
