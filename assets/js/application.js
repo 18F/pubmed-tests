@@ -18,12 +18,16 @@ document.addEventListener("DOMContentLoaded", function() {
   function buildQuery() {
     var output = '';
     var qbSelectGroups = document.querySelectorAll('.query-builder--selector-group');
-    // Go through selector groups
+    // If we have multiple groups, start parens
+    if (qbSelectGroups.length > 1) {
+      output += '(';
+    }
     for (i = 0; i < qbSelectGroups.length; ++i) {
-      // and/or not check
+      // If we have more than one group, 
+      // Add parens and boolean.
       if (i > 0) {
-        var b = document.querySelector('[name="selector-group-boolean-select"]').value;
-        output += ' ' + b + ' ';
+        var thisGroupBoolean = qbSelectGroups[i].querySelector('[name="selector-group-boolean-select"]').value;
+        output += ') ' + thisGroupBoolean + ' (';
       }
       // now find all the selectors within this selector groups
       var selectors = qbSelectGroups[i].querySelectorAll('.selector');
@@ -40,11 +44,10 @@ document.addEventListener("DOMContentLoaded", function() {
           output += '[' + selectors[j].querySelector('.search-opts').value + ']';
         }
       }
-      // if there are multiple selectors in the selector group,
-      // then we have to wrap in parens
-      if (selectors.length > 1) {
-        output = "(" + output + ")";
-      }
+    }
+    // If needed, close parens
+    if (qbSelectGroups.length > 1) {
+      output += ")";
     }
     searchInput.value = output;
     ToggleSearchButtonState();
