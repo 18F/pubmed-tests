@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var selectedFieldType = document.getElementById('id-wysiwyg-field-type').value;
     if (selectedFieldType) {
       output += '[' + selectedFieldType + ']';
-    
+    }
     searchInput.value += output;
     // Now reset the boolean state as needed.
     SetWysiwygBooleanState();
