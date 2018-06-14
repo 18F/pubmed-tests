@@ -41,7 +41,11 @@ document.addEventListener("DOMContentLoaded", function() {
             output += " " + booleanSelect.value + " ";
           }
           output +=   termInput.value;
-          output += '[' + selectors[j].querySelector('.search-opts').value + ']';
+          // Only append field in brackets if one was selected
+          var selectedField = selectors[j].querySelector('.search-opts').value;
+          if (selectedField) {
+            output += '[' + selectedField + ']';
+          }
         }
       }
     }
@@ -62,7 +66,11 @@ document.addEventListener("DOMContentLoaded", function() {
       output = bool.value
     }
     output += document.getElementById('id-wysiwyg-field-value').value;
-    output += '[' + document.getElementById('id-wysiwyg-field-type').value + ']';
+    // Only add fieldtype if one was selected
+    var selectedFieldType = document.getElementById('id-wysiwyg-field-type').value;
+    if (selectedFieldType) {
+      output += '[' + selectedFieldType + ']';
+    
     searchInput.value += output;
     // Now reset the boolean state as needed.
     SetWysiwygBooleanState();
@@ -296,9 +304,8 @@ document.addEventListener("DOMContentLoaded", function() {
           <div>
             <label for="id-search-opts-{{ num }}">Search in</label>
             <select class="search-opts" name="search-opts-{{ num }}" id="id-search-opts-{{ num }}">
-                <option value="">Search in...</option>
+                <option value="">All Fields</option>
                 <option>Affiliation</option>
-                <option>All Fields</option>
                 <option>Author</option>
                 <option>Author - Corporate</option>
                 <option>Author - First</option>
@@ -409,9 +416,8 @@ document.addEventListener("DOMContentLoaded", function() {
       <div>
         <label for="id-search-opts-{{ num }}">Search in</label>
         <select class="search-opts" name="search-opts-{{ num }}" id="id-search-opts-{{ num }}">
-          <option value="">Search in...</option>
+          <option value="">All Fields</option>
           <option>Affiliation</option>
-          <option>All Fields</option>
           <option>Author</option>
           <option>Author - Corporate</option>
           <option>Author - First</option>
